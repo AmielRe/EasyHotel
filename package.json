@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/AmielRe/EasyHotel#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^16.0.2",
     "mongoose": "^6.5.4",
     "mongose": "^0.0.2-security",

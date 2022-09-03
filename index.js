@@ -1,7 +1,9 @@
 const express = require('express');
 require('dotenv/config');
+const mongoose = require('mongoose')
 
 const app = express();
+app.use(express.json());
 
 
 // Routers
@@ -19,4 +21,5 @@ app.get('/', (req,res) => {
     res.send("This will return the main page")
 })
 
+mongoose.connect(`mongodb://${process.env.dbUser}:${process.env.dbPass}@localhost:${process.env.dbPort}/EasyHotel`)
 app.listen(process.env.PORT)
