@@ -26,5 +26,5 @@ app.get('/', (req, res) => {
     res.sendFile('login.html', { root: __dirname + "/public/html" });
 })
 
-mongoose.connect(`mongodb+srv://${process.env.dbUser}:${process.env.dbPass}@easyhotel.6ku0zkj.mongodb.net/?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://${process.env.dbUser}:${process.env.dbPass}@${process.env.dbHost}`)
 app.listen(process.env.PORT)
