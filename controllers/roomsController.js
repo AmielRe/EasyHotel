@@ -1,11 +1,16 @@
 const uuid = require('uuid')
 
-const getRooms = (req,res) => {
+const getAllRooms = (req,res) => {
     res.send("Will return all avalibe rooms in the hotel");
 }
 
 // Will add new room to the DB by the admin
-const addRoom = (req,res) => {
+const addNewRoom = (req,res) => {
+    res.json({"id":uuid.v4()});
+}
+
+// Will update an exsisting room
+const updateRoom = (req,res) => {
     res.json({"id":uuid.v4()});
 }
 
@@ -14,7 +19,9 @@ const deleteRoom = (req,res) => {
     res.json({"id":req.params.id});
 }
 
-exports.getRooms = getRooms;
-exports.addRoom = addRoom;
-exports.deleteRoom = deleteRoom;
-
+module.exports = {
+    getAllRooms,
+    addNewRoom,
+    updateRoom,
+    deleteRoom
+}

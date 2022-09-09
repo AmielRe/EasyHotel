@@ -2,19 +2,19 @@ const uuid = require('uuid')
 const User = require('../models/users');
 
 // Get the currect user
-const getUser = (req,res) => {
-    res.json(User.find({"username":"elad"}));
+const getAllUsers = (req,res) => {
+    res.json({"username":"elad"});
 }
 
 // Will update user details - Admin only
-const addUser = async (req,res) => {
+const addNewUser = async (req,res) => {
     const user = new User({
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
         type: 1
     });
-    console.log(user, typeof(user));
+    
     try {
         const newUser = await user.save();
 
@@ -28,12 +28,20 @@ const addUser = async (req,res) => {
     }
 }
 
+// Will update a user
+const updateUser = (req,res) => {
+    res.json({"status":"ok"});
+}
+
 // Will delete a user from the system - Admin only
 const deleteUser = (req,res) => {
     res.json({"id":req.params.id});
 }
 
-exports.getUser = getUser;
-exports.addUser = addUser;
-exports.deleteUser = deleteUser;
+module.exports = {
+    getAllUsers,
+    addNewUser,
+    updateUser,
+    deleteUser
+}
 

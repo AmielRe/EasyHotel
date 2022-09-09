@@ -3,6 +3,7 @@ require('dotenv/config');
 const mongoose = require('mongoose')
 
 const app = express();
+app.set('view engine', 'ejs');
 app.use(express.json());
 
 

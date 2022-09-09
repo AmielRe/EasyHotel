@@ -1,15 +1,15 @@
 const express = require('express');
-const { getRooms, addRoom, deleteRoom } = require('../controllers/roomsController');
+const roomsController = require('../controllers/roomsController');
 
 const router = express.Router();
 
-// Gets all rooms - get details about all the avalible rooms;
-router.get('/', getRooms);
+router.route('/')
+    .get(roomsController.getAllRooms)
+    .post(roomsController.addNewRoom)
+    .put(roomsController.updateRoom)
 
-// Add new room to the DB - only Admins
-router.post('/', addRoom);
 
-// Deletes room - only Admins
-router.delete('/:id', deleteRoom);
+router.route('/:id')
+    .delete(roomsController.deleteRoom)
 
 module.exports = router;

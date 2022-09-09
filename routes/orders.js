@@ -1,15 +1,16 @@
 const express = require('express');
-const { getOrders, addOrder, deleteOrder } = require('../controllers/ordersController');
+const ordersController = require('../controllers/ordersController');
 
 const router = express.Router();
 
-// Gets all of users orders
-router.get('/', getOrders);
 
-// Create new order
-router.post('/', addOrder);
+router.route('/')
+    .get(ordersController.getAllOrders)
+    .post(ordersController.addNewOrder)
+    .put(ordersController.UpdateOrder)
 
-// Deletes order by id (should be uuid)
-router.delete('/:id', deleteOrder);
+
+router.route('/:id')
+    .delete(ordersController.deleteOrder)
 
 module.exports = router;
