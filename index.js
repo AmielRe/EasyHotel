@@ -3,7 +3,6 @@ require('dotenv/config');
 const mongoose = require('mongoose')
 
 const app = express();
-app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.static('public/css'))
 app.use(express.static('public/images'))
@@ -23,7 +22,7 @@ app.use('/users', usersRoute)
 
 // this will return the main page
 app.get('/', (req, res) => {
-    res.sendFile('login.html', { root: __dirname + "/public/html" });
+    res.render('login.ejs')
 })
 
 mongoose.connect(`mongodb+srv://${process.env.dbUser}:${process.env.dbPass}@${process.env.dbHost}`)
