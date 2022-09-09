@@ -22,5 +22,5 @@ app.get('/', (req,res) => {
     res.send("This will return the main page")
 })
 
-mongoose.connect(`mongodb://${process.env.dbUser}:${process.env.dbPass}@localhost:${process.env.dbPort}/EasyHotel`)
+mongoose.connect(`mongodb+srv://${process.env.dbUser}:${process.env.dbPass}@easyhotel.6ku0zkj.mongodb.net/?retryWrites=true&w=majority`)
 app.listen(process.env.PORT)
