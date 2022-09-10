@@ -2,8 +2,15 @@ const User = require('../models/users');
 const Config = require('../config/roles')
 
 // Get the currect user
-const getAllUsers = (req,res) => {
-    res.json({"username":"elad"});
+const getAllUsers = async (req,res) => {
+    try {
+        const users = await User.find();
+        res.json(users);
+    }
+    catch (err) {
+        res.json({"status": "err"});
+    }
+    
 }
 
 // Register new user to the system
