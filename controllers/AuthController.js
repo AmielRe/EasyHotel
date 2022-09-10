@@ -5,7 +5,6 @@ const Config = require('../config/roles')
 
 
 const basicLogin = (req, res) => {
-    console.log(req.body.email, req.body.password)
     if (!req.body.email || !req.body.password) return res.status(400).json({ 'message': 'Username and password are required.' });
     const user = {
         email: req.body.email
@@ -21,7 +20,7 @@ const basicLogin = (req, res) => {
                         "UserInfo": {
                             "email": usr.email,
                             "fullName": usr.fullName,
-                            "roles": usr.role
+                            "role": usr.role
                         }
                     },
                     process.env.ACCESS_TOKEN_SECRET,
