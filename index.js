@@ -21,11 +21,13 @@ app.set('view engine', 'ejs');
 const ordersRoute = require('./routes/orders')
 const roomsRoute = require('./routes/rooms')
 const usersRoute = require('./routes/users')
+const authRoute = require('./routes/auth')
 
 // Use Routers
 app.use('/orders', ordersRoute)
 app.use('/rooms', roomsRoute)
 app.use('/users', usersRoute)
+app.use('/auth', authRoute)
 
 // this will return the main page
 app.get('/', (req, res) => {

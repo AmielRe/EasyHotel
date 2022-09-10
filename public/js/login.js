@@ -1,9 +1,3 @@
-var socket = io();
-
-socket.on('error', function(data) {
-    alert("error")
-})
-
 $(document).ready(function () {
     error = document.getElementsByClassName("error");
     for (var i = 0; i < error.length; i++) {

@@ -6,10 +6,7 @@
             rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous">
-        <link href="bootstrap.min.css" rel="stylesheet">
         <link href="login.css" rel="stylesheet">
-
-        <script src="socket.io.min.js"></script>
         <script src="jquery-3.6.0.min.js"></script>
     </head>
     <body>
@@ -57,11 +54,12 @@
                                     id="sign-in"
                                     role="tabpanel"
                                     aria-labelledby="sign-in-tab">
-                                    <form>
+                                    <form method="post" action="/auth/basic">
                                         <div class="form-floating mb-3">
                                             <input required type="email"
                                                 class="form-control"
                                                 id="floatingInput"
+                                                name="email"
                                                 placeholder="name@example.com">
                                             <label for="floatingInput">Email
                                                 address</label>
@@ -70,6 +68,7 @@
                                             <input required type="password"
                                                 class="form-control"
                                                 id="floatingPassword"
+                                                name="password"
                                                 placeholder="Password">
                                             <label for="floatingPassword">Password</label>
                                         </div>

@@ -14,9 +14,9 @@ var schema = mongoose.Schema({
         type: String,
         required: true
     },
-    type: {
+    role: {
         type: Number,
-        default: 0
+        required: true
     }
 }, {
     versionKey: false,

@@ -1,26 +1,19 @@
-const uuid = require('uuid')
-
-const express = require('express');
-const app = express();
-
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-
 const User = require('../models/users');
+const Config = require('../config/roles')
 
 // Get the currect user
 const getAllUsers = (req,res) => {
     res.json({"username":"elad"});
 }
 
-// Will update user details - Admin only
+// Register new user to the system
 const addNewUser = async (req,res) => {
 
     const user = new User({
         fullName: req.body.fullName,
         email: req.body.email,
         password: req.body.password,
-        type: 1
+        role: Config.ROLES.guest
     });
     
     try {
