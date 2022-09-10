@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
 
-var schema = mongoose.Schema({
-
-    username: {
+var schema = mongoose.Schema({ 
+    fullName: {
         type: String,
-        unique: true
+        required: true
     },
     email: {
         type: String,
@@ -19,7 +18,6 @@ var schema = mongoose.Schema({
         type: Number,
         default: 0
     }
-
 }, {
     versionKey: false,
     timestamps: true

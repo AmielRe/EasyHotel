@@ -1,4 +1,11 @@
 const uuid = require('uuid')
+
+const express = require('express');
+const app = express();
+
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
 const User = require('../models/users');
 
 // Get the currect user
@@ -8,8 +15,9 @@ const getAllUsers = (req,res) => {
 
 // Will update user details - Admin only
 const addNewUser = async (req,res) => {
+
     const user = new User({
-        username: req.body.username,
+        fullName: req.body.fullName,
         email: req.body.email,
         password: req.body.password,
         type: 1
@@ -19,12 +27,12 @@ const addNewUser = async (req,res) => {
         const newUser = await user.save();
 
         // User has added !
-        res.json(newUser);
+        res.render('login.ejs', {"errors":[]})
     }
     catch (err) {
-
-        // Error - user already exsists or something else
-        res.json(err);
+        res.render('login.ejs', {"errors":[
+            "Email already in use, Please enter another email"
+        ]})
     }
 }
 

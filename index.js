@@ -1,10 +1,17 @@
 const express = require('express');
+const app = express();
+
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
 require('dotenv/config');
 const mongoose = require('mongoose')
 
-const app = express();
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: true}))
 app.use(express.static('public/css'))
+app.use(express.static('public/js'))
 app.use(express.static('public/images'))
 
 // set the view engine to ejs
@@ -22,8 +29,19 @@ app.use('/users', usersRoute)
 
 // this will return the main page
 app.get('/', (req, res) => {
-    res.render('login.ejs')
+    res.render('login.ejs', {"errors":[]})
 })
 
-mongoose.connect(`mongodb+srv://${process.env.dbUser}:${process.env.dbPass}@${process.env.dbHost}`)
-app.listen(process.env.PORT)
+io.on('connection', function(socket) {
+    console.log('A user connected');
+    
+    // todo: make socket array with users id
+    // so we can communicate with them.
+    console.log("User ==> ",  socket.id)
+    socket.on('disconnect', function () {
+       console.log('A user disconnected');
+    });
+ });
+
+mongoose.connect(`mongodb${process.env.prod}://${process.env.dbUser}:${process.env.dbPass}@${process.env.dbHost}`)
+http.listen(process.env.PORT)
