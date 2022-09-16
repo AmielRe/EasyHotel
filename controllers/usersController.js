@@ -27,12 +27,10 @@ const addNewUser = async (req,res) => {
         const newUser = await user.save();
 
         // User has added !
-        res.render('login.ejs', {"errors":[]})
+        res.status(200).json({"status": "User has added !"})
     }
     catch (err) {
-        res.render('login.ejs', {"errors":[
-            "Email already in use, Please enter another email"
-        ]})
+        res.status(500).json({"status": "Email already in use."})
     }
 }
 

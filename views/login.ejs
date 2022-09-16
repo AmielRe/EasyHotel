@@ -10,11 +10,11 @@
         <script src="jquery-3.6.0.min.js"></script>
     </head>
     <body>
-        <div id="errorModal" class="modal" tabindex="-1" role="dialog">
+        <div id="statusModal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Error</h5>
+                  <h5 class="modal-title"></h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -54,7 +54,7 @@
                                     id="sign-in"
                                     role="tabpanel"
                                     aria-labelledby="sign-in-tab">
-                                    <form method="post" action="/auth/basic">
+                                    <form id="basic-auth-form">
                                         <div class="form-floating mb-3">
                                             <input required type="email"
                                                 class="form-control"
@@ -115,7 +115,7 @@
                                 <div class="tab-pane fade" id="sign-up"
                                     role="tabpanel"
                                     aria-labelledby="sign-up-tab">
-                                    <form method="post" action="/users">
+                                    <form id="add-user-form">
                                         <div class="form-floating mb-3">
                                             <input required type="text"
                                                 class="form-control"
@@ -158,12 +158,6 @@
             </div>
         </div>
     </body>
-    <footer>
-        <% if (errors.length > 0) { %>
-        <%    for(var i=0; i<errors.length; i++) { %>
-                <input class="error" type="hidden" value="<%= errors[i] %>">
-        <% } }%>
-    </footer>
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

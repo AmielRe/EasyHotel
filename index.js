@@ -6,9 +6,11 @@ const io = require('socket.io')(http);
 
 require('dotenv/config');
 const mongoose = require('mongoose')
-
+var bodyParser = require('body-parser')
 
 app.use(express.json());
+app.use( bodyParser.json() ); 
+
 app.use(express.urlencoded({ extended: true}))
 app.use(express.static('public/css'))
 app.use(express.static('public/js'))
@@ -31,7 +33,7 @@ app.use('/auth', authRoute)
 
 // this will return the main page
 app.get('/', (req, res) => {
-    res.render('login.ejs', {"errors":[]})
+    res.render('login.ejs')
 })
 
 io.on('connection', function(socket) {

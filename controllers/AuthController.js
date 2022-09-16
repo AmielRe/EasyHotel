@@ -5,12 +5,17 @@ const Config = require('../config/roles')
 
 
 const basicLogin = (req, res) => {
-    if (!req.body.email || !req.body.password) return res.status(400).json({ 'message': 'Username and password are required.' });
+    console.log(req.body)
+    if (!req.body.email || !req.body.password) return res.status(500).json({ 'status': 'Username and password are required.' });
     const user = {
         email: req.body.email
     }
     try {
         User.findOne(user, 'email fullName password role', function(err,usr) {
+            
+            if (!usr || usr.length <= 0) {
+                res.status(500).json({"status": "User not found"})
+            }
             // Currect password !
             if (usr.password == req.body.password) {
 
@@ -31,25 +36,19 @@ const basicLogin = (req, res) => {
                 res.cookie('jwt', accessToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000 });
 
                 // This will render the user profile page
-                // For now, its rendering the login page again
-                res.render('login.ejs', {"errors":[
-                    "Authentication OK !"
-                ]})
+                // For now, its returning json
+                res.status(200).json({"status": "OK"})
             }
 
             // Wrong password
             else {
-                res.render('login.ejs', {"errors":[
-                    "Authentication Failed !"
-                ]})
+                res.status(401).json({"status": "Auth failed"})
             }
         })
     }
     catch (err) {
         // An error occured
-        res.render('login.ejs', {"errors":[
-            "Authentication Failed !"
-        ]})
+        res.status(500).json({"status": "Something went wrong"})
     }
 }
 
