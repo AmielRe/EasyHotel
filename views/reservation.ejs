@@ -1,0 +1,373 @@
+<html>
+    <head>
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+        <link href="reservation.css" rel="stylesheet">
+        <script src="jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+      <div class="wrapper">
+        <div class="wrapper-flex-column m-5">
+          <ul class="Legend m-4">
+            <li class="Legend-item">
+              <span class="Legend-colorBox Legend-colorBox-suite">
+              </span>
+              <span class="Legend-label">
+                Suite
+              </span>
+            </li>
+            <li class="Legend-item">
+              <span class="Legend-colorBox Legend-colorBox-Exclusive">
+              </span>
+              <span class="Legend-label">
+                Exclusive
+              </span>
+            </li>
+            <li class="Legend-item">
+              <span class="Legend-colorBox Legend-colorBox-family">
+              </span>
+              <span class="Legend-label">
+                Family
+              </span>
+            </li>
+            <li class="Legend-item">
+              <span class="Legend-colorBox Legend-colorBox-standard">
+              </span>
+              <span class="Legend-label">
+                Standard
+              </span>
+            </li>
+          </ul>
+          <div class="card border-0 shadow rounded-3">
+            <div class="card-body">
+              <div class="cart-header">
+                <p class="fw-bold mt-3"> Cart</p>
+                <button type="button" class="btn" id="deleteAllButton">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle btn-outline-danger" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
+                    </svg>         
+                </button>
+              </div>
+              <div class="cart-table-container">
+                <table class="cart-table">
+                  
+                </table>
+              </div>
+              <div class="cart-footer">
+                <span class="cart-total cart-total-label">
+                  Total: 
+                </span>
+                <span class="cart-total cart-total-sum">
+                  0
+                </span>
+                <span class="cart-total">
+                  $
+                </span>
+                <button class="cart-btn cart-btn-submit" type="button">
+                  Checkout <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart mb-1" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container mt-5 h-75 w-75">
+            <div class="row g-2 g-lg-3">
+                <div>
+                    <div class="p-3 border bg-info text-center rounded">&nbsp;Ocean line</div>
+                </div>
+                <div class="col col-nonactive">
+                    <div class="p-3 border bg-light text-center rounded">&nbsp;<br>Kids<br>Club<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-suite text-center rounded">&nbsp;<br><br><br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-suite text-center rounded">&nbsp;<br><br><br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-suite text-center rounded">&nbsp;<br><br><br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-suite text-center rounded">&nbsp;<br><br><br><br></div>
+                </div>
+                <div class="col col-nonactive">
+                    <div class="p-3 border bg-light text-center rounded">&nbsp;<br>Spa<br><br></div>
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-1">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3">
+                <div class="col col-nonactive">
+                    <div class="p-3 border bg-light text-center rounded">&nbsp;Food<br>Court 1<br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-family text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-exclusive text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-exclusive text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-exclusive text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-exclusive text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-exclusive text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-exclusive text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-family text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col col-nonactive">
+                  <div class="p-3 border bg-light text-center rounded">&nbsp;Food<br>Court 2<br></div>
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-1">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3">
+                <div class="col">
+                  <div class="p-3 border col-family text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-exclusive text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-exclusive text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-exclusive text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-exclusive text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-exclusive text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-exclusive text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-family text-center rounded">&nbsp;<br><br></div>
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-2">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3">
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-1">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3">
+                <div class="col col-nonactive">
+                  <div class="p-3 border bg-light text-center rounded">&nbsp;Chef<br>Restaurant<br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;<br><br></div>
+                </div>
+                <div class="col col-nonactive">
+                  <div class="p-3 border bg-light text-center rounded">&nbsp;Assembly<br>Hall<br></div>
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-1">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3">
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-1">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3">
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-1">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3 pb-5">
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+                <div class="col">
+                  <div class="p-3 border col-standard text-center rounded">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </body>
+    <footer>
+    </footer>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="reservation.js"></script>
+    <script type="text/html" id="cart-item-template">
+      <tr>
+        <td>
+          <div class="room-ticket {colType}">{type}</div>
+        </td>
+        <td>{price}$</td>
+        <td>
+          <button type="button" class="btn" id="deleteButton" onclick="deleteItem(this)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle btn-outline-danger" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+              <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
+              </svg>         
+          </button>
+        </td>
+      </tr>
+  </script>
+</html>

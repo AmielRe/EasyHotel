@@ -1,0 +1,137 @@
+.wrapper {
+    display: flex;
+}
+
+.wrapper-flex-column {
+    flex-direction: column;
+}
+
+.cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 10px 10px;
+}
+
+.cart-table-container {
+    margin-bottom: 15px;
+    overflow: auto;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+
+.cart-table {
+    width: 100%;
+}
+
+.room-ticket {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 10px;
+}
+
+.cart-table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 2px;
+}
+
+table > tr {
+    vertical-align: middle;
+}
+
+tbody {
+    justify-content: space-between;
+}
+
+.col-suite {
+    background-color: gold;
+}
+
+.col-suite:hover {
+    background-color: goldenrod;
+    cursor: pointer;
+}
+
+.col-exclusive {
+    background-color: cyan;
+}
+
+.col-exclusive:hover {
+    background-color: darkcyan;
+    cursor: pointer;
+}
+
+.col-family {
+    background-color: pink;
+}
+
+.col-family:hover {
+    background-color: palevioletred;
+    cursor: pointer;
+}
+
+.col-standard {
+    background-color: lawngreen;
+}
+
+.col-standard:hover {
+    background-color: darkgreen;
+    cursor: pointer;
+}
+
+.Legend {
+    list-style: none;
+}
+
+.Legend-colorBox {
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+}
+
+.Legend-colorBox-suite{
+    background-color: gold;
+}
+
+.Legend-colorBox-exclusive{
+    background-color: cyan;
+}
+
+.Legend-colorBox-family{
+    background-color: pink;
+}
+
+.Legend-colorBox-standard{
+    background-color: lawngreen;
+}
+
+.col-suite-selected {
+    background-color: goldenrod;
+}
+
+.col-exclusive-selected {
+    background-color: darkcyan;
+}
+
+.col-family-selected {
+    background-color: palevioletred;
+}
+
+.col-standard-selected {
+    background-color: darkgreen;
+}
+
+.cart-btn-submit {
+    width: 100%;
+    background-color: #e53c4a;
+    color: white;
+}
+
+.cart-total {
+    font-size: 14px;
+    font-weight: bold;
+}
