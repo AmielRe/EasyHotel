@@ -1,30 +1,36 @@
-const uuid = require('uuid')
 const User = require('../models/users');
+const Config = require('../config/roles')
 
 // Get the currect user
-const getAllUsers = (req,res) => {
-    res.json({"username":"elad"});
+const getAllUsers = async (req,res) => {
+    try {
+        const users = await User.find();
+        res.json(users);
+    }
+    catch (err) {
+        res.json({"status": "err"});
+    }
+    
 }
 
-// Will update user details - Admin only
+// Register new user to the system
 const addNewUser = async (req,res) => {
+
     const user = new User({
-        username: req.body.username,
+        fullName: req.body.fullName,
         email: req.body.email,
         password: req.body.password,
-        type: 1
+        role: Config.ROLES.guest
     });
     
     try {
         const newUser = await user.save();
 
         // User has added !
-        res.json(newUser);
+        res.status(200).json({"status": "User has added !"})
     }
     catch (err) {
-
-        // Error - user already exsists or something else
-        res.json(err);
+        res.status(500).json({"status": "Email already in use."})
     }
 }
 
