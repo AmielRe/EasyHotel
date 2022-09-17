@@ -8,55 +8,22 @@ $(() => {
             return;
         }
 
-        if($(this).children().hasClass('col-suite-selected')) {
-            $(this).children().toggleClass('col-suite-selected');
-            $('.cart-table').find('.col-suite').parent().parent().hide();
-            decreaseTotalSum(100)
-            return;
-        } else if($(this).children().hasClass('col-exclusive-selected')) {
-            $(this).children().toggleClass('col-exclusive-selected');
-            $('.cart-table').find('.col-exclusive').parent().parent().hide();
-            decreaseTotalSum(80)
-            return;
-        } else if($(this).children().hasClass('col-family-selected')) {
-            $(this).children().toggleClass('col-family-selected');
-            $('.cart-table').find('.col-family').parent().parent().hide();
-            decreaseTotalSum(75)
-            return;
-        } else if($(this).children().hasClass('col-standard-selected')) {
-            $(this).children().toggleClass('col-standard-selected');
-            $('.cart-table').find('.col-standard').parent().parent().hide();
-            decreaseTotalSum(60)
-            return;
+        // If already chosen, remove it
+        if($(this).children().hasClass('selected')) {
+            $(this).children().toggleClass('selected');
+            decreaseTotalSum(parseInt(this.getAttribute('data-price')))
+            $('.cart-table').find('.' + this.getAttribute('data-col-type') + ':visible:first').parent().parent().hide();
+            return
         }
 
         let template = $('#cart-item-template').html()
 
-        if($(this).children().hasClass('col-suite')) {
-            template = template.replaceAll('{type}', "Suite")
-            template = template.replaceAll('{colType}', "col-suite")
-            template = template.replaceAll('{price}', "100")
-            increaseTotalSum(100)
-            $(this).children().toggleClass('col-suite-selected');
-        } else if ($(this).children().hasClass('col-exclusive')) {
-            template = template.replaceAll('{type}', "Exclusive")
-            template = template.replaceAll('{colType}', "col-exclusive")
-            template = template.replaceAll('{price}', "80")
-            increaseTotalSum(80)
-            $(this).children().toggleClass('col-exclusive-selected');
-        } else if ($(this).children().hasClass('col-family')) {
-            template = template.replaceAll('{type}', "Family")
-            template = template.replaceAll('{colType}', "col-family")
-            template = template.replaceAll('{price}', "75")
-            increaseTotalSum(75)
-            $(this).children().toggleClass('col-family-selected');
-        } else if ($(this).children().hasClass('col-standard')) {
-            template = template.replaceAll('{type}', "Standard")
-            template = template.replaceAll('{colType}', "col-standard")
-            template = template.replaceAll('{price}', "60")
-            increaseTotalSum(60);
-            $(this).children().toggleClass('col-standard-selected');
-        }
+        // If new selected - add it to cart
+        $(this).children().toggleClass('selected');
+        increaseTotalSum(parseInt(this.getAttribute('data-price')))
+        template = template.replaceAll('{price}', this.getAttribute('data-price'))
+        template = template.replaceAll('{colType}', this.getAttribute('data-col-type'))
+        template = template.replaceAll('{type}', this.getAttribute('data-display-name'))
 
         $('.cart-table').append(template)
     })
@@ -64,21 +31,8 @@ $(() => {
 
 function deleteItem(event) {
     const priceToDecrease = parseInt(event.getAttribute("data-price"))
-
-    if($(event).parent().parent().children().children().hasClass('col-suite')) {
-        decreaseTotalSum(priceToDecrease);
-        $('.col').find('.col-suite-selected').first().toggleClass('col-suite-selected');
-    } else if($(event).parent().parent().children().children().hasClass('col-exclusive')) {
-        decreaseTotalSum(priceToDecrease)
-        $('.col').find('.col-exclusive-selected').first().toggleClass('col-exclusive-selected');
-    } else if($(event).parent().parent().children().children().hasClass('col-family')) {
-        decreaseTotalSum(priceToDecrease);
-        $('.col').find('.col-family-selected').first().toggleClass('col-family-selected');
-    } else if($(event).parent().parent().children().children().hasClass('col-standard')) {
-        decreaseTotalSum(priceToDecrease);
-        $('.col').find('.col-standard-selected').first().toggleClass('col-standard-selected');
-    }
-
+    decreaseTotalSum(priceToDecrease);
+    $('.col').find('.' + event.getAttribute('data-col-type') + '.selected').first().toggleClass('selected');
     $(event).parent().parent().hide();
 }
 
@@ -92,9 +46,6 @@ function decreaseTotalSum(priceToDecrease) {
 
 function clearCart() {
     $('.cart-table').html('');
-    $('.col').find('.col-suite-selected').toggleClass('col-suite-selected');
-    $('.col').find('.col-exclusive-selected').toggleClass('col-exclusive-selected');
-    $('.col').find('.col-family-selected').toggleClass('col-family-selected');
-    $('.col').find('.col-standard-selected').toggleClass('col-standard-selected');
+    $('.col').find('.selected').toggleClass('selected')
     $('.cart-total-sum').html(0);
 }

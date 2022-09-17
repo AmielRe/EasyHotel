@@ -47,12 +47,21 @@ tbody {
     justify-content: space-between;
 }
 
+div.col:not(.col-nonactive) > div:hover {
+    background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
+    cursor: pointer;
+}
+
+.selected {
+    background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
+}
+
 .col-suite {
     background-color: gold;
 }
 
-.col-suite:hover {
-    background-color: goldenrod;
+div.col:not(.col-nonactive) > div:hover {
+    background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
     cursor: pointer;
 }
 
@@ -60,27 +69,12 @@ tbody {
     background-color: cyan;
 }
 
-.col-exclusive:hover {
-    background-color: darkcyan;
-    cursor: pointer;
-}
-
 .col-family {
     background-color: pink;
 }
 
-.col-family:hover {
-    background-color: palevioletred;
-    cursor: pointer;
-}
-
 .col-standard {
     background-color: lawngreen;
-}
-
-.col-standard:hover {
-    background-color: darkgreen;
-    cursor: pointer;
 }
 
 .Legend {
@@ -107,22 +101,6 @@ tbody {
 
 .Legend-colorBox-standard{
     background-color: lawngreen;
-}
-
-.col-suite-selected {
-    background-color: goldenrod;
-}
-
-.col-exclusive-selected {
-    background-color: darkcyan;
-}
-
-.col-family-selected {
-    background-color: palevioletred;
-}
-
-.col-standard-selected {
-    background-color: darkgreen;
 }
 
 .cart-btn-submit {
