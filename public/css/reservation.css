@@ -6,13 +6,6 @@
     flex-direction: column;
 }
 
-iframe {
-    pointer-events: none;
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
-
 .cart-header {
     display: flex;
     align-items: center;
