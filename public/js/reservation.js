@@ -38,14 +38,17 @@ function deleteItem(event) {
 
 function increaseTotalSum(priceToIncrease) {
     $('.cart-total-sum').html(parseInt($('.cart-total-sum').html()) + priceToIncrease);
+    $('.cart-items-counter').html(parseInt($('.cart-items-counter').html()) + 1);
 }
 
 function decreaseTotalSum(priceToDecrease) {
     $('.cart-total-sum').html(parseInt($('.cart-total-sum').html()) - priceToDecrease);
+    $('.cart-items-counter').html(parseInt($('.cart-items-counter').html()) - 1);
 }
 
 function clearCart() {
     $('.cart-table').html('');
     $('.col').find('.selected').toggleClass('selected')
     $('.cart-total-sum').html(0);
+    $('.cart-items-counter').html(0);
 }
