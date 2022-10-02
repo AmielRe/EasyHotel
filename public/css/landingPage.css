@@ -1,0 +1,520 @@
+head {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+
+    
+}
+:root {
+    --primary-color: #fff;
+    --bs-body-bg: #fff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font-family: 'Raleway', sans-serif;
+    color: rgb(255, 255, 255);
+    }
+
+    button {
+        padding: 20px 40px;
+        background: none;
+        outline: none;
+        border: 2px solid white;
+        border-radius: 50px;
+        color: white;
+        margin-top: 20px;
+      }
+      
+      .home button {
+        margin-left: 50px;
+      }
+
+    .heading {
+        position: relative;
+      }
+      
+      .heading::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+        width: 100px;
+        height: 4px;
+        background: #C1B086;
+      }
+      
+      .heading h5 {
+        font-weight: 400;
+        letter-spacing: 2px;
+        padding-top: 20px;
+        color: #5f5f5f;
+      }
+      
+      .heading h2 {
+        font-size: 30px;
+        font-weight: 400;
+        margin: 20px 0 40px 0;
+        color: #222222;
+      }
+      
+      .heading p {
+        margin-bottom: 20px;
+        line-height: 25px;
+        color: #5f5f5f;
+        margin: 0 0 20px 50px;
+      }
+      
+      .heading .btn1 {
+        margin: 50px 0 20px 50px;
+      }
+      
+      .btn1 {
+        background: #C1B086;
+        color: white;
+        
+      }
+
+/*-------carousel-------*/
+
+.carousel-item {
+	height: 100vh;
+	min-height: 300px;
+}
+
+.carousel-caption {
+	bottom: 200px;
+
+}
+
+.carousel-caption h5 {
+    
+	font-size: 80px;
+    color: rgb(0, 68, 82);
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-top: 25px;
+	font-family: 'Cinzel Decorative', cursive;
+   
+}
+
+.carousel-caption h6 {
+    
+	font-size: 80px;
+    color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-top: 25px;
+	font-family: 'Cinzel Decorative', cursive;
+   
+}
+
+
+.carousel-caption p {
+	width: 60%;
+	margin: auto;
+	font-size: 20px;
+	line-height: 1.9;
+	font-family: 'Julius Sans One', sans-serif;
+}
+.carousel-caption a {
+	text-transform: uppercase;
+	padding: 10px 30px;
+	display: inline-block;
+	color: #fff;
+	margin-top: 15px;
+}
+
+
+/*-------carousel-------*/
+
+/*------navbar------*/
+
+/*.navbar navbar-expand-lg navbar-light fixed-top{
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.2)) !important;
+}*/
+
+.bgcolor.scrolled{
+background-color: rgba(19, 114, 135, 0.212);
+}
+
+.navbar-brand {
+    color:black;
+    font-size: 25px;
+	font-weight: bold;
+	letter-spacing: 2px;
+    font-family:'Cinzel Decorative', cursive;   
+}
+
+.nav li a{
+    position:relative;
+    padding: 16px 0 5px;
+    margin: 0 25px;
+    color:#fff;
+    text-decoration: none;
+    text-transform: uppercase;
+
+}
+
+.nav li a:hover{
+    color: rgb(0, 68, 82);
+    transition: .9s;
+}
+
+.nav li a:after{
+    content: '';
+    position:absolute;
+    left:50%;
+    bottom: 0;
+    transform: translateX(-50%) scaleX(0);
+    -webkit-transform: translateX(-50%) scaleX(0);
+    transform-origin: 50% 50%;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.9);
+    -webkit-transition:transform 250ms ;
+    transition: transform 250ms;
+}
+
+.nav li a:hover:after{
+-webkit-transform: translateX(-50%) scaleX(1); ;
+   transform: translateX(-50%) scaleX(1); 
+}
+
+
+/*-----navbar------*/
+
+/*------special Offers-------*/
+
+.flex1 {
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Julius Sans One', sans-serif;
+    color:black;
+  }
+  
+  .offer .grid {
+    grid-template-columns: repeat(3, 1fr);
+
+  }
+  
+  .offer img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+
+  }
+  
+  .offer .box {
+    box-shadow: 0 13px 43px 0 rgb(37 46 89/10%);
+  }
+
+  .offer .box:hover {
+    transform: scale(1.1);
+    z-index: 2;
+  }
+
+  .offer .text {
+    padding: 20px;
+    color:black;
+    font-family: 'Julius Sans One', sans-serif;
+  }
+
+  .offer h2{
+    font-size: 40px;
+  }
+  
+  .offer h3 {
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  
+  .offer p span {
+    font-size: 18px;
+    color: grey;
+  }
+  
+  .offer p {
+    font-size: 22px;
+  }
+  
+/*--------special Offers---------*/
+
+
+/*--------------about--------*/
+.top {
+    margin-top: 10%;
+  }
+  
+  .mtop {
+    margin-top: 5%;
+  }
+  
+  .left, .right {
+    width: 50%;
+  }
+  
+  .about {
+    margin-bottom: 50px;
+  }
+  
+  .about .img {
+    position: relative;
+  }
+  
+  .about .image1 {
+    width: 310px;
+    height: 450px;
+  }
+  
+  .about .image2 {
+    width: 325px;
+    height: 220px;
+    position: absolute;
+    bottom: 5px;
+    z-index: 2;
+    right: 30%;
+  }
+  
+  .heading {
+    position: relative;
+  }
+  
+  .heading::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100px;
+    height: 4px;
+    background: #C1B086;
+  }
+  
+  .heading h5 {
+    font-weight: 400;
+    letter-spacing: 2px;
+    padding-top: 20px;
+    color: #5f5f5f;
+    font-family: 'Julius Sans One', sans-serif;
+  }
+  
+  .heading h2 {
+    font-size: 30px;
+    font-weight: 400;
+    margin: 20px 0 40px 0;
+    color: #222222;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .heading p {
+    margin-bottom: 20px;
+    line-height: 25px;
+    color: #5f5f5f;
+    margin: 0 0 20px 50px;
+  }
+  
+  .heading .btn1 {
+    margin: 50px 0 20px 50px;
+  }
+  
+  .btn1 {
+    background: #C1B086;
+    color: white;
+    
+  }
+  
+  
+  /*--------------about--------*/
+  /*--------------wrapper--------*/
+  .wrapper {
+    background-image: url("./images/b1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 480px;
+    position: relative;
+  }
+  
+  .wrapper .text {
+    background: #21989e;
+    padding: 50px;
+    width: 40%;
+    height: 700px;
+    position: absolute;
+    top: -13%;
+    right: 10%;
+    padding-top: 10%;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .wrapper .content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 30px;
+  }
+  
+  .wrapper h2 {
+    font-weight: 400;
+    font-family: 'Julius Sans One', sans-serif;
+  }
+  
+  .wrapper p {
+    margin: 20px 0 50px 0;
+    line-height: 30px;
+  }
+  
+  .wrapper i {
+    margin: 5px 20px 0 0;
+  }
+  
+  /*--------------wrapper--------*/
+
+  /*--------------gallary--------*/
+.gallary img {
+    width: 270px;
+    height: 280px;
+  }
+  
+  .owl-carousel .owl-next,
+  .owl-carousel .owl-prev {
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    cursor: pointer;
+    top: 35%;
+    background: transparent !important;
+    transition: 0.5s;
+  }
+  
+  .owl-carousel .owl-prev {
+    left: 33px;
+  }
+  
+  .owl-carousel .owl-next {
+    right: 33px;
+  }
+  
+  .owl-carousel .owl-next:hover,
+  .owl-carousel .owl-prev:hover {
+    background: #C1B086 !important;
+  }
+  
+  /*--------------gallary--------*/
+
+  /*--------------map--------*/
+.map iframe {
+    width: 100%;
+  }
+  
+  /*--------------map--------*/
+
+/*--------------book--------*/
+.flex {
+    display: flex;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+  }
+  
+  .book {
+    margin-top: 5%;
+    width: 100%;
+    height: 20vh;
+    color: white;
+  }
+  
+  .book .input {
+    background: #242e5a;
+    padding: 20px 20px 40px 20px;
+  }
+  
+  .book .search {
+    background: #3f9cc1;
+    padding: 20px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    outline: none;
+    background: #263760;
+    margin-top: 20px;
+    color: white;
+  }
+  
+  ::placeholder {
+    color: white;
+  }
+  
+  .book .search {
+    width: 20%;
+  }
+  
+  .book .search input {
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 40px;
+  }
+
+/*--------------book--------*/
+
+
+
+/*.banner .nav li a:hover {
+    opacity: .5
+}
+
+.banner .info {
+    margin-top: 15%;
+    transform: translateY(-15%);
+    background: rgb(240, 240, 240, .5);
+}
+
+.banner .info h1 {
+    font-size: 7em;
+    font-weight: 700;
+    color: rgb(16, 101, 112);
+    letter-spacing: 8px;
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+.banner .info p {
+    font-size: 2em;
+    font-weight: 500;
+    color: rgb(16, 101, 112);
+    letter-spacing: 2px;
+    font-family: 'Julius Sans One', sans-serif;
+    ;
+}
+
+.banner .info a {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    color: rgb(16, 75, 83);
+    background: transparent;
+    padding: 10px 20px;
+    font-size: 3em;
+    font-weight: 600;
+    font-family: 'Julius Sans One', sans-serif;
+    ;
+}
+
+.banner .info a:hover {
+    opacity: .5
+}
+
+*/
+
+
+
