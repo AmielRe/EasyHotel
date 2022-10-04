@@ -113,3 +113,18 @@ div.col:not(.col-nonactive) > div:hover {
     font-size: 14px;
     font-weight: bold;
 }
+
+div > svg {
+    vertical-align: top;
+}
+
+.btn > svg:hover {
+    color: white;
+}
+
+.modal-body-image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
