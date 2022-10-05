@@ -1,9 +1,45 @@
+last_obj = null;;
+tab      = "users";
+
 $(document).ready(function (){
-    getUsers();
     getOrders();
     getRooms();
     getServices();
+    getUsers();
 });
+
+$("#main_table").on("click", "td", function() {
+    if ( last_obj != null ) {
+        last_obj.replaceWith($(`<td>${last_obj.val()}</td>`))
+    }
+
+    var html = $(this).html();
+    var input = $('<input type="text" class="form-control" />');
+    input.val(html);
+    $(this).replaceWith(input);
+    last_obj = input;
+
+    // Send PUT request to update
+    // To be written
+
+    /*
+    $.ajax({
+        type: 'PUT',
+        url: `/${tab}`,
+        dataType : 'json',
+        data: {
+
+        },
+        success: function(res){
+            console.log(res)
+        },
+        error: function(err){
+            console.log(err)
+        }
+    });
+    */
+   
+  });
 
 
 $(".link-table").click(function() {
@@ -17,6 +53,7 @@ $(".link-table").click(function() {
         $('#rooms').attr('class', 'nav-link link-table')
         $('#services').attr('class', 'nav-link link-table')
         getUsers()
+        tab = "users";
     }
     else if (table == "orders" && !active) {
         // Disable active and enable for orders
@@ -26,6 +63,7 @@ $(".link-table").click(function() {
         $('#services').attr('class', 'nav-link link-table')
         // wait for orders model
         getOrders(fill_table=true)
+        tab = "orders";
     }
 
     else if (table == "rooms" && !active) {
@@ -36,6 +74,7 @@ $(".link-table").click(function() {
         $('#services').attr('class', 'nav-link link-table')
         // wait for rooms model
         getRooms(fill_table=true)
+        tab = "rooms";
     }
 
     else if (table == "services" && !active) {
@@ -46,6 +85,7 @@ $(".link-table").click(function() {
         $('#services').attr('class', 'nav-link link-table active')
         // wait for services model (like spa)
         getServices(fill_table=true)
+        tab = "services";
 
     }
 });
