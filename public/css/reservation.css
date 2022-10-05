@@ -31,6 +31,12 @@
     border: 1px solid black;
     border-radius: 4px;
     margin: 10px;
+    color: black;
+    background-color: white;
+}
+
+.room-ticket::before {
+    opacity: 0.75;
 }
 
 .cart-table td {
@@ -48,59 +54,28 @@ tbody {
 }
 
 div.col:not(.col-nonactive) > div:hover {
-    background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
+    opacity: 0.5;
     cursor: pointer;
 }
 
 .selected {
-    background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
+    opacity: 0.5;
 }
 
 .col-suite {
-    background-color: khaki;
-}
-
-div.col:not(.col-nonactive) > div:hover {
-    background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
-    cursor: pointer;
+    background-image: url("reservation/suite-preview-small.jpg");
 }
 
 .col-exclusive {
-    background-color: powderblue;
+    background-image: url("reservation/exclusive-preview-small.jpg");
 }
 
 .col-family {
-    background-color: pink;
+    background-image: url("reservation/family-preview-small.jpg");
 }
 
 .col-standard {
-    background-color: lightgreen;
-}
-
-.Legend {
-    list-style: none;
-}
-
-.Legend-colorBox {
-    width: 1rem;
-    height: 1rem;
-    display: inline-block;
-}
-
-.Legend-colorBox-suite{
-    background-color: khaki;
-}
-
-.Legend-colorBox-exclusive{
-    background-color: powderblue;
-}
-
-.Legend-colorBox-family{
-    background-color: pink;
-}
-
-.Legend-colorBox-standard{
-    background-color: lightgreen;
+    background-image: url("reservation/standard-preview-small.jpg");
 }
 
 .cart-btn-submit {
@@ -114,12 +89,18 @@ div.col:not(.col-nonactive) > div:hover {
     font-weight: bold;
 }
 
-div > svg {
-    vertical-align: top;
+.info-button > svg {
+    border-radius: 9999px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color:white;
 }
 
-.btn > svg:hover {
+.info-button > svg:hover {
     color: white;
+}
+
+.btn-outline-danger {
+    border-radius: 9999px;
 }
 
 .modal-body-image {

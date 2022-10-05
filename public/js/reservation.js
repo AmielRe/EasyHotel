@@ -34,25 +34,30 @@ $(() => {
         $('.cart-table').append(template)
     })
 
-    var exampleModal = document.getElementById('exampleModal')
+    let exampleModal = document.getElementById('exampleModal')
     exampleModal.addEventListener('show.bs.modal', function (event) {
         // Button that triggered the modal
-        var button = event.relatedTarget
+        let button = event.relatedTarget
+
         // Extract info from data-bs-* attributes
-        var displayName = button.getAttribute('data-display-name')
-        var informationText = button.getAttribute('data-information-text')
-        var roomImage = button.getAttribute('data-room-image')
-        // If necessary, you could initiate an AJAX request here
-        // and then do the updating in a callback.
+        let displayName = button.getAttribute('data-display-name')
+        let informationText = button.getAttribute('data-information-text')
+        let roomImages = button.getAttribute('data-room-images')
+        const imagesArray = roomImages.split(',')
         
         // Update the modal's content.
-        var modalTitle = exampleModal.querySelector('.modal-title')
-        var modalBodyText = exampleModal.querySelector('.modal-body-text')
-        var modalBodyImage = exampleModal.querySelector('.modal-body-image')
+        let modalTitle = exampleModal.querySelector('.modal-title')
+        let modalBodyText = exampleModal.querySelector('.modal-body-text')
 
         modalTitle.textContent = displayName
         modalBodyText.textContent = informationText
-        modalBodyImage.setAttribute('src', roomImage)
+
+        let inc = 0;
+        $('.carousel-item img').each(function(){
+            console.log(imagesArray[inc])
+            $(this).attr('src',imagesArray[inc]);
+            inc++;
+        });
     })
 })
 

@@ -20,6 +20,36 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+              <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="..." class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
               <image class="modal-body-image"></image>
               <p class="modal-body-text"></p>
             </div>
@@ -31,36 +61,6 @@
       </div>
       <div class="wrapper">
         <div class="wrapper-flex-column m-5">
-          <ul class="Legend m-4">
-            <li class="Legend-item">
-              <span class="Legend-colorBox Legend-colorBox-suite">
-              </span>
-              <span class="Legend-label">
-                Suite
-              </span>
-            </li>
-            <li class="Legend-item">
-              <span class="Legend-colorBox Legend-colorBox-Exclusive">
-              </span>
-              <span class="Legend-label">
-                Exclusive
-              </span>
-            </li>
-            <li class="Legend-item">
-              <span class="Legend-colorBox Legend-colorBox-family">
-              </span>
-              <span class="Legend-label">
-                Family
-              </span>
-            </li>
-            <li class="Legend-item">
-              <span class="Legend-colorBox Legend-colorBox-standard">
-              </span>
-              <span class="Legend-label">
-                Standard
-              </span>
-            </li>
-          </ul>
           <div class="card border-0 shadow rounded-3">
             <div class="card-body">
               <div class="cart-header">
@@ -381,7 +381,7 @@
     <script type="text/html" id="cart-item-template">
       <tr>
         <td>
-          <div class="room-ticket {colType}">{type}</div>
+          <div class="room-ticket">{type}</div>
         </td>
         <td>{price}$</td>
         <td>
