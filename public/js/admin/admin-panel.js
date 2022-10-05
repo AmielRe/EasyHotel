@@ -1,8 +1,8 @@
 $(document).ready(function (){
     getUsers();
-    getRooms();
     getOrders();
-    getServices();    
+    getRooms();
+    getServices();
 });
 
 
@@ -25,7 +25,7 @@ $(".link-table").click(function() {
         $('#rooms').attr('class', 'nav-link link-table')
         $('#services').attr('class', 'nav-link link-table')
         // wait for orders model
-        getOrders()
+        getOrders(fill_table=true)
     }
 
     else if (table == "rooms" && !active) {
@@ -35,7 +35,7 @@ $(".link-table").click(function() {
         $('#rooms').attr('class', 'nav-link link-table active')
         $('#services').attr('class', 'nav-link link-table')
         // wait for rooms model
-        getRooms()
+        getRooms(fill_table=true)
     }
 
     else if (table == "services" && !active) {
@@ -45,13 +45,13 @@ $(".link-table").click(function() {
         $('#rooms').attr('class', 'nav-link link-table')
         $('#services').attr('class', 'nav-link link-table active')
         // wait for services model (like spa)
-        getServices()
+        getServices(fill_table=true)
 
     }
 });
 
 
-function getUsers() {
+function getUsers(fill_table=true) {
     $('#main_table > tbody').empty()
     $('#main_table > thead').empty()
 
@@ -67,14 +67,16 @@ function getUsers() {
         url: '/users',
         success: function(users_lst){
             $('#numberOfCustomers').html(users_lst.length)
-            for (var i=0; i<users_lst.length; i++) {
-                $('#main_table > tbody:last-child').append(
-                    '<tr>' +
-                    '<th scope="row">' + users_lst[i]['_id'] + '</th>' +
-                    '<td>' + users_lst[i]["fullName"] + '</td>' +
-                    '<td>' + users_lst[i]["email"] + '</td>' +
-                    '<td>' + users_lst[i]["role"] + '</td></tr>'
-                );
+            if ( fill_table ) {
+                for (var i=0; i<users_lst.length; i++) {
+                    $('#main_table > tbody:last-child').append(
+                        '<tr>' +
+                        '<th scope="row">' + users_lst[i]['_id'] + '</th>' +
+                        '<td>' + users_lst[i]["fullName"] + '</td>' +
+                        '<td>' + users_lst[i]["email"] + '</td>' +
+                        '<td>' + users_lst[i]["role"] + '</td></tr>'
+                    );
+                }
             }
         },
         error: function(err){
@@ -83,7 +85,7 @@ function getUsers() {
     });
 }
 
-function getRooms() {
+function getRooms(fill_table=false) {
     $('#main_table > tbody').empty()
     $('#main_table > thead').empty()
 
@@ -99,14 +101,16 @@ function getRooms() {
         url: '/rooms',
         success: function(room_list){
             $('#numberOfRooms').html(room_list.length)
-            for (var i=0; i<room_list.length; i++) {
-                $('#main_table > tbody:last-child').append(
-                    '<tr>' +
-                    '<th scope="row">' + room_list[i]['_id'] + '</th>' +
-                    '<td>' + room_list[i]["name"] + '</td>' +
-                    '<td>' + room_list[i]["price"] + '</td>' +
-                    '<td>' + room_list[i]["reserved"] + '</td></tr>'
-                );
+            if ( fill_table ) {
+                for (var i=0; i<room_list.length; i++) {
+                    $('#main_table > tbody:last-child').append(
+                        '<tr>' +
+                        '<th scope="row">' + room_list[i]['_id'] + '</th>' +
+                        '<td>' + room_list[i]["name"] + '</td>' +
+                        '<td>' + room_list[i]["price"] + '</td>' +
+                        '<td>' + room_list[i]["reserved"] + '</td></tr>'
+                    );
+                }
             }
         },
         error: function(err){
@@ -115,7 +119,7 @@ function getRooms() {
     });
 }
 
-function getOrders() {
+function getOrders(fill_table=false) {
     $('#main_table > tbody').empty()
     $('#main_table > thead').empty()
 
@@ -132,14 +136,16 @@ function getOrders() {
         url: '/orders',
         success: function(order_lst){
             $('#numberOfOrders').html(order_lst.length)
-            for (var i=0; i<order_lst.length; i++) {
-                $('#main_table > tbody:last-child').append(
-                    '<tr>' +
-                    '<th scope="row">' + order_lst[i]['_id'] + '</th>' +
-                    '<td>' + order_lst[i]["customer"] + '</td>' +
-                    '<td>' + order_lst[i]["price"] + '</td>' +
-                    '<td>' + order_lst[i]["dates"] + '</td></tr>'
-                );
+            if( fill_table ) {
+                for (var i=0; i<order_lst.length; i++) {
+                    $('#main_table > tbody:last-child').append(
+                        '<tr>' +
+                        '<th scope="row">' + order_lst[i]['_id'] + '</th>' +
+                        '<td>' + order_lst[i]["customer"] + '</td>' +
+                        '<td>' + order_lst[i]["price"] + '</td>' +
+                        '<td>' + order_lst[i]["dates"] + '</td></tr>'
+                    );
+                }
             }
         },
         error: function(err){
@@ -148,7 +154,7 @@ function getOrders() {
     });
 }
 
-function getServices() {
+function getServices(fill_table=false) {
     $('#main_table > tbody').empty()
     $('#main_table > thead').empty()
 
@@ -165,14 +171,16 @@ function getServices() {
         url: '/services',
         success: function(services_lst){
             $('#numberOfServices').html(services_lst.length)
-            for (var i=0; i<services_lst.length; i++) {
-                $('#main_table > tbody:last-child').append(
-                    '<tr>' +
-                    '<th scope="row">' + services_lst[i]['_id'] + '</th>' +
-                    '<td>' + services_lst[i]["service"] + '</td>' +
-                    '<td>' + services_lst[i]["price"] + '</td>' +
-                    '<td>' + services_lst[i]["available"] + '</td></tr>'
-                );
+            if ( fill_table ) {
+                for (var i=0; i<services_lst.length; i++) {
+                    $('#main_table > tbody:last-child').append(
+                        '<tr>' +
+                        '<th scope="row">' + services_lst[i]['_id'] + '</th>' +
+                        '<td>' + services_lst[i]["service"] + '</td>' +
+                        '<td>' + services_lst[i]["price"] + '</td>' +
+                        '<td>' + services_lst[i]["available"] + '</td></tr>'
+                    );
+                }
             }
         },
         error: function(err){
