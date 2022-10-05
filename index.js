@@ -25,6 +25,7 @@ const roomsRoute = require('./routes/rooms')
 const usersRoute = require('./routes/users')
 const authRoute = require('./routes/auth')
 const adminRoute = require('./routes/admin')
+const servicesRoute = require('./routes/services')
 
 // Use Routers
 app.use('/orders', ordersRoute)
@@ -32,6 +33,7 @@ app.use('/rooms', roomsRoute)
 app.use('/users', usersRoute)
 app.use('/auth', authRoute)
 app.use('/admin', adminRoute)
+app.use('/services', servicesRoute)
 
 // this will return the main page
 app.get('/', (req, res) => {

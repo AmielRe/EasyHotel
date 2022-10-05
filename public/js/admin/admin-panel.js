@@ -169,9 +169,9 @@ function getServices() {
                 $('#main_table > tbody:last-child').append(
                     '<tr>' +
                     '<th scope="row">' + services_lst[i]['_id'] + '</th>' +
-                    '<td>' + services_lst[i]["fullName"] + '</td>' +
-                    '<td>' + services_lst[i]["email"] + '</td>' +
-                    '<td>' + services_lst[i]["role"] + '</td></tr>'
+                    '<td>' + services_lst[i]["service"] + '</td>' +
+                    '<td>' + services_lst[i]["price"] + '</td>' +
+                    '<td>' + services_lst[i]["available"] + '</td></tr>'
                 );
             }
         },
