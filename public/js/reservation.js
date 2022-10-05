@@ -34,7 +34,7 @@ $(() => {
         $('.cart-table').append(template)
     })
 
-    let exampleModal = document.getElementById('exampleModal')
+    let exampleModal = document.getElementById('previewModal')
     exampleModal.addEventListener('show.bs.modal', function (event) {
         // Button that triggered the modal
         let button = event.relatedTarget
