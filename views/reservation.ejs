@@ -10,7 +10,6 @@
         <script src="jquery-3.6.0.min.js"></script>
     </head>
     <body>
-      
       <!-- Modal -->
       <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -60,45 +59,20 @@
         </div>
       </div>
       <div class="wrapper">
-        <div class="wrapper-flex-column m-5">
-          <div class="card border-0 shadow rounded-3">
-            <div class="card-body">
-              <div class="cart-header">
-                <p class="fw-bold mt-3">
-                  Cart
-                  <span class="fw-bold">(</span>
-                  <span class="fw-bold cart-items-counter">0</span>
-                  <span class="fw-bold">)</span>
-                </p>
-                <button type="button" class="btn" id="deleteAllButton">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle btn-outline-danger" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
-                    </svg>         
-                </button>
-              </div>
-              <div class="cart-table-container">
-                <table class="cart-table">
-                  
-                </table>
-              </div>
-              <div class="cart-footer">
-                <span class="cart-total cart-total-label">
-                  Total: 
-                </span>
-                <span class="cart-total cart-total-sum">
-                  0
-                </span>
-                <span class="cart-total">
-                  $
-                </span>
-                <button class="cart-btn cart-btn-submit" type="button">
-                  Checkout <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart mb-1" viewBox="0 0 16 16">
-                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
+        <div class="col-md-3 col-lg-2 m-5">
+          <h4 class="d-flex justify-content-evenly align-items-center mb-3">
+            <span class="text-primary">Your cart</span>
+            <span class="badge bg-primary rounded-pill cart-items-counter">0</span>
+          </h4>
+          <ul class="list-group mb-3 cart-list">
+            <li class="list-group-item d-flex justify-content-between order-md-last">
+              <span class="me-auto">Total (USD)</span>
+              <strong>$</strong>
+              <strong class="cart-total-sum">0</strong>
+            </li>
+          </ul>
+          <div class="d-grid">
+            <button type="button" class="btn btn-primary">Checkout</button>
           </div>
         </div>
         <div class="container mt-5 h-75 w-75">
@@ -379,19 +353,15 @@
         crossorigin="anonymous"></script>
     <script src="reservation.js"></script>
     <script type="text/html" id="cart-item-template">
-      <tr>
-        <td>
-          <div class="room-ticket">{type}</div>
-        </td>
-        <td>{price}$</td>
-        <td>
+      <li class="list-group-item d-flex lh-sm">
+        <h6 class="me-auto">{type}</h6>
+          <div class="text-muted">${price}</div>
           <button type="button" class="btn" id="deleteButton" onclick="deleteItem(this)" data-price="{price}" data-col-type="{colType}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle btn-outline-danger" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-dash-circle btn-outline-danger" viewBox="0 0 16 16">
               <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
               <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
               </svg>         
           </button>
-        </td>
-      </tr>
+      </li>
   </script>
 </html>

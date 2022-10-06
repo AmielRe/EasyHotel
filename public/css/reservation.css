@@ -24,15 +24,13 @@
     width: 100%;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .room-ticket {
-    display: flex;
-    justify-content: center;
-    font-size: 12px;
-    border: 1px solid black;
-    border-radius: 4px;
-    margin: 10px;
+    display: inline-flex;
     color: black;
-    background-color: white;
 }
 
 .room-ticket::before {
@@ -109,3 +107,7 @@ div.col:not(.col-nonactive) > div:hover {
     max-width: 100%;
     max-height: 100%;
   }
+
+.list-group-item {
+    border-top-width: 1 !important;
+}
