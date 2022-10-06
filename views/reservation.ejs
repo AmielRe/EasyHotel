@@ -1,0 +1,367 @@
+<html>
+    <head>
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+        <link href="reservation.css" rel="stylesheet">
+        <script src="jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+      <!-- Modal -->
+      <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="previewModalLabel"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div id="previewCarouselIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#previewCarouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#previewCarouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#previewCarouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#previewCarouselIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="..." class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#previewCarouselIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#previewCarouselIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              <image class="modal-body-image"></image>
+              <p class="modal-body-text"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="col-md-3 col-lg-2 m-5">
+          <h4 class="d-flex justify-content-evenly align-items-center mb-3">
+            <span class="text-primary">Your cart</span>
+            <span class="badge bg-primary rounded-pill cart-items-counter">0</span>
+          </h4>
+          <ul class="list-group mb-3 cart-list">
+            <li class="list-group-item d-flex justify-content-between order-md-last">
+              <span class="me-auto">Total (USD)</span>
+              <strong>$</strong>
+              <strong class="cart-total-sum">0</strong>
+            </li>
+          </ul>
+          <div class="d-grid">
+            <button type="button" class="btn btn-primary">Checkout</button>
+          </div>
+        </div>
+        <div class="container mt-5 h-75 w-75">
+            <div class="row g-2 g-lg-3">
+                <div>
+                    <div class="p-3 border bg-info text-center rounded fw-bold">&nbsp;Ocean line</div>
+                </div>
+                <div class="col col-nonactive">
+                    <div class="p-3 border bg-light text-center rounded fw-bold">&nbsp;<br>Kids<br>Club<br><br></div>
+                </div>
+                <div class="col" data-price="100" data-col-type="col-suite" data-display-name="Suite">
+                  
+                </div>
+                <div class="col" data-price="100" data-col-type="col-suite" data-display-name="Suite">
+                  
+                </div>
+                <div class="col" data-price="100" data-col-type="col-suite" data-display-name="Suite">
+                  
+                </div>
+                <div class="col" data-price="100" data-col-type="col-suite" data-display-name="Suite">
+                  
+                </div>
+                <div class="col col-nonactive">
+                    <div class="p-3 border bg-light text-center rounded fw-bold">&nbsp;<br>Spa<br><br></div>
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-1">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3">
+                <div class="col col-nonactive">
+                    <div class="p-3 border bg-light text-center rounded fw-bold">&nbsp;Food<br>Court 1<br></div>
+                </div>
+                <div class="col" data-price="75" data-col-type="col-family" data-display-name="Family">
+                  
+                </div>
+                <div class="col" data-price="80" data-col-type="col-exclusive" data-display-name="Exclusive">
+                  
+                </div>
+                <div class="col" data-price="80" data-col-type="col-exclusive" data-display-name="Exclusive">
+                  
+                </div>
+                <div class="col" data-price="80" data-col-type="col-exclusive" data-display-name="Exclusive">
+                  
+                </div>
+                <div class="col" data-price="80" data-col-type="col-exclusive" data-display-name="Exclusive">
+                  
+                </div>
+                <div class="col" data-price="80" data-col-type="col-exclusive" data-display-name="Exclusive">
+                  
+                </div>
+                <div class="col" data-price="80" data-col-type="col-exclusive" data-display-name="Exclusive">
+                  
+                </div>
+                <div class="col" data-price="75" data-col-type="col-family" data-display-name="Family">
+                  
+                </div>
+                <div class="col col-nonactive">
+                  <div class="p-3 border bg-light text-center rounded fw-bold">&nbsp;Food<br>Court 2<br></div>
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-1">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3">
+                <div class="col" data-price="75" data-col-type="col-family" data-display-name="Family">
+                  
+                </div>
+                <div class="col" data-price="80" data-col-type="col-exclusive" data-display-name="Exclusive">
+                  
+                </div>
+                <div class="col" data-price="80" data-col-type="col-exclusive" data-display-name="Exclusive">
+                  
+                </div>
+                <div class="col" data-price="80" data-col-type="col-exclusive" data-display-name="Exclusive">
+                  
+                </div>
+                <div class="col" data-price="80" data-col-type="col-exclusive" data-display-name="Exclusive">
+                  
+                </div>
+                <div class="col" data-price="80" data-col-type="col-exclusive" data-display-name="Exclusive">
+                  
+                </div>
+                <div class="col" data-price="80" data-col-type="col-exclusive" data-display-name="Exclusive">
+                  
+                </div>
+                <div class="col" data-price="75" data-col-type="col-family" data-display-name="Family">
+                  
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-1">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3">
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                 
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-1">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3">
+                <div class="col col-nonactive">
+                  <div class="p-3 border bg-light text-center rounded fw-bold">&nbsp;Chef<br>Restaurant<br></div>
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col col-nonactive">
+                  <div class="p-3 border bg-light text-center rounded fw-bold">&nbsp;Assembly<br>Hall<br></div>
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-1">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3">
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-1">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3">
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+            </div>
+
+            <div class="row g-1 g-lg-1">
+                <div class="col col-nonactive">
+                  <div class="p-1">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row g-2 g-lg-3 pb-5">
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+                <div class="col" data-price="60" data-col-type="col-standard" data-display-name="Standard">
+                  
+                </div>
+            </div>
+        </div>
+      </div>
+    </body>
+    <footer>
+    </footer>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="reservation.js"></script>
+    <script type="text/html" id="cart-item-template">
+      <li class="list-group-item d-flex lh-sm">
+        <h6 class="me-auto">{type}</h6>
+          <div class="text-muted">${price}</div>
+          <button type="button" class="btn" id="deleteButton" onclick="deleteItem(this)" data-price="{price}" data-col-type="{colType}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-dash-circle btn-outline-danger" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+              <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
+              </svg>         
+          </button>
+      </li>
+  </script>
+</html>
