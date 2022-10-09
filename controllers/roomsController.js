@@ -1,7 +1,7 @@
 const uuid = require('uuid')
 
 const getAllRooms = (req,res) => {
-    res.send("Will return all avalibe rooms in the hotel");
+    res.send("Will return all available rooms in the hotel");
 }
 
 // Will add new room to the DB by the admin
@@ -9,7 +9,7 @@ const addNewRoom = (req,res) => {
     res.json({"id":uuid.v4()});
 }
 
-// Will update an exsisting room
+// Will update an existing room
 const updateRoom = (req,res) => {
     res.json({"id":uuid.v4()});
 }
