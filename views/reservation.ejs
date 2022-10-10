@@ -6,8 +6,8 @@
             rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous">
-        <link href="reservation.css" rel="stylesheet">
-        <script src="jquery-3.6.0.min.js"></script>
+        <link href="css/reservation.css" rel="stylesheet">
+        <script src="js/jquery-3.6.0.min.js"></script>
     </head>
     <body>
       <!-- Modal -->
@@ -28,16 +28,16 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="..." class="d-block w-100" alt="...">
+                    <img class="d-block w-100" alt="...">
                   </div>
                   <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
+                    <img class="d-block w-100" alt="...">
                   </div>
                   <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
+                    <img class="d-block w-100" alt="...">
                   </div>
                   <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
+                    <img class="d-block w-100" alt="...">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#previewCarouselIndicators" data-bs-slide="prev">
@@ -64,16 +64,18 @@
             <span class="text-primary">Your cart</span>
             <span class="badge bg-primary rounded-pill cart-items-counter">0</span>
           </h4>
-          <ul class="list-group mb-3 cart-list">
-            <li class="list-group-item d-flex justify-content-between order-md-last">
-              <span class="me-auto">Total (USD)</span>
-              <strong>$</strong>
-              <strong class="cart-total-sum">0</strong>
-            </li>
-          </ul>
-          <div class="d-grid">
-            <button type="button" class="btn btn-primary">Checkout</button>
-          </div>
+          <form action="/orders/" method="post">
+            <ul class="list-group mb-3 cart-list">
+              <li class="list-group-item d-flex justify-content-between order-md-last">
+                <span class="me-auto">Total (USD)</span>
+                <strong>$</strong>
+                <strong class="cart-total-sum">0</strong>
+              </li>
+            </ul>
+            <div class="d-grid">
+              <button id="checkoutBtn" type="submit" class="btn btn-primary">Continue to checkout</button>
+            </div>
+          </form>
         </div>
         <div class="container mt-5 h-75 w-75">
             <div class="row g-2 g-lg-3">
@@ -351,7 +353,7 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script src="reservation.js"></script>
+    <script src="js/reservation.js"></script>
     <script type="text/html" id="cart-item-template">
       <li class="list-group-item d-flex lh-sm">
         <h6 class="me-auto">{type}</h6>
@@ -362,6 +364,8 @@
               <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
               </svg>         
           </button>
+          <input type="hidden" name="roomType" value="{type}"/>
+          <input type="hidden" name="roomPrice" value="{price}"/>
       </li>
   </script>
 </html>

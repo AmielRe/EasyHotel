@@ -1,4 +1,4 @@
-const User = require('../models/users');
+const User = require('../models/user');
 const Config = require('../config/roles')
 
 // Get the correct user
@@ -50,4 +50,3 @@ module.exports = {
     updateUser,
     deleteUser
 }
-

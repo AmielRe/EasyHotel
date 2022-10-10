@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const User = require('../models/users');
+const User = require('../models/user');
 const Config = require('../config/roles')
 
 
@@ -16,7 +16,7 @@ const basicLogin = (req, res) => {
             if (!usr || usr.length <= 0) {
                 res.status(500).json({"status": "User not found"})
             }
-            // Currect password !
+            // Correct password !
             if (usr.password == req.body.password) {
 
                 // Sign the JWT with the secret key for 2 hours
@@ -47,7 +47,7 @@ const basicLogin = (req, res) => {
         })
     }
     catch (err) {
-        // An error occured
+        // An error occurred
         res.status(500).json({"status": "Something went wrong"})
     }
 }

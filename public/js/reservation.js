@@ -1,8 +1,8 @@
 $(() => {
-    $("div[data-col-type='col-suite']").load("suite-div.html")
-    $("div[data-col-type='col-exclusive']").load("exclusive-div.html")
-    $("div[data-col-type='col-family']").load("family-div.html")
-    $("div[data-col-type='col-standard']").load("standard-div.html")
+    $("div[data-col-type='col-suite']").load("html/suite-div.html")
+    $("div[data-col-type='col-exclusive']").load("html/exclusive-div.html")
+    $("div[data-col-type='col-family']").load("html/family-div.html")
+    $("div[data-col-type='col-standard']").load("html/standard-div.html")
 
     $('.col').click(function(event) {
         if($(this).hasClass('col-nonactive')
@@ -56,6 +56,13 @@ $(() => {
             inc++;
         });
     })
+
+    $("#checkoutBtn").click(function(){
+        // Check whether cart is empty
+        if(parseInt($('.cart-total-sum').html()) <= 0) {
+            return false;
+        }
+    });
 })
 
 function deleteItem(event) {
