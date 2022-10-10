@@ -1,0 +1,13 @@
+.list-group-item {
+    border-top-width: 1 !important;
+}
+
+.cart-total {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-group.required .form-label:after {
+    content:"*";
+    color:red;
+  }

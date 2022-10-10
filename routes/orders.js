@@ -3,14 +3,15 @@ const ordersController = require('../controllers/ordersController');
 
 const router = express.Router();
 
-
 router.route('/')
     .get(ordersController.getAllOrders)
-    .post(ordersController.addNewOrder)
+    .post(ordersController.checkoutNewOrder)
     .put(ordersController.UpdateOrder)
-
 
 router.route('/:id')
     .delete(ordersController.deleteOrder)
+
+router.route('/summary')
+    .post(ordersController.addNewOrder)
 
 module.exports = router;
