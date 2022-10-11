@@ -76,7 +76,12 @@ const addNewOrder = async (req,res) => {
         const newOrderObject = await newOrder.save();
 
         // Order was added !
-        res.status(200).json({"status": "Order was added!"})
+        res.status(200).render("../views/confirmation", {
+            totalCost: totalCost, 
+            rooms: rooms, 
+            FirstName: req.body.FirstName,
+            LastName: req.body.LastName,
+            Email: req.body.Email})
     }
     catch (err) {
         res.status(500).json({"status": "Internal server error."})

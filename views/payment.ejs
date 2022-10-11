@@ -38,13 +38,18 @@
                     <div class="col-md-7 col-lg-8">
                         <h4 class="mb-3">Billing address</h4>
                         <form class="needs-validation" novalidate="" action="/orders/summary" method="post">
+                            <%for (var i = 0; i < rooms.length; i++) {%>                
+                                <input type="hidden" name="roomType" value="<%=rooms[i].roomType%>"/>
+                                <input type="hidden" name="roomPrice" value="<%=rooms[i].cost%>"/>
+                            <%}%>
                             <div class="row g-3">
                                 <div class="col-sm-6 form-group required">
                                     <label for="firstName" class="form-label">First
                                         name</label>
                                     <input type="text" class="form-control"
                                         id="firstName" placeholder="" value=""
-                                        required="">
+                                        required=""
+                                        name="FirstName">
                                     <div class="invalid-feedback">
                                         Valid first name is required.
                                     </div>
@@ -55,7 +60,8 @@
                                         name</label>
                                     <input type="text" class="form-control"
                                         id="lastName" placeholder="" value=""
-                                        required="">
+                                        required=""
+                                        name="LastName">
                                     <div class="invalid-feedback">
                                         Valid last name is required.
                                     </div>
@@ -78,7 +84,8 @@
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control"
                                         id="email"
-                                        placeholder="you@example.com">
+                                        placeholder="you@example.com"
+                                        name="Email">
                                     <div class="invalid-feedback">
                                         Please enter a valid email address for
                                         reservation summary.
