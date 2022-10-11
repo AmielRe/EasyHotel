@@ -1,0 +1,113 @@
+.wrapper {
+    display: flex;
+}
+
+.wrapper-flex-column {
+    flex-direction: column;
+}
+
+.cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 10px 10px;
+}
+
+.cart-table-container {
+    margin-bottom: 15px;
+    overflow: auto;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+
+.cart-table {
+    width: 100%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.room-ticket {
+    display: inline-flex;
+    color: black;
+}
+
+.room-ticket::before {
+    opacity: 0.75;
+}
+
+.cart-table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 2px;
+}
+
+table > tr {
+    vertical-align: middle;
+}
+
+tbody {
+    justify-content: space-between;
+}
+
+div.col:not(.col-nonactive) > div:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.selected {
+    opacity: 0.5;
+}
+
+.col-suite {
+    background-image: url("reservation/suite-preview-small.jpg");
+}
+
+.col-exclusive {
+    background-image: url("reservation/exclusive-preview-small.jpg");
+}
+
+.col-family {
+    background-image: url("reservation/family-preview-small.jpg");
+}
+
+.col-standard {
+    background-image: url("reservation/standard-preview-small.jpg");
+}
+
+.cart-btn-submit {
+    width: 100%;
+    background-color: #e53c4a;
+    color: white;
+}
+
+.cart-total {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.info-button > svg {
+    border-radius: 9999px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color:white;
+}
+
+.info-button > svg:hover {
+    color: white;
+}
+
+.btn-outline-danger {
+    border-radius: 9999px;
+}
+
+.modal-body-image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+.list-group-item {
+    border-top-width: 1 !important;
+}
