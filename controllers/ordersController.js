@@ -1,6 +1,7 @@
 const uuid = require('uuid');
 const Room = require('../models/room');
-const Order = require('../models/order')
+const Order = require('../models/order');
+const emailSender = require('../middleware/email-sender');
 
 const getAllOrders = (req,res) => {
     res.send("Will return all of user orders");
@@ -74,6 +75,8 @@ const addNewOrder = async (req,res) => {
 
     try {
         const newOrderObject = await newOrder.save();
+
+        emailSender.sendEmail(req.body.Email, req.body.FirstName, "05/05/22", "08/05/22", rooms, totalCost);
 
         // Order was added !
         res.status(200).render("../views/confirmation", {
