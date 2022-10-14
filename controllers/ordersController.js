@@ -4,23 +4,17 @@ const Order = require('../models/order');
 const emailSender = require('../middleware/email-sender');
 
 const getAllOrders = (req,res) => {
-    res.send("Will return all of user orders");
+    res.json(Order.find().exec());
 }
 
 const checkoutNewOrder = (req,res) => {
-    const roomTypes = req.body.roomType;
-    const roomPrices = req.body.roomPrice;
-
-    const [rooms, totalCost] = parseRooms(roomTypes, roomPrices);
+    const [rooms, totalCost] = parseRooms(req);
 
     res.render("../views/payment", { totalCost: totalCost, rooms: rooms });
 }
 
 const addNewOrder = async (req,res) => {
-    const roomTypes = req.body.roomType;
-    const roomPrices = req.body.roomPrice;
-
-    const [rooms, totalCost] = parseRooms(roomTypes, roomPrices);
+    const [rooms, totalCost] = parseRooms(req);
 
     const newOrder = new Order({
         totalCost: totalCost,
@@ -30,15 +24,16 @@ const addNewOrder = async (req,res) => {
     try {
         const newOrderObject = await newOrder.save();
 
-        emailSender.sendEmail(req.body.Email, req.body.FirstName, "05/05/22", "08/05/22", rooms, totalCost);
+        emailSender.sendEmail(req.body.Email, req.body.FirstName, "05/05/22", "08/05/22", rooms, totalCost, newOrderObject.id);
 
         // Order was added !
         res.status(200).render("../views/confirmation", {
             totalCost: totalCost, 
             rooms: rooms, 
-            FirstName: req.body.FirstName,
-            LastName: req.body.LastName,
-            Email: req.body.Email})
+            firstName: req.body.FirstName,
+            lastName: req.body.LastName,
+            email: req.body.Email,
+            bookingCode: newOrderObject.id})
     }
     catch (err) {
         res.status(500).json({"status": "Internal server error."})
@@ -50,10 +45,14 @@ const UpdateOrder = (req,res) => {
 }
 
 const deleteOrder = (req,res) => {
-    res.json({"id":req.params.id});
+    Order.findOneAndDelete({"id": req.params.id}).exec()
+    res.json({id: req.params.id});
 }
 
-const parseRooms = (roomTypes, roomPrices) => {
+const parseRooms = (req) => {
+    const roomTypes = req.body.roomType;
+    const roomPrices = req.body.roomPrice;
+
     let rooms = []
     let totalCost = 0;
 
