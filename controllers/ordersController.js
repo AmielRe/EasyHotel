@@ -42,7 +42,7 @@ const addNewOrder = async (req,res) => {
             checkOutDate: req.body.checkOutDate})
     }
     catch (err) {
-        res.status(500).json({"status": "Internal server error."})
+        res.status(500).render('error', {errorCode: 500, errorMsg: "Internal server error"});
     }
 }
 

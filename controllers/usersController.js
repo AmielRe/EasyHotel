@@ -30,7 +30,7 @@ const addNewUser = async (req,res) => {
         res.status(200).json({"status": "User has added !"})
     }
     catch (err) {
-        res.status(500).json({"status": "Email already in use."})
+        res.status(500).render('error', {errorCode: 500, errorMsg: "Email already in use"});
     }
 }
 
