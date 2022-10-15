@@ -6,7 +6,7 @@ const Config = require('../config/roles')
 
 const basicLogin = (req, res) => {
     console.log(req.body)
-    if (!req.body.email || !req.body.password) return res.status(500).json({ 'status': 'Username and password are required.' });
+    if (!req.body.email || !req.body.password) return res.status(500).json({ 'status': 'Username and password are required' });
     const user = {
         email: req.body.email
     }
@@ -48,7 +48,7 @@ const basicLogin = (req, res) => {
     }
     catch (err) {
         // An error occurred
-        res.status(500).render('error', {errorCode: 500, errorMsg: "Oops! Something went wrong"});
+        res.status(500).render('error', {errorCode: 500, errorMsg: "Internal server error"});
     }
 }
 
