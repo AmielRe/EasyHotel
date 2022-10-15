@@ -56,25 +56,14 @@ const parseRooms = (req) => {
     let rooms = []
     let totalCost = 0;
 
-    // If one item in cart, avoid iteration over characters
-    if(roomTypes instanceof Array) {
-        for (let i = 0; i < roomTypes.length; i++) {
-            const room = new Room({
-                roomType: roomTypes[i],
-                cost: parseInt(roomPrices[i])
-            });
-            
-            totalCost += room.cost;
-    
-            rooms.push(room);
-        }
-    } else {
+    for (let i = 0; i < roomTypes.length; i++) {
         const room = new Room({
-            roomType: roomTypes,
-            cost: parseInt(roomPrices)
+            roomType: roomTypes[i],
+            cost: parseInt(roomPrices[i])
         });
         
         totalCost += room.cost;
+
         rooms.push(room);
     }
 
