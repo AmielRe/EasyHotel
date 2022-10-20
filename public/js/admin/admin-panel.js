@@ -141,7 +141,9 @@ function getRooms(fill_table=false) {
         '<th scope="col">id</th>' +
         '<th scope="col">Room Name</th>' +
         '<th scope="col">Price</th>' +
-        '<th scope="col">Reserved</th></tr>'
+        '<th scope="col">Reserved</th>' + 
+        '<th scope="col">Update</th>' +
+        '<th scope="col">Delete</th></tr>'
     )
     $.ajax({
         type: 'GET',
@@ -155,7 +157,9 @@ function getRooms(fill_table=false) {
                         '<th scope="row">' + room_list[i]['_id'] + '</th>' +
                         '<td>' + room_list[i]["name"] + '</td>' +
                         '<td>' + room_list[i]["price"] + '</td>' +
-                        '<td>' + room_list[i]["reserved"] + '</td></tr>'
+                        '<td>' + room_list[i]["reserved"] + '</td>' +
+                        '<th style="cursor: pointer;"><a id='+ room_list[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 35%;"></i></a></th>' +
+                        '<th style="cursor: pointer;"><a id='+ room_list[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 35%; color: rgb(212, 71, 71);"></i></a></th></tr>'
                     );
                 }
             }
@@ -175,7 +179,9 @@ function getOrders(fill_table=false) {
         '<th scope="col">id</th>' +
         '<th scope="col">Customer Name</th>' +
         '<th scope="col">Total Price</th>' +
-        '<th scope="col">Dates</th></tr>'
+        '<th scope="col">Dates</th>' +
+        '<th scope="col">Update</th>' +
+        '<th scope="col">Delete</th></tr>'
     )
 
     $.ajax({
@@ -190,7 +196,9 @@ function getOrders(fill_table=false) {
                         '<th scope="row">' + order_lst[i]['_id'] + '</th>' +
                         '<td>' + order_lst[i]["customer"] + '</td>' +
                         '<td>' + order_lst[i]["price"] + '</td>' +
-                        '<td>' + order_lst[i]["dates"] + '</td></tr>'
+                        '<td>' + order_lst[i]["dates"] + '</td>' +
+                        '<th style="cursor: pointer;"><a id='+ order_lst[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 35%;"></i></a></th>' +
+                        '<th style="cursor: pointer;"><a id='+ order_lst[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 35%; color: rgb(212, 71, 71);"></i></a></th></tr>'
                     );
                 }
             }
@@ -210,7 +218,9 @@ function getServices(fill_table=false) {
         '<th scope="col">id</th>' +
         '<th scope="col">Service Name</th>' +
         '<th scope="col">Price</th>' +
-        '<th scope="col">Available</th></tr>'
+        '<th scope="col">Available</th>' +
+        '<th scope="col">Update</th>' +
+        '<th scope="col">Delete</th></tr>'
     )
 
     $.ajax({
@@ -225,7 +235,9 @@ function getServices(fill_table=false) {
                         '<th scope="row">' + services_lst[i]['_id'] + '</th>' +
                         '<td>' + services_lst[i]["service"] + '</td>' +
                         '<td>' + services_lst[i]["price"] + '</td>' +
-                        '<td>' + services_lst[i]["available"] + '</td></tr>'
+                        '<td>' + services_lst[i]["available"] + '</td>' +
+                        '<th style="cursor: pointer;"><a id='+ services_lst[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 35%;"></i></a></th>' +
+                        '<th style="cursor: pointer;"><a id='+ services_lst[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 35%; color: rgb(212, 71, 71);"></i></a></th></tr>'
                     );
                 }
             }
