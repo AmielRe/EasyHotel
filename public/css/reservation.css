@@ -61,19 +61,19 @@ div.col:not(.col-nonactive) > div:hover {
 }
 
 .col-suite {
-    background-image: url("reservation/suite-preview-small.jpg");
+    background-image: url("../images/reservation/suite-preview-small.jpg");
 }
 
 .col-exclusive {
-    background-image: url("reservation/exclusive-preview-small.jpg");
+    background-image: url("../images/reservation/exclusive-preview-small.jpg");
 }
 
 .col-family {
-    background-image: url("reservation/family-preview-small.jpg");
+    background-image: url("../images/reservation/family-preview-small.jpg");
 }
 
 .col-standard {
-    background-image: url("reservation/standard-preview-small.jpg");
+    background-image: url("../images/reservation/standard-preview-small.jpg");
 }
 
 .cart-btn-submit {

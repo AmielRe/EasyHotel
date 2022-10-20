@@ -1,0 +1,212 @@
+<html dir="ltr" lang="en">
+  <body border="0" cellpadding="0" cellspacing="0" height="100%" width="50%"
+    bgcolor="#F7F7F7" style="margin: 0;">
+    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="50%"
+      bgcolor="#F7F7F7" style="direction: ltr; justify-content: center;
+      align-items: center;">
+      <tr>
+        <td>
+          <!--[if (gte mso 9)|(IE)]>
+              <table width="600" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF">
+                <tr>
+                  <td>
+                  <![endif]-->
+          <table class="content" align="center" cellpadding="0" cellspacing="0"
+            border="0" bgcolor="#F7F7F7" style="width: 600px; max-width:
+            600px;">
+            <tr>
+              <td colspan="2" style="background: #fff; border-radius: 8px;">
+                <table border="1" style="border-collapse:collapse; border-color:
+                  #ccc !important;" cellpadding="0" cellspacing="0"
+                  width="100%">
+                  <tr class="">
+                    <td class="grid__col" style="font-family: 'Helvetica
+                      neue', Helvetica, arial, sans-serif; padding: 32px
+                      40px;">
+                      <h2 style="color: #404040; font-weight: 300; margin: 0
+                        0 12px 0; font-size: 20px; line-height: 30px;
+                        font-family: 'Helvetica neue', Helvetica, arial,
+                        sans-serif; direction: ltr; padding:20px 20px 10px;">
+                        Hi <%=firstName%>,</h2>
+                        <p style="color: #666666; font-weight:400; font-size:
+                          15px; padding:0px
+                          20px 10px 20px;">Your
+                          reservation request has been confirmed. Please
+                          review the details of your booking.</p>
+                        <p style="color: #666666; font-weight:700; font-size:
+                          12px; padding:0px
+                          20px 10px 20px;">Booking
+                          Confirmation Code: <%=bookingCode%></p>
+                        </tr>
+                        <tr><td><table style="width: 100% !important;">
+                              <tr>
+                                <td colspan="2" style="padding:20px 20px
+                                  0px 20px ; font-weight:700; font-size:
+                                  14px;">Check-in</td><td></td>
+                                <td colspan="2" style="padding:20px 20px 0px
+                                  30px;
+                                  font-weight:700; font-size: 14px; text-align:
+                                  end">Check-out</td>
+                              </tr>
+                              <tr>
+                                <td colspan="2" style="padding: 0px 20px
+                                  20px 20px ; font-weight:700; font-size:
+                                  18px;"><%=checkinDate%></td><td>></td>
+                                  <td colspan="2" style="padding: 0px 20px 20px
+                                    30px;
+                                    font-weight:700; font-size: 18px;
+                                    text-align: end"><%=checkoutDate%></td>
+                                  </tr>
+                                </table></td></tr><tr><td
+                                style="padding:5px 5px 0px 20px;
+                                font-weight:700; font-size: 12px;">##WRITE_FULL_ADDRESS##</td></tr>
+                            <tr><td>
+                                <table style="width: 100% !important">
+                                  <tr><td style="padding:20px 20px 0px 20px;
+                                      font-weight:700; font-size: 18px; ">Total
+                                      Payable - <%=rooms.length%> Rooms</td></tr>
+                                    <%for (var i= 0; i <rooms.length; i++) {%>
+                                      <tr>
+                                        <td colspan="2" style="padding:20px 20px
+                                          5px 20px;
+                                          font-weight:300; font-size: 14px;"><%=rooms[i].roomType%>
+                                          </td>
+                                          <td></td>
+                                          <td style="padding:20px 20px 5px 30px;
+                                            font-weight:300; font-size: 14px;"">$<%=rooms[i].cost%></td>
+                                          </tr>
+                                          <%}%>
+                                            <tr>
+                                              <td colspan="2" style="padding:5px
+                                                20px 10px 20px; font-weight:700;
+                                                font-size:
+                                                14px; color:#000">Grand Total
+                                                (USD)
+                                              </td>
+                                              <td></td>
+                                              <td style="padding:5px 20px 10px
+                                                30px; font-weight:700;
+                                                font-size: 14px;
+                                                color:#000;">$<%=totalCost%></td>
+                                              </tr>
+                                            </table>
+                                          </td>
+                                          <tr> <td style="padding:20px 20px
+                                              10px;
+                                              font-weight:700; font-size:
+                                              18px;">Inclusions
+                                              <ul style="padding-top:0px;
+                                                font-weight:300; font-size:
+                                                14px;">
+                                                <li>All Standard Hotel and Room
+                                                  Amenities</li>
+                                                <li>Full access to hotel private
+                                                  beach</li>
+                                              </ul></td>
+                                          </tr>
+                                        </tr>
+                                      </tr>
+                                    </table>
+                                    <p style="color: #666666; font-weight: 400;
+                                      font-size: 15px; line-height: 21px;
+                                      font-family: 'Helvetica neue', Helvetica,
+                                      arial, sans-serif; direction: ltr;
+                                      justify-content: center; align-items:
+                                      center; padding:0px 20px
+                                      0px 20px;"
+                                      class="">Hope you
+                                      enjoyed the booking experience and will
+                                      like
+                                      the stay too.</p>
+                                    <p style="color: #666666; font-weight: 400;
+                                      font-size: 17px; line-height: 24px;
+                                      font-family: 'Helvetica neue', Helvetica,
+                                      arial, sans-serif; margin-bottom: 6px;
+                                      margin-top: 24px; direction: ltr;
+                                      justify-content:
+                                      center; align-items: center; padding:0px
+                                      20px 0px 20px;" class="">Cheers,<br>Hotel
+                                      Direct Team</p>
+                                  </td>
+                                </tr>
+                              </table>
+                              <!--[if (gte mso 9)|(IE)]>
+                </td>
+                </tr>
+      </table>
+    <![endif]-->
+                              <!--[if (gte mso 9)|(IE)]>
+      <table width="600" align="center" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+          <![endif]-->
+                              <table class="content" align="center"
+                                cellpadding="0"
+                                cellspacing="0" border="0" style="width: 600px;
+                                max-width: 600px;
+                                font-family: Helvetica, Arial, sans-serif;
+                                direction: ltr;
+                                justify-content: center; align-items: center;">
+                                <tr>
+                                  <td style="padding-top: 24px;">
+                                    <table cellspacing="0" cellpadding="0"
+                                      width="100%">
+                                      <tr>
+                                        <td style="background-color: #dedede;
+                                          width: 100%;
+                                          font-size: 1px; height: 1px;
+                                          line-height: 1px;">&nbsp;</td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <table cellspacing="0" cellpadding="0"
+                                      width="100%">
+                                      <tr>
+                                        <td style="background-color: #dedede;
+                                          width: 100%;
+                                          font-size: 1px; height: 1px;
+                                          line-height: 1px;">&nbsp;</td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+                                <tr class="">
+                                  <td class="grid__col" style="font-family:
+                                    'Helvetica neue', Helvetica, arial,
+                                    sans-serif;
+                                    padding: 24px 0; text-align: center;">
+                                    <div style="color: #666666; font-weight:
+                                      400;
+                                      font-size:
+                                      13px; line-height: 18px; font-family:
+                                      'Helvetica neue', Helvetica, arial,
+                                      sans-serif;
+                                      font-weight: 300;
+                                      padding-bottom: 6px;" class="">
+                                      <span class=''>
+                                        This email was sent to
+                                        <a style="text-decoration: none; color:
+                                          #0f90ba;
+                                          font-family: 'Helvetica neue',
+                                          Helvetica, arial,
+                                          sans-serif; " href="mailto:" class=""><%=userEmail%></a>
+                                        </span>
+
+                                      </div>
+
+                                    </td>
+                                  </tr>
+                                </table>
+                                <!--[if (gte mso 9)|(IE)]>
+          </td>
+        </tr>
+      </table>
+    <![endif]-->
+                              </td>
+                            </tr>
+                          </table>
+                        </body>
+                      </html>

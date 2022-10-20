@@ -1,7 +1,7 @@
-const User = require('../models/users');
+const User = require('../models/user');
 const Config = require('../config/roles')
 
-// Get the currect user
+// Get the correct user
 const getAllUsers = async (req,res) => {
     try {
         const users = await User.find();
@@ -50,4 +50,3 @@ module.exports = {
     updateUser,
     deleteUser
 }
-

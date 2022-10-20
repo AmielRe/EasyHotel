@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path')
 
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
@@ -12,9 +13,8 @@ app.use(express.json());
 app.use( bodyParser.json() ); 
 
 app.use(express.urlencoded({ extended: true}))
-app.use(express.static('public/css'))
-app.use(express.static('public/js'))
-app.use(express.static('public/images'))
+app.use(express.static(path.join(__dirname, 'public')))
+app.use('/orders', express.static(path.join(__dirname, 'public')))
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -33,7 +33,7 @@ app.use('/auth', authRoute)
 
 // this will return the main page
 app.get('/', (req, res) => {
-    res.render('login.ejs')
+    res.render('landingPage.ejs')
 })
 
 io.on('connection', function(socket) {

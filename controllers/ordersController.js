@@ -1,11 +1,47 @@
-const uuid = require('uuid')
+const uuid = require('uuid');
+const Room = require('../models/room');
+const Order = require('../models/order');
+const emailSender = require('../middleware/email-sender');
 
 const getAllOrders = (req,res) => {
-    res.send("Will return all of user orders");
+    res.json(Order.find().exec());
 }
 
-const addNewOrder = (req,res) => {
-    res.json({"id":uuid.v4()});
+const showAvailableRooms = (req, res) => {
+    res.render("../views/reservation");
+}
+
+const checkoutNewOrder = (req,res) => {
+    const [rooms, totalCost] = parseRooms(req);
+
+    res.render("../views/payment", { totalCost: totalCost, rooms: rooms });
+}
+
+const addNewOrder = async (req,res) => {
+    const [rooms, totalCost] = parseRooms(req);
+
+    const newOrder = new Order({
+        totalCost: totalCost,
+        rooms: rooms
+    })
+
+    try {
+        const newOrderObject = await newOrder.save();
+
+        emailSender.sendEmail(req.body.Email, req.body.FirstName, "05/05/22", "08/05/22", rooms, totalCost, newOrderObject.id);
+
+        // Order was added !
+        res.status(200).render("../views/confirmation", {
+            totalCost: totalCost, 
+            rooms: rooms, 
+            firstName: req.body.FirstName,
+            lastName: req.body.LastName,
+            email: req.body.Email,
+            bookingCode: newOrderObject.id})
+    }
+    catch (err) {
+        res.status(500).json({"status": "Internal server error."})
+    }
 }
 
 const UpdateOrder = (req,res) => {
@@ -13,13 +49,38 @@ const UpdateOrder = (req,res) => {
 }
 
 const deleteOrder = (req,res) => {
-    res.json({"id":req.params.id});
+    Order.findOneAndDelete({"id": req.params.id}).exec()
+    res.json({id: req.params.id});
+}
+
+const parseRooms = (req) => {
+    const roomTypes = req.body.roomType;
+    const roomPrices = req.body.roomPrice;
+
+    let rooms = []
+    let totalCost = 0;
+
+    for (let i = 0; i < roomTypes.length; i++) {
+        const room = new Room({
+            roomType: roomTypes[i],
+            cost: parseInt(roomPrices[i])
+        });
+        
+        totalCost += room.cost;
+
+        rooms.push(room);
+    }
+
+    // return as array
+    return [rooms, totalCost];
 }
 
 module.exports = {
     getAllOrders,
     addNewOrder,
     UpdateOrder,
-    deleteOrder
+    deleteOrder,
+    checkoutNewOrder,
+    showAvailableRooms
 }
 
