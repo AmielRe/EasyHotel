@@ -7,6 +7,10 @@ const getAllOrders = (req,res) => {
     res.json(Order.find().exec());
 }
 
+const showAvailableRooms = (req, res) => {
+    res.render("../views/reservation");
+}
+
 const checkoutNewOrder = (req,res) => {
     const [rooms, totalCost] = parseRooms(req);
 
@@ -76,6 +80,7 @@ module.exports = {
     addNewOrder,
     UpdateOrder,
     deleteOrder,
-    checkoutNewOrder
+    checkoutNewOrder,
+    showAvailableRooms
 }
 

@@ -33,7 +33,7 @@ app.use('/auth', authRoute)
 
 // this will return the main page
 app.get('/', (req, res) => {
-    res.render('reservation.ejs')
+    res.render('landingPage.ejs')
 })
 
 io.on('connection', function(socket) {

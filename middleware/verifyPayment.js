@@ -1,5 +1,12 @@
 const https = require('https');
 
+const verifySearch = () => {
+    return (req, res, next) => {
+        //TODO: implement search verification
+        next();
+    }
+}
+
 const verifyPaymentForm = () => {
     return async (req, res, next) => { 
         const isValidEmail = await validateEmail(req.body.Email);
@@ -60,5 +67,6 @@ const validateEmail = (email) => {
 
   module.exports = {
     verifyCart,
-    verifyPaymentForm
+    verifyPaymentForm,
+    verifySearch
 }

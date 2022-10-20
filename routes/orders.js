@@ -6,11 +6,14 @@ const router = express.Router();
 
 router.route('/')
     .get(ordersController.getAllOrders)
-    .post(verification.verifyCart(), ordersController.checkoutNewOrder)
+    .post(verification.verifySearch(), ordersController.showAvailableRooms)
     .put(ordersController.UpdateOrder)
 
 router.route('/:id')
     .delete(ordersController.deleteOrder)
+
+router.route('/payment')
+    .post(verification.verifyCart(), ordersController.checkoutNewOrder)
 
 router.route('/summary')
     .post(verification.verifyCart(), verification.verifyPaymentForm(), ordersController.addNewOrder)
