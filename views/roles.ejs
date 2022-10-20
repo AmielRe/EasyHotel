@@ -21,7 +21,7 @@
       </nav>
     </div>
     <h2 style="margin-top: 2%;">Roles</h2>
-    <table class="table" id="roles">
+    <table class="table align-middle mb-0 bg-white" id="roles">
       <thead>
         <tr>
             <th scope="col">#</th>
@@ -32,6 +32,9 @@
       <tbody>
       </tbody>
     </table>
+    <div class="chart-container" style="position: relative; height:500px;">
+      <canvas id="entropyOfRoles"></canvas>
+    </div>
   </body>
   <%- include('partials/scripts'); %>
   <script src="roles.js"></script>

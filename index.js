@@ -45,6 +45,11 @@ app.get('/', (req, res) => {
     res.render('landingPage.ejs')
 })
 
+app.get('/login', (req, res) => {
+    res.render('login.ejs')
+})
+
+
 io.on('connection', function(socket) {
     console.log('A user connected');
     

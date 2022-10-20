@@ -1,5 +1,7 @@
-const Config = require('../config/roles')
-
+const { pipeline } = require('nodemailer/lib/xoauth2');
+const Config = require('../config/roles');
+const { collection } = require('../models/user');
+const User = require('../models/user');
 
 
 const getAdminPanel = async (req,res) => {
@@ -14,8 +16,18 @@ const getAllRoles = async (req,res) => {
     res.status(200).json(Config.ROLES)
 }
 
+const getRolesStatistics = (req,res) => {
+    // Toki is the best
+    User.aggregate([{"$group": {_id:"$role", count:{$sum:1}}}], function(err, results) {
+        res.status(200).json(results);
+    });
+
+    
+}
+
 module.exports = {
     getAdminPanel,
     getRolePanel,
-    getAllRoles
+    getAllRoles,
+    getRolesStatistics
 }

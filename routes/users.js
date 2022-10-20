@@ -7,8 +7,7 @@ const authentication = require('../middleware/verifyJWT')
 const router = express.Router();
 
 router.route('/')
-    //.get(authentication.verifyJWT(ROLES.admin), usersController.getAllUsers)
-    .get(usersController.getAllUsers)
+    .get(authentication.verifyJWT(ROLES.admin), usersController.getAllUsers)
     .post(usersController.addNewUser)
 
 router.route('/:id')
