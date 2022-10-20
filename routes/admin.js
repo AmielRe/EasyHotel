@@ -2,7 +2,7 @@ const express = require('express');
 const { request } = require('http');
 const { ROLES } = require('../config/roles');
 const adminController = require('../controllers/adminController');
-const authentication = require('../middlewere/verifyJWT')
+const authentication = require('../middleware/verifyJWT')
 
 const router = express.Router();
 

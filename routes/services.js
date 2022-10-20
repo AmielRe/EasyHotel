@@ -1,7 +1,7 @@
 const express = require('express');
 const servicesController = require('../controllers/servicesController');
 const { ROLES } = require('../config/roles');
-const authentication = require('../middlewere/verifyJWT')
+const authentication = require('../middleware/verifyJWT')
 
 const router = express.Router();
 
