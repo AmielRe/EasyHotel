@@ -8,9 +8,11 @@ const io = require('socket.io')(http);
 require('dotenv/config');
 const mongoose = require('mongoose')
 var bodyParser = require('body-parser')
+const cookieParser = require("cookie-parser");
 
 app.use(express.json());
 app.use( bodyParser.json() ); 
+app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: true}))
 app.use(express.static(path.join(__dirname, 'public')))
