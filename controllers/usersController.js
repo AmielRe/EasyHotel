@@ -36,12 +36,39 @@ const addNewUser = async (req,res) => {
 
 // Will update a user
 const updateUser = (req,res) => {
-    res.json({"status":"ok"});
+    var newData = {
+        "fullName": req.body["0"],
+        "email": req.body["1"],
+        "role": req.body["2"]
+    }
+
+    try {
+        User.updateOne({'_id': req.params.id}, {$set:newData}, function(err, response) {
+            if (err) {
+                res.status(500).json({"status":err})
+            }
+            else {
+                res.status(200).json({"status":"User has been updated"})
+            }
+        });
+    }
+
+    catch (err) {
+        res.status(500).json({"status": "Something has happend"})
+    }
+
 }
 
 // Will delete a user from the system - Admin only
-const deleteUser = (req,res) => {
-    res.json({"id":req.params.id});
+const deleteUser = async (req,res) => {
+    try {
+        await User.deleteOne({"_id": req.params.id});
+
+        res.status(200).json({"status": "User deleted !"});
+    }
+    catch (err) {
+        res.status(500).json({"status": "Error"})
+    }
 }
 
 module.exports = {

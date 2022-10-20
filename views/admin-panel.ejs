@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+    <link rel="stylesheet" href="admin-panel.css">
+
+    <script src="../jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="container-scroller">
+      
+      <div class="container-fluid page-body-wrapper">
+        
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item nav-category">Main</li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/admin">
+                <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                <span class="menu-title">Main</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/roles">
+                <span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
+                <span class="menu-title">Roles</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
+                <span class="menu-title">Chats</span>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+        
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row" id="">
+              <div class="col-12">
+                <span class="d-flex align-items-center purchase-popup">
+                  Hello admin !
+                  <i class="mdi mdi-close" id="bannerClose"></i>
+                </span>
+              </div>
+            </div>
+            <div class="d-xl-flex justify-content-between align-items-start">
+              <h2 class="text-dark font-weight-bold mb-2"> EasyHotel Admin Panel </h2>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <!-- This is change according to the users tab-->
+                <div class="tab-content tab-transparent-content">
+                  <div class="tab-pane fade show active" id="business-1" role="tabpanel" aria-labelledby="business-tab">
+                    <div class="row">
+                      <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
+                        <div class="card">
+                          <div class="card-body text-center">
+                            <h5 class="mb-2 text-dark font-weight-normal">Customers</h5>
+                            <h2 id="numberOfCustomers" class="mb-4 text-dark font-weight-bold"></h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
+                        <div class="card">
+                          <div class="card-body text-center">
+                            <h5 class="mb-2 text-dark font-weight-normal">Orders</h5>
+                            <h2 id="numberOfOrders" class="mb-4 text-dark font-weight-bold"></h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-3  col-lg-6 col-sm-6 grid-margin stretch-card">
+                        <div class="card">
+                          <div class="card-body text-center">
+                            <h5 class="mb-2 text-dark font-weight-normal">Rooms</h5>
+                            <h2 id="numberOfRooms" class="mb-4 text-dark font-weight-bold"></h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
+                        <div class="card">
+                          <div class="card-body text-center">
+                            <h5 class="mb-2 text-dark font-weight-normal">Services</h5>
+                            <h2 id="numberOfServices" class="mb-4 text-dark font-weight-bold"></h2>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- This is the actions the admin will see -->
+                    <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
+                      <ul class="nav nav-tabs tab-transparent" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link link-table active" id="users" data-toggle="tab" href="#" role="tab" aria-selected="true">Users</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link link-table" id="orders" data-toggle="tab" href="#" role="tab" aria-selected="false">Orders</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link link-table" id="rooms" data-toggle="tab" href="#" role="tab" aria-selected="false">Rooms</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link link-table" id="services" data-toggle="tab" href="#" role="tab" aria-selected="false">Services</a>
+                        </li>
+                      </ul>
+                      <div class="d-md-block d-none">
+                        <a href="#" class="text-light p-1"><i class="mdi mdi-view-dashboard"></i></a>
+                        <a href="#" class="text-light p-1"><i class="mdi mdi-dots-vertical"></i></a>
+                      </div>
+                    </div>
+                    <table class="table" id="main_table">
+                      <thead>
+                      </thead>
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+  <script src="admin-panel.js"></script>
+</html>
