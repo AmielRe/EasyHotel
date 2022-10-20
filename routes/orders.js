@@ -15,7 +15,7 @@ router.route('/:id')
 router.route('/payment')
     .post(verification.verifyCart(), ordersController.checkoutNewOrder)
 
-router.route('/summary')
+router.route('/payment/summary')
     .post(verification.verifyCart(), verification.verifyPaymentForm(), ordersController.addNewOrder)
 
 module.exports = router;
