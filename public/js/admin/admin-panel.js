@@ -19,10 +19,12 @@ $("#main_table").on("click", "td", function() {
     $(this).replaceWith(input);
     last_obj = input;
 
+
     // Send PUT request to update
     // To be written
-
+    
     /*
+
     $.ajax({
         type: 'PUT',
         url: `/${tab}`,
@@ -100,8 +102,11 @@ function getUsers(fill_table=true) {
         '<th scope="col">id</th>' +
         '<th scope="col">Full Name</th>' +
         '<th scope="col">Email</th>' +
-        '<th scope="col">Role</th></tr>'
+        '<th scope="col">Role</th>' +
+        '<th scope="col">Update</th>' +
+        '<th scope="col">Delete</th></tr>'
     )
+    
     $.ajax({
         type: 'GET',
         url: '/users',
@@ -114,7 +119,9 @@ function getUsers(fill_table=true) {
                         '<th scope="row">' + users_lst[i]['_id'] + '</th>' +
                         '<td>' + users_lst[i]["fullName"] + '</td>' +
                         '<td>' + users_lst[i]["email"] + '</td>' +
-                        '<td>' + users_lst[i]["role"] + '</td></tr>'
+                        '<td>' + users_lst[i]["role"] + '</td>' +
+                        '<th style="cursor: pointer;"><a id='+ users_lst[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 35%;"></i></a></th>' +
+                        '<th style="cursor: pointer;"><a id='+ users_lst[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 35%; color: rgb(212, 71, 71);"></i></a></th></tr>'
                     );
                 }
             }
@@ -222,6 +229,50 @@ function getServices(fill_table=false) {
                     );
                 }
             }
+        },
+        error: function(err){
+            console.log(err)
+        }
+    });
+}
+
+function updateRow(obj) {
+    // Replace left input with td back
+    $(obj).parents("tr:first").children("input").replaceWith($(`<td>${$(obj).parents("tr:first").children("input").val()}</td>`))
+
+    // Get all row data
+    var tableData = $(obj).parents("tr:first").children("td").map(function() {
+        return $(this).text();
+    }).get();
+
+    // Convert to json
+    jsonData = { ...tableData };
+
+    // Send PUT request to update
+    $.ajax({
+        type: 'PUT',
+        url: `/${tab}/${obj.id}`,
+        dataType : 'json',
+        data: jsonData,
+        success: function(res){
+            console.log(res)
+        },
+        error: function(err){
+            console.log(err)
+        }
+    });
+    
+}
+
+function deleteRow(obj) {
+
+    $(obj).parents("tr:first").remove()
+
+    $.ajax({
+        type: 'DELETE',
+        url: `/${tab}/${obj.id}`,
+        success: function(res){
+            console.log(res)
         },
         error: function(err){
             console.log(err)

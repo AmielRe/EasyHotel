@@ -12567,4 +12567,10 @@ dl {
     margin: auto 0;
     color: #b1b1b1; }
 
-/*# sourceMappingURL=style.css.map */
+#main_table tbody tr .icon {
+  display: none;
+}
+
+#main_table tbody tr:hover .icon {
+  display: inline-block;
+}

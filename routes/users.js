@@ -7,11 +7,11 @@ const authentication = require('../middleware/verifyJWT')
 const router = express.Router();
 
 router.route('/')
-    .get(authentication.verifyJWT(ROLES.admin) ,usersController.getAllUsers)
+    .get(authentication.verifyJWT(ROLES.admin), usersController.getAllUsers)
     .post(usersController.addNewUser)
-    .put(usersController.updateUser)
 
 router.route('/:id')
-    .delete(usersController.deleteUser)
+    .put(authentication.verifyJWT(ROLES.admin), usersController.updateUser)
+    .delete(authentication.verifyJWT(ROLES.admin) ,usersController.deleteUser)
 
 module.exports = router;
