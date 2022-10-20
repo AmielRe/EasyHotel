@@ -19,27 +19,6 @@ $("#main_table").on("click", "td", function() {
     $(this).replaceWith(input);
     last_obj = input;
 
-
-    // Send PUT request to update
-    // To be written
-    
-    /*
-
-    $.ajax({
-        type: 'PUT',
-        url: `/${tab}`,
-        dataType : 'json',
-        data: {
-
-        },
-        success: function(res){
-            console.log(res)
-        },
-        error: function(err){
-            console.log(err)
-        }
-    });
-    */
    
   });
 

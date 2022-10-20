@@ -16,7 +16,8 @@ app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: true}))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/orders', express.static(path.join(__dirname, 'public')))
+app.use('/orders', express.static(path.join(__dirname, 'public')));
+app.use('/admin', express.static(path.join(__dirname, 'public/js')));
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -28,6 +29,7 @@ const usersRoute = require('./routes/users')
 const authRoute = require('./routes/auth')
 const adminRoute = require('./routes/admin')
 const servicesRoute = require('./routes/services')
+const personalRoute = require('./routes/personal')
 
 // Use Routers
 app.use('/orders', ordersRoute)
@@ -36,6 +38,7 @@ app.use('/users', usersRoute)
 app.use('/auth', authRoute)
 app.use('/admin', adminRoute)
 app.use('/services', servicesRoute)
+app.use('/personal', personalRoute)
 
 // this will return the main page
 app.get('/', (req, res) => {

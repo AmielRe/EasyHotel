@@ -7,12 +7,17 @@ const authentication = require('../middleware/verifyJWT')
 const router = express.Router();
 
 router.route('/')
-    .get(authentication.verifyJWT(ROLES.admin) ,adminController.getAdminPanel)
+    //.get(authentication.verifyJWT(ROLES.admin) ,adminController.getAdminPanel)
+
+    // debug
+    .get(adminController.getAdminPanel)
 
 router.route('/roles')
-    .get(authentication.verifyJWT(ROLES.admin) ,adminController.getRolePanel)
+    //.get(authentication.verifyJWT(ROLES.admin) ,adminController.getRolePanel)
+    .get(adminController.getRolePanel)
 
 router.route('/roles/all')
-    .get(authentication.verifyJWT(ROLES.admin) ,adminController.getAllRoles)
+    //.get(authentication.verifyJWT(ROLES.admin) ,adminController.getAllRoles)
+    .get(adminController.getAllRoles)
 
 module.exports = router;
