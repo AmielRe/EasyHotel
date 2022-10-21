@@ -1,4 +1,5 @@
 const https = require('https');
+const onlyLettersRegex = "^[a-zA-Z]+$";
 
 const verifySearch = () => {
     return (req, res, next) => {
@@ -9,18 +10,30 @@ const verifySearch = () => {
 
 const verifyPaymentForm = () => {
     return async (req, res, next) => { 
-        const isValidEmail = await validateEmail(req.body.Email);
-        if(req.body.Email == null || !isValidEmail) {
+        const email = req.body.Email;
+        const firstName = req.body.firstName;
+        const lastName = req.body.lastName;
+
+        if(email == null) {
             return res.status(400).send({
                 error: "Invalid email."
             });
         }
-        if(req.body.FirstName == null || req.body.LastName.length == 0) {
+
+        // Verify email with web service
+        const isValidEmail = await validateEmail(email);
+        if(!isValidEmail) {
+            return res.status(400).send({
+                error: "Invalid email."
+            });
+        }
+
+        if(firstName == null || firstName.length == 0 || !onlyLettersRegex.test(firstName)) {
             return res.status(400).send({
                 error: "Invalid first name."
             });
         }
-        if(req.body.LastName == null || req.body.LastName.length == 0) {
+        if(lastName == null || lastName.length == 0 || !onlyLettersRegex.test(lastName)) {
             return res.status(400).send({
                 error: "Invalid last name."
             });
