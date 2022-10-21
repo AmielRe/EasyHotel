@@ -39,8 +39,8 @@
                         <h4 class="mb-3">Billing address</h4>
                         <form class="needs-validation" novalidate="" action="/orders/payment/summary" method="post">
                             <%for (var i = 0; i < rooms.length; i++) {%>                
-                                <input type="hidden" name="roomType" value="<%=rooms[i].roomType%>"/>
-                                <input type="hidden" name="roomPrice" value="<%=rooms[i].cost%>"/>
+                                <input type="hidden" name="roomType[]" value="<%=rooms[i].roomType%>"/>
+                                <input type="hidden" name="roomPrice[]" value="<%=rooms[i].cost%>"/>
                             <%}%>
                             <div class="row g-3">
                                 <div class="col-sm-6 form-group required">

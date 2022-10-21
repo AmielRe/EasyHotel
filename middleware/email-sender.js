@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const ejs = require('ejs');
+const path = require('path');
 require('dotenv/config');
 
 const transporter = nodemailer.createTransport({
@@ -11,7 +12,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendEmail = (userEmail, firstName, checkinDate, checkoutDate, rooms, totalCost, bookingCode) => {
-    ejs.renderFile(__dirname + '../../templates/confirmation-mail.ejs', { firstName, checkinDate, checkoutDate, totalCost, rooms, userEmail, bookingCode}, (err, data) => {
+    ejs.renderFile(path.join(__dirname, path.resolve('../../templates/confirmation-mail.ejs')), { firstName, checkinDate, checkoutDate, totalCost, rooms, userEmail, bookingCode}, (err, data) => {
         if (err) {
         console.log(err);
       } else {
