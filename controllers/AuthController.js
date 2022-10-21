@@ -6,7 +6,7 @@ const Config = require('../config/roles')
 
 const basicLogin = (req, res) => {
     console.log(req.body)
-    if (!req.body.email || !req.body.password) return res.status(500).json({ 'status': 'Username and password are required.' });
+    if (!req.body.email || !req.body.password) return res.status(500).json({ 'status': 'Username and password are required' });
     const user = {
         email: req.body.email
     }
@@ -14,7 +14,7 @@ const basicLogin = (req, res) => {
         User.findOne(user, 'email fullName password role', function(err,usr) {
             
             if (!usr || usr.length <= 0) {
-                res.status(500).json({"status": "User not found"})
+                res.status(500).render('error', {errorCode: 500, errorMsg: "User not found"});
             }
             // Correct password !
             if (usr.password == req.body.password) {
@@ -42,13 +42,13 @@ const basicLogin = (req, res) => {
 
             // Wrong password
             else {
-                res.status(401).json({"status": "Auth failed"})
+                res.status(401).render('error', {errorCode: 401, errorMsg: "Authentication failed"});
             }
         })
     }
     catch (err) {
         // An error occurred
-        res.status(500).json({"status": "Something went wrong"})
+        res.status(500).render('error', {errorCode: 500, errorMsg: "Internal server error"});
     }
 }
 

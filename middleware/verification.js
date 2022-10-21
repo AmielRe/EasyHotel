@@ -23,28 +23,20 @@ const verifyPaymentForm = () => {
         const lastName = req.body.lastName;
 
         if(email == null) {
-            return res.status(400).send({
-                error: "Invalid email."
-            });
+            return res.status(400).render('error', {errorCode: 400, errorMsg: "Invalid email"});
         }
 
         // Verify email with web service
         const isValidEmail = await validateEmail(email);
         if(!isValidEmail) {
-            return res.status(400).send({
-                error: "Invalid email."
-            });
+            return res.status(400).render('error', {errorCode: 400, errorMsg: "Invalid email"});
         }
 
         if(firstName == null || firstName.length == 0 || !onlyLettersRegex.test(firstName)) {
-            return res.status(400).send({
-                error: "Invalid first name."
-            });
+            return res.status(400).render('error', {errorCode: 400, errorMsg: "Invalid first name"});
         }
         if(lastName == null || lastName.length == 0 || !onlyLettersRegex.test(lastName)) {
-            return res.status(400).send({
-                error: "Invalid last name."
-            });
+            return res.status(400).render('error', {errorCode: 400, errorMsg: "Invalid last name"});
         }
         next();
     }
@@ -53,9 +45,7 @@ const verifyPaymentForm = () => {
 const verifyCart = () => {
     return (req, res, next) => {
         if(req.body.roomPrice == null || req.body.roomType == null) {
-            return res.status(400).send({
-                error: "Invalid cart data."
-            });
+            return res.status(400).render('error', {errorCode: 400, errorMsg: "Invalid cart data"});
         }
         next();
     }

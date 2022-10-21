@@ -8,8 +8,8 @@ const verifyJWT = (role) => {
             token,
             process.env.ACCESS_TOKEN_SECRET,
             (err, decoded) => {
-                if (err) return res.sendStatus(403); //invalid token
-                if (role != decoded.UserInfo.role) return res.sendStatus(403);
+                if (err) return res.status(403).render('error', {errorCode: 403, errorMsg: "Invalid token"});
+                if (role != decoded.UserInfo.role) return res.status(403).render('error', {errorCode: 403, errorMsg: "Invalid role"});
                 next()
             }
         );
