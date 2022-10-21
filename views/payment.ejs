@@ -1,9 +1,12 @@
 <html>
     <head>
-        <%- include('../partials/head'); %>
+        <%- include('partials/head', {title:"Payment"}); %>
         <link href="css/payment.css" rel="stylesheet">
     </head>
-    <body>
+    <header>
+        <%- include('partials/header'); %>
+      </header>
+    <body class="bg-light">
         <div class="container mw-75 p-5">
             <main>
                 <div class="row g-5">
@@ -257,6 +260,9 @@
             </main>
         </div>
     </body>
-    <%- include('../partials/scripts'); %>
+    <footer>
+        <%- include('partials/footer'); %>
+    </footer>
+    <%- include('partials/scripts'); %>
     <script src="js/payment.js"></script>
 </html>

@@ -1,9 +1,12 @@
 <html>
     <head>
-        <%- include('../partials/head'); %>
+        <%- include('partials/head', {title: "Reservation"}); %>
         <link href="css/reservation.css" rel="stylesheet">
     </head>
-    <body>
+    <header>
+      <%- include('partials/header'); %>
+    </header>
+    <body class="bg-light">
       <!-- Modal -->
       <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -343,7 +346,10 @@
         </div>
       </div>
     </body>
-    <%- include('../partials/scripts'); %>
+    <footer>
+      <%- include('partials/footer'); %>
+    </footer>
+    <%- include('partials/scripts'); %>
     <script src="js/reservation.js"></script>
     <script type="text/html" id="cart-item-template">
       <li class="list-group-item d-flex lh-sm">
