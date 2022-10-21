@@ -4,7 +4,6 @@ const Order = require('../models/order');
 const emailSender = require('../middleware/email-sender');
 
 const getAllOrders = (req,res) => {
-    console.log(Order.find())
     res.json(Order.find().exec());
 }
 

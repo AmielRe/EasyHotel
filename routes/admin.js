@@ -18,4 +18,7 @@ router.route('/roles/all')
 router.route('/roles/count')
     .get(authentication.verifyJWT(ROLES.admin) ,adminController.getRolesStatistics)
 
+router.route('/chats')
+    .get(authentication.verifyJWT(ROLES.admin) ,adminController.getChatsPanel)
+
 module.exports = router;

@@ -10,6 +10,9 @@ router.route('/')
     .get(authentication.verifyJWT(ROLES.admin), usersController.getAllUsers)
     .post(usersController.addNewUser)
 
+router.route('/admins')
+    .get(authentication.verifyJWT(ROLES.guest), usersController.getAllAdmins)
+
 router.route('/:id')
     .put(authentication.verifyJWT(ROLES.admin), usersController.updateUser)
     .delete(authentication.verifyJWT(ROLES.admin) ,usersController.deleteUser)
