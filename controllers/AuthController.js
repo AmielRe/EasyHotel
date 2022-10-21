@@ -14,7 +14,7 @@ const basicLogin = (req, res) => {
         User.findOne(user, 'email fullName password role', function(err,usr) {
             
             if (!usr || usr.length <= 0) {
-                res.status(500).render('error', {errorCode: 500, errorMsg: "Uset not found"});
+                res.status(500).render('error', {errorCode: 500, errorMsg: "User not found"});
             }
             // Correct password !
             if (usr.password == req.body.password) {
