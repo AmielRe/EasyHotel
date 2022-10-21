@@ -1,16 +1,24 @@
 const https = require('https');
-const onlyLettersRegex = "^[a-zA-Z]+$";
+const onlyLettersRegex = ^[a-zA-Z]+$;
 
 const verifySearch = () => {
     return (req, res, next) => {
-        //TODO: implement search verification
+        const checkInDate = req.body.checkInDate;
+        const checkOutDate = req.body.checkOutDate;
+
+        if(checkInDate == null || checkOutDate == null) {
+            return res.status(400).send({
+                error: "Invalid date."
+            })
+        }
+
         next();
     }
 }
 
 const verifyPaymentForm = () => {
     return async (req, res, next) => { 
-        const email = req.body.Email;
+        const email = req.body.email;
         const firstName = req.body.firstName;
         const lastName = req.body.lastName;
 

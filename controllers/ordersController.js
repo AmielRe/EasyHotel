@@ -8,13 +8,13 @@ const getAllOrders = (req,res) => {
 }
 
 const showAvailableRooms = (req, res) => {
-    res.render("../views/reservation");
+    res.render("../views/reservation", { checkInDate: req.body.checkInDate, checkOutDate: req.body.checkOutDate});
 }
 
 const checkoutNewOrder = (req,res) => {
     const [rooms, totalCost] = parseRooms(req);
 
-    res.render("../views/payment", { totalCost: totalCost, rooms: rooms });
+    res.render("../views/payment", { totalCost: totalCost, rooms: rooms, checkInDate: req.body.checkInDate, checkOutDate: req.body.checkOutDate });
 }
 
 const addNewOrder = async (req,res) => {
@@ -28,7 +28,7 @@ const addNewOrder = async (req,res) => {
     try {
         const newOrderObject = await newOrder.save();
 
-        emailSender.sendEmail(req.body.Email, req.body.FirstName, "05/05/22", "08/05/22", rooms, totalCost, newOrderObject.id);
+        emailSender.sendEmail(req.body.Email, req.body.FirstName, req.body.checkInDate, req.body.checkOutDate, rooms, totalCost, newOrderObject.id);
 
         // Order was added !
         res.status(200).render("../views/confirmation", {
@@ -37,7 +37,9 @@ const addNewOrder = async (req,res) => {
             firstName: req.body.FirstName,
             lastName: req.body.LastName,
             email: req.body.Email,
-            bookingCode: newOrderObject.id})
+            bookingCode: newOrderObject.id,
+            checkInDate: req.body.checkInDate,
+            checkOutDate: req.body.checkOutDate})
     }
     catch (err) {
         res.status(500).json({"status": "Internal server error."})
