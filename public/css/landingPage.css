@@ -90,7 +90,7 @@ button {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-top: 25px;
-  font-family: 'Cinzel Decorative', cursive
+  font-family: 'CinzelDecorative-Regular', cursive;
 }
 
 .carousel-caption h6 {
@@ -99,7 +99,7 @@ button {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-top: 25px;
-  font-family: 'Cinzel Decorative', cursive
+  font-family: 'CinzelDecorative-Regular', cursive;
 }
 
 .carousel-caption p {
@@ -107,7 +107,7 @@ button {
   margin: auto;
   font-size: 20px;
   line-height: 1.9;
-  font-family: 'Julius Sans One', sans-serif
+  font-family: 'JuliusSansOne-Regular', sans-serif
 }
 
 .carousel-caption a {
@@ -127,7 +127,7 @@ button {
   margin-top: 10%;
   display: flex;
   justify-content: space-between;
-  font-family: 'Julius Sans One', sans-serif;
+  font-family: 'JuliusSansOne-Regular', sans-serif;
   color: #000
 }
 
@@ -154,7 +154,7 @@ button {
 .offer .text {
   padding: 20px;
   color: #000;
-  font-family: 'Julius Sans One', sans-serif
+  font-family: 'JuliusSansOne-Regular', sans-serif
 }
 
 .offer h2 {
@@ -229,7 +229,7 @@ button {
   letter-spacing: 2px;
   padding-top: 20px;
   color: #5f5f5f;
-  font-family: 'Julius Sans One', sans-serif
+  font-family: 'JuliusSansOne-Regular', sans-serif
 }
 
 .heading h2 {
@@ -286,7 +286,7 @@ button {
 
 .wrapper h2 {
   font-weight: 400;
-  font-family: 'Julius Sans One', sans-serif
+  font-family: 'JuliusSansOne-Regular', sans-serif
 }
 
 .wrapper p {

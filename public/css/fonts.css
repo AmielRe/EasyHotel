@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'CinzelDecorative-Bold';
+    src: url('/fonts/CinzelDecorative-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'CinzelDecorative-Regular';
+    src: url('/fonts/CinzelDecorative-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'JuliusSansOne-Regular';
+    src: url('/fonts/JuliusSansOne-Regular.ttf') format('truetype');
+}

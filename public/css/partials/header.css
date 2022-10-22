@@ -11,9 +11,9 @@
   .navbar-brand {
       color: black;
       font-size: 25px;
-        font-weight: bold;
-        letter-spacing: 2px;
-      font-family:'Cinzel Decorative', cursive;   
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-family:'CinzelDecorative-Bold', cursive;   
   }
   
   .nav li a{
