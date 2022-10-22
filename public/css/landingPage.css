@@ -237,7 +237,7 @@ button {
   font-weight: 400;
   margin: 20px 0 40px 0;
   color: #222;
-  font-family: Montserrat, sans-serif
+  font-family: 'Montserrat-Regular', sans-serif
 }
 
 .heading p {
@@ -257,7 +257,7 @@ button {
 }
 
 .wrapper {
-  background-image: url(images/b1.jpg);
+  background-image: url(/images/landingPage/b1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -275,7 +275,7 @@ button {
   right: 10%;
   padding-top: 10%;
   color: #fff;
-  font-family: Montserrat, sans-serif
+  font-family: 'Montserrat-Regular', sans-serif
 }
 
 .wrapper .content {

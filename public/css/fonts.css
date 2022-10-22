@@ -13,3 +13,8 @@
     font-family: 'JuliusSansOne-Regular';
     src: url('/fonts/JuliusSansOne-Regular.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url('/fonts/Montserrat-Regular.ttf') format('truetype');
+}
