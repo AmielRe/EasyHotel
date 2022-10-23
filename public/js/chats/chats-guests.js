@@ -55,7 +55,7 @@ function getMsg(email) {
                 $('#messages').append(`<div class="chat-message-right pb-4">
                 <div>
                     <img src="../../images/chats/user.png" class="rounded-circle mr-1" width="40" height="40">
-                    <div class="text-muted small text-nowrap mt-2">2:33 am</div>
+                    <div class="text-muted small text-nowrap mt-2"></div>
                 </div>
                 <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
                     <div class="font-weight-bold mb-1">${messages[i].source}</div>
@@ -139,7 +139,7 @@ socket.on('newMsg', function(data) {
     $('#messages').append(`<div class="chat-message-left pb-4">
     <div>
         <img src="../../images/chats/user.png" class="rounded-circle mr-1" width="40" height="40">
-        <div class="text-muted small text-nowrap mt-2">2:34 am</div>
+        <div class="text-muted small text-nowrap mt-2"></div>
     </div>
     <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
         <div class="font-weight-bold mb-1">${data.destination}</div>
