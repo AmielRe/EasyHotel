@@ -20,8 +20,11 @@ const addMessage = (io, data) => {
         console.log(err)
     }
 
-    dstUser = userUtil.getUserByEmail(data.destination).id;
-    io.to(dstUser).emit('newMsg', chat);
+    dstUser = userUtil.getUserByEmail(data.destination);
+    if ( dstUser ) {
+        io.to(dstUser.id).emit('newMsg', chat);
+    }
+    
 }
 
 
