@@ -1,25 +1,51 @@
 const Chat = require('../models/chat');
+const  { getJwtDetails, getJWTFromCookie } = require('../middleware/verifyJWT')
+const userUtil = require('../socket-io-utils/user');
+const chat = require('../models/chat');
 
-const addMessage = (socket, data) => {
-    socket.emit('test', {"dsa":"123"})
+const addMessage = (io, data) => {
+    // data - destination && content
+    const chat = {
+        source: getJwtDetails(data.token).email,
+        destination: data.destination,
+        content: data.content
+    }
+
+    const msg = new Chat(chat);
+
+    try {
+        msg.save();
+    }
+    catch (err) {
+        console.log(err)
+    }
+
+    dstUser = userUtil.getUserByEmail(data.destination).id;
+    io.to(dstUser).emit('newMsg', chat);
 }
 
 
 const getAllUserMessages = (req, res) => {
-    // get all users messages by the cookie email
-    // For admins getallusers
-    // For users getallAdmins
-    // User will be able to chat only admins and
-    // Admins will be able to chat all guests,
-    // workers and managers
-    res.status(200).json([{
-        "source": "admin@admin.com",
-        "destination": "b@b.com",
-        "content": "first msg"
-    }])
+    source = req.params.email;
+    destination = getJWTFromCookie(req.cookies.jwt).email;
+
+    console.log("source ==> ", source);
+    console.log("dst ==> ", destination);
+    
+    chat.find(
+        { "$or" : [
+        { "$and": [ {source: source }, {destination: destination }] },
+        { "$and": [ {source: destination },{destination: source }]} ] }, 
+        
+        function(err, chats) {
+        if (err) {
+            res.status(500).json({"status": "Error getting chats."})
+        }
+
+
+        res.status(200).json(chats);
+    });
 }
-
-
 
 module.exports = {
     addMessage,

@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/orders', express.static(path.join(__dirname, 'public')));
 app.use('/admin', express.static(path.join(__dirname, 'public/js')));
 app.use('/chat', express.static(path.join(__dirname, 'public/js/chats')));
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -81,7 +82,7 @@ io.on('connection', function(socket) {
      });
 
     socket.on('newMessage', function(data) {
-        chatController.addMessage(socket, data)
+        chatController.addMessage(io, data)
     });
  });
 

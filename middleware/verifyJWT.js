@@ -28,7 +28,21 @@ const getJwtDetails = (token) => {
     return userDetails;
 }
 
+const getJWTFromCookie = (token) => {
+
+    userDetails = jwt.verify(
+        token,
+        process.env.ACCESS_TOKEN_SECRET,
+        (err, decoded) => {
+            if (err) return false; //invalid token
+            if (decoded) return decoded.UserInfo;
+        }
+    );
+    return userDetails;
+}
+
 module.exports = {
     verifyJWT,
-    getJwtDetails
+    getJwtDetails,
+    getJWTFromCookie
 }
