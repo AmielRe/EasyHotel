@@ -14,31 +14,21 @@ $(document).ready(function (){
     
     // Click to send new msg
     $('.send').click(function() {
-        destination = $('.msgSender > strong').text();
-        content = $('.input-group > input').val();
-
-         // Append the new msg to the chat
-        $('#messages').append(`<div class="chat-message-left pb-4">
-    <div>
-        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
-        <div class="text-muted small text-nowrap mt-2"></div>
-    </div>
-    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-        <div class="font-weight-bold mb-1">me</div>
-        ${content}
-    </div>
-    </div>`);
-
-        // Clear the input bar
-        $('.input-group > input').val("");
-
-        // Emit the msg to the other client
-        socket.emit('newMessage', {
-            "token": getCookie(),
-            "destination":destination,
-            "content":content  
-        });
+        sendMsg();
     });
+
+    // Send new msg on Enter click
+    $('.input-group > input').on('keypress', function (e) {
+        if(e.which === 13){
+           //Disable textbox to prevent multiple submit
+           $(this).attr("disabled", "disabled");
+
+           sendMsg();
+
+           //Enable the textbox again if needed.
+           $(this).removeAttr("disabled");
+        }
+  });
 
     // Click on the user
     $(document).on('click','.user',function () {
@@ -76,29 +66,31 @@ $(document).ready(function (){
 
 });
 
-// To be replaced.
-function getAllUserMessages() {
-    $.ajax({
-        type: 'GET',
-        url: `/chat/`,
-        success: function(messages){
-            for (var i=0; i<messages.length; i++) {
 
-                $('#messages').append(`<div class="chat-message-right pb-4">
-                <div>
-                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
-                    <div class="text-muted small text-nowrap mt-2">2:33 am</div>
-                </div>
-                <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                    <div class="font-weight-bold mb-1">${messages[i].source}</div>
-                    ${messages[i].content}
-                </div>
-            </div>`)
-            };
-        },
-        error: function(err){
-            console.log(err)
-        }
+function sendMsg() {
+    destination = $('.msgSender > strong').text();
+    content = $('.input-group > input').val();
+
+    // Append the new msg to the chat
+    $('#messages').append(`<div class="chat-message-left pb-4">
+    <div>
+        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+        <div class="text-muted small text-nowrap mt-2"></div>
+    </div>
+    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+        <div class="font-weight-bold mb-1">me</div>
+        ${content}
+    </div>
+    </div>`);
+
+    // Clear the input bar
+    $('.input-group > input').val("");
+
+    // Emit the msg to the other client
+    socket.emit('newMessage', {
+        "token": getCookie(),
+        "destination":destination,
+        "content":content  
     });
 }
 
