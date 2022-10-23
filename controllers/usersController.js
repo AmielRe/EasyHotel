@@ -1,16 +1,26 @@
 const User = require('../models/user');
 const Config = require('../config/roles')
 
-// Get the correct user
+// Get all users
 const getAllUsers = async (req,res) => {
     try {
         const users = await User.find();
-        res.json(users);
+        res.status(200).json(users);
     }
     catch (err) {
-        res.json({"status": "err"});
+        res.status(500).json({"status": "err"});
+    }
+}
+
+const getAllAdmins = async (req,res) => {
+    try {
+        const admins = await User.find({role: Config.ROLES.admin}, 'email fullName');
+        res.status(200).json(admins);
     }
     
+    catch (err) {
+        res.status(500).json({"status": "err"});
+    }
 }
 
 // Register new user to the system
@@ -75,5 +85,6 @@ module.exports = {
     getAllUsers,
     addNewUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    getAllAdmins
 }

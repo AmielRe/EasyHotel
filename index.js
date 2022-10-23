@@ -1,9 +1,18 @@
 const express = require('express');
 const app = express();
-const path = require('path')
+const path = require('path');
 
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const { getJwtDetails } = require('./middleware/verifyJWT')
+
+// Store user details for socket.io emits
+const {
+    userJoin,
+    getCurrentUser,
+    userLeave,
+    getAllUsers,
+  } = require("./socket-io-utils/user");
 
 require('dotenv/config');
 const mongoose = require('mongoose')
@@ -16,7 +25,10 @@ app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: true}))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/orders', express.static(path.join(__dirname, 'public')))
+app.use('/orders', express.static(path.join(__dirname, 'public')));
+app.use('/admin', express.static(path.join(__dirname, 'public/js')));
+app.use('/chat', express.static(path.join(__dirname, 'public/js/chats')));
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -28,6 +40,9 @@ const usersRoute = require('./routes/users')
 const authRoute = require('./routes/auth')
 const adminRoute = require('./routes/admin')
 const servicesRoute = require('./routes/services')
+const personalRoute = require('./routes/personal')
+const chatRoute = require('./routes/chats');
+const { futimesSync } = require('fs');
 
 // Use Routers
 app.use('/orders', ordersRoute)
@@ -36,22 +51,40 @@ app.use('/users', usersRoute)
 app.use('/auth', authRoute)
 app.use('/admin', adminRoute)
 app.use('/services', servicesRoute)
+app.use('/personal', personalRoute)
+app.use('/chat', chatRoute)
+
+
+// Controllers
+const chatController = require('./controllers/chatController');
+const { sendEmail } = require('./middleware/email-sender');
 
 // this will return the main page
 app.get('/', (req, res) => {
     res.render('landingPage.ejs')
 })
 
+app.get('/login', (req, res) => {
+    res.render('login.ejs')
+})
+
 io.on('connection', function(socket) {
-    console.log('A user connected');
-    
-    // todo: make socket array with users id
-    // so we can communicate with them.
-    console.log("User ==> ",  socket.id)
+    socket.on('join', function(data) {
+        userDetails = getJwtDetails(data["token"]);
+        userJoin(socket.id, userDetails.email, userDetails.fullName);
+
+        // Print everytime a user joins the chats room.
+        console.table(getAllUsers());
+    });
+
     socket.on('disconnect', function () {
-       console.log('A user disconnected');
+        userLeave(socket.id)
+     });
+
+    socket.on('newMessage', function(data) {
+        chatController.addMessage(io, data)
     });
  });
 
 mongoose.connect(`mongodb${process.env.prod}://${process.env.dbUser}:${process.env.dbPass}@${process.env.dbHost}`)
-http.listen(process.env.PORT)
+http.listen(process.env.PORT);

@@ -16,6 +16,33 @@ const verifyJWT = (role) => {
     }
 }
 
+const getJwtDetails = (token) => {
+    userDetails = jwt.verify(
+        token,
+        process.env.ACCESS_TOKEN_SECRET,
+        (err, decoded) => {
+            if (err) return false; //invalid token
+            if (decoded) return decoded.UserInfo;
+        }
+    );
+    return userDetails;
+}
+
+const getJWTFromCookie = (token) => {
+
+    userDetails = jwt.verify(
+        token,
+        process.env.ACCESS_TOKEN_SECRET,
+        (err, decoded) => {
+            if (err) return false; //invalid token
+            if (decoded) return decoded.UserInfo;
+        }
+    );
+    return userDetails;
+}
+
 module.exports = {
-    verifyJWT
+    verifyJWT,
+    getJwtDetails,
+    getJWTFromCookie
 }

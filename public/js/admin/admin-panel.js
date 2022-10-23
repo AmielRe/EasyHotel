@@ -19,27 +19,6 @@ $("#main_table").on("click", "td", function() {
     $(this).replaceWith(input);
     last_obj = input;
 
-
-    // Send PUT request to update
-    // To be written
-    
-    /*
-
-    $.ajax({
-        type: 'PUT',
-        url: `/${tab}`,
-        dataType : 'json',
-        data: {
-
-        },
-        success: function(res){
-            console.log(res)
-        },
-        error: function(err){
-            console.log(err)
-        }
-    });
-    */
    
   });
 
@@ -120,8 +99,8 @@ function getUsers(fill_table=true) {
                         '<td>' + users_lst[i]["fullName"] + '</td>' +
                         '<td>' + users_lst[i]["email"] + '</td>' +
                         '<td>' + users_lst[i]["role"] + '</td>' +
-                        '<th style="cursor: pointer;"><a id='+ users_lst[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 35%;"></i></a></th>' +
-                        '<th style="cursor: pointer;"><a id='+ users_lst[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 35%; color: rgb(212, 71, 71);"></i></a></th></tr>'
+                        '<th style="cursor: pointer;"><a id='+ users_lst[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 13%;"></i></a></th>' +
+                        '<th style="cursor: pointer;"><a id='+ users_lst[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 13%; color: rgb(212, 71, 71);"></i></a></th></tr>'
                     );
                 }
             }
@@ -158,8 +137,8 @@ function getRooms(fill_table=false) {
                         '<td>' + room_list[i]["name"] + '</td>' +
                         '<td>' + room_list[i]["price"] + '</td>' +
                         '<td>' + room_list[i]["reserved"] + '</td>' +
-                        '<th style="cursor: pointer;"><a id='+ room_list[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 35%;"></i></a></th>' +
-                        '<th style="cursor: pointer;"><a id='+ room_list[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 35%; color: rgb(212, 71, 71);"></i></a></th></tr>'
+                        '<th style="cursor: pointer;"><a id='+ room_list[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 13%;"></i></a></th>' +
+                        '<th style="cursor: pointer;"><a id='+ room_list[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 13%; color: rgb(212, 71, 71);"></i></a></th></tr>'
                     );
                 }
             }
@@ -197,8 +176,8 @@ function getOrders(fill_table=false) {
                         '<td>' + order_lst[i]["customer"] + '</td>' +
                         '<td>' + order_lst[i]["price"] + '</td>' +
                         '<td>' + order_lst[i]["dates"] + '</td>' +
-                        '<th style="cursor: pointer;"><a id='+ order_lst[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 35%;"></i></a></th>' +
-                        '<th style="cursor: pointer;"><a id='+ order_lst[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 35%; color: rgb(212, 71, 71);"></i></a></th></tr>'
+                        '<th style="cursor: pointer;"><a id='+ order_lst[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 13%;"></i></a></th>' +
+                        '<th style="cursor: pointer;"><a id='+ order_lst[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 13%; color: rgb(212, 71, 71);"></i></a></th></tr>'
                     );
                 }
             }
@@ -236,8 +215,8 @@ function getServices(fill_table=false) {
                         '<td>' + services_lst[i]["service"] + '</td>' +
                         '<td>' + services_lst[i]["price"] + '</td>' +
                         '<td>' + services_lst[i]["available"] + '</td>' +
-                        '<th style="cursor: pointer;"><a id='+ services_lst[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 35%;"></i></a></th>' +
-                        '<th style="cursor: pointer;"><a id='+ services_lst[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 35%; color: rgb(212, 71, 71);"></i></a></th></tr>'
+                        '<th style="cursor: pointer;"><a id='+ services_lst[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 13%;"></i></a></th>' +
+                        '<th style="cursor: pointer;"><a id='+ services_lst[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 13%; color: rgb(212, 71, 71);"></i></a></th></tr>'
                     );
                 }
             }

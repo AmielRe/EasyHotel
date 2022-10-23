@@ -18,4 +18,5 @@ router.route('/payment')
 router.route('/payment/summary')
     .post(verification.verifyCart(), verification.verifyPaymentForm(), ordersController.addNewOrder)
 
+
 module.exports = router;

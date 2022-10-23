@@ -2,68 +2,40 @@
 <html lang="en">
   <head>
     <%- include('partials/head', {title:"Admin Panel"}); %>
-    <link rel="stylesheet" href="admin-panel.css">
+    <link rel="stylesheet" href="/css/admin/admin-panel.css">
   </head>
   <body>
-    <div class="container-scroller">
-      
-      <div class="container-fluid page-body-wrapper">
-        
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">
-            <li class="nav-item nav-category">Main</li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="/admin">
-                <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                <span class="menu-title">Main</span>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/roles">
-                <span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
-                <span class="menu-title">Roles</span>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
-                <span class="menu-title">Chats</span>
-              </a>
-            </li>
-
-          </ul>
-        </nav>
-        
-        <div class="main-panel">
-          <div class="content-wrapper">
-            <div class="row" id="">
-              <div class="col-12">
-                <span class="d-flex align-items-center purchase-popup">
-                  Hello admin !
-                  <i class="mdi mdi-close" id="bannerClose"></i>
-                </span>
-              </div>
-            </div>
-            <div class="d-xl-flex justify-content-between align-items-start">
-              <h2 class="text-dark font-weight-bold mb-2"> Roles </h2>
-            </div>
-            <table id="roles" class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Role Name</th>
-                        <th scope="col">Role ID</th>
-                    </tr>
-                </thead>
-                <tbody>  
-                </tbody>
-            </table>
-        </div>
+    <div class="pos-f-t">
+      <div class="collapse" id="navbarToggleExternalContent">
+          <div class="bg-dark p-4">
+            <h5 class="text-white h4">Admin Space</h5>
+            <span style="cursor:pointer;" onclick="document.location.href='/admin'" class="text-muted">Main Dashboard</span></br>
+            <span style="cursor:pointer;" onclick="document.location.href='/admin/roles'" class="text-muted">Roles</span></br>
+            <span style="cursor:pointer;" onclick="document.location.href='/admin/chats'" class="text-muted">Chats</span>
+          </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="n1avbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+    </div>
+    <h2 style="margin-top: 2%;">Roles</h2>
+    <table class="table align-middle mb-0 bg-white" id="roles">
+      <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Role Name</th>
+            <th scope="col">Role ID</th>
+        </tr>
+    </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <div class="chart-container" style="position: relative; height:500px;">
+      <canvas id="entropyOfRoles"></canvas>
     </div>
   </body>
   <%- include('partials/scripts'); %>
-  <script src="roles.js"></script>
+  <script src="/js/admin/roles.js"></script>
 </html>
