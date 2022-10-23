@@ -46,7 +46,7 @@ $(document).ready(function (){
     
                     $('#messages').append(`<div class="chat-message-right pb-4">
                     <div>
-                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                        <img src="../../images/chats/user.png" class="rounded-circle mr-1" width="40" height="40">
                         <div class="text-muted small text-nowrap mt-2">2:33 am</div>
                     </div>
                     <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
@@ -72,7 +72,7 @@ function sendMsg() {
     // Append the new msg to the chat
     $('#messages').append(`<div class="chat-message-left pb-4">
     <div>
-        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+        <img src="../../images/chats/user.png" class="rounded-circle mr-1" width="40" height="40">
         <div class="text-muted small text-nowrap mt-2"></div>
     </div>
     <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
@@ -102,7 +102,7 @@ function getAllAdmins() {
             for (var i=0; i<adminsList.length; i++) {
                 $('#users').append(`<a id='${adminsList[i]._id}' href="#" class="list-group-item list-group-item-action border-0">
                     <div class="d-flex align-items-start">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+                        <img src="../../images/chats/user.png" class="rounded-circle mr-1" width="40" height="40">
                         <div class="flex-grow-1 ml-3 user">
                             ${adminsList[i].fullName}
                         <div class="small"><span class="fas fa-circle chat-online"></span>${adminsList[i].email}</div>
@@ -130,7 +130,7 @@ socket.on('newMsg', function(data) {
     // On new message
     $('#messages').append(`<div class="chat-message-left pb-4">
     <div>
-        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+        <img src="../../images/chats/user.png" class="rounded-circle mr-1" width="40" height="40">
         <div class="text-muted small text-nowrap mt-2">2:34 am</div>
     </div>
     <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
