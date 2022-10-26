@@ -31,19 +31,26 @@ $(() => {
             xfbml      : true,
             version    : 'v2.7'
           });
-        
-        const ACCESS_TOKEN = 'EAAVu4K3IBPsBAKDdZAzSf4mtDCcU6sPURwxphTTwPMnOiwLD4YZAQhHadA1qzuDwEL1cnspcceELg4XgKR5t7VC1vpzsZAMe5TEiDmARx0uBsyOetpJRE3ytaNbwZBYHFX3R1jd70pOgHrKkrw9qDPTLbGRDOwruSbV2NMdsZAdvhye3BQk0N';
-        
-        FB.api(
-            '/102666259317559/feed',
-            'POST',
-            { "message": "New " + stars + " stars rating from " + fullName + "!" + "\r\n\"" + messageText + "\"", access_token: ACCESS_TOKEN },
-            function (response) {
-                if (response.error) {
-                    console.log('error occurred: ' + response.error.message)
-                    return;
-                }
-                console.log('successfully posted to page!');
+
+        $.ajax({
+            type: 'GET',
+            url: '/auth/access_token',
+            success: function(access_token){
+                FB.api(
+                    '/102666259317559/feed',
+                    'POST',
+                    { "message": "New " + stars + " stars rating from " + fullName + "!" + "\r\n\"" + messageText + "\"", access_token: access_token.token },
+                    function (response) {
+                        if (response.error) {
+                            console.log('error occurred: ' + response.error.message)
+                            return;
+                        }
+                        console.log('successfully posted to page!');
+                });
+            },
+            error: function(err){
+                console.log(err)
+            }
         });
     });
 })
