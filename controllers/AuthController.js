@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const User = require('../models/user');
-const Config = require('../config/roles')
+const Config = require('../config/roles');
+const Facebook = require('../models/facebook');
 
 
 const basicLogin = (req, res) => {
@@ -56,9 +57,16 @@ const oAuthLogin = (req, res) => {
     
 }
 
+// Get facebook access token from mongodb
+const getFacebookAccessToken = async (req, res) => {
+    const token = await Facebook.findOne().exec();
+    res.status(200).json({ "token" : token.token});
+}
+
 
 
 module.exports = {
     basicLogin,
-    oAuthLogin
+    oAuthLogin,
+    getFacebookAccessToken
 }

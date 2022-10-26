@@ -12,5 +12,8 @@ router.route('/basic')
 router.route('OAuth')
     .post(AuthController.oAuthLogin)
 
+router.route('/access_token')
+    .get(AuthController.getFacebookAccessToken)
+
 
 module.exports = router;
