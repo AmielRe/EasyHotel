@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-md-7 col-lg-8">
                         <h4 class="mb-3">Billing address</h4>
-                        <form class="needs-validation" novalidate="" action="/orders/payment/summary" method="post">
+                        <form id="order-form" class="needs-validation" novalidate="" action="/orders/payment/summary" method="post">
                             <input type="hidden" name="checkInDate" value="<%=checkInDate%>"/>
                             <input type="hidden" name="checkOutDate" value="<%=checkOutDate%>"/>
                             <%for (var i = 0; i < rooms.length; i++) {%>                
@@ -252,7 +252,7 @@
 
                             <hr class="my-4">
 
-                            <button class="w-100 btn btn-primary btn-lg"
+                            <button class="w-100 btn btn-primary btn-lg checkout"
                                 type="submit">Checkout</button>
                         </form>
                     </div>

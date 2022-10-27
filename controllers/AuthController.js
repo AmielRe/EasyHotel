@@ -36,7 +36,15 @@ const basicLogin = (req, res) => {
 
                 // This will render the user profile page
                 // For now, its returning json
-                res.status(200).json({"status": "OK"})
+                //res.status(200).json({"status": "OK"})
+                if ( usr.role == Config.ROLES.admin ) {
+                    res.status(200).json({"redirect": "/admin"});
+                }
+
+                else {
+                    res.status(200).json({"redirect": "/personal"});
+                }
+                
             }
 
             // Wrong password
