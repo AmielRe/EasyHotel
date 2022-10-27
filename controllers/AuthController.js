@@ -34,9 +34,7 @@ const basicLogin = (req, res) => {
                 // Set the jwt as a cookie (Need to change this).
                 res.cookie('jwt', accessToken, { httpOnly: false, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000 });
 
-                // This will render the user profile page
-                // For now, its returning json
-                //res.status(200).json({"status": "OK"})
+                // Return /admin for admins and /personal for guests
                 if ( usr.role == Config.ROLES.admin ) {
                     res.status(200).json({"redirect": "/admin"});
                 }
