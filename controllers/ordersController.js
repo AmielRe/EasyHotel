@@ -2,19 +2,20 @@ const uuid = require('uuid');
 const Room = require('../models/room');
 const Order = require('../models/order');
 const emailSender = require('../middleware/email-sender');
+const { getJwtDetails } = require('../middleware/verifyJWT');
 
 const getAllOrders = (req,res) => {
     res.json(Order.find().exec());
 }
 
 const showAvailableRooms = (req, res) => {
-    res.render("../views/reservation", { checkInDate: req.body.checkInDate, checkOutDate: req.body.checkOutDate});
+    res.render("../views/reservation", { checkInDate: req.body.checkInDate, checkOutDate: req.body.checkOutDate, jwt: getJwtDetails(req.cookies.jwt)});
 }
 
 const checkoutNewOrder = (req,res) => {
     const [rooms, totalCost] = parseRooms(req);
 
-    res.render("../views/payment", { totalCost: totalCost, rooms: rooms, checkInDate: req.body.checkInDate, checkOutDate: req.body.checkOutDate });
+    res.render("../views/payment", { totalCost: totalCost, rooms: rooms, checkInDate: req.body.checkInDate, checkOutDate: req.body.checkOutDate, jwt: getJwtDetails(req.cookies.jwt) });
 }
 
 const addNewOrder = async (req,res) => {
@@ -39,10 +40,11 @@ const addNewOrder = async (req,res) => {
             email: req.body.email,
             bookingCode: newOrderObject.id,
             checkInDate: req.body.checkInDate,
-            checkOutDate: req.body.checkOutDate})
+            checkOutDate: req.body.checkOutDate,
+            jwt: getJwtDetails(req.cookies.jwt)})
     }
     catch (err) {
-        res.status(500).render('error', {errorCode: 500, errorMsg: "Internal server error"});
+        res.status(500).render('error', {errorCode: 500, errorMsg: "Internal server error", jwt: getJwtDetails(req.cookies.jwt)});
     }
 }
 

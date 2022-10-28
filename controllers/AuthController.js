@@ -2,11 +2,11 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const User = require('../models/user');
 const Config = require('../config/roles');
-const Response = require('../config/response')
+const Response = require('../config/response');
 const Facebook = require('../models/facebook');
+const { getJwtDetails } = require('../middleware/verifyJWT');
 
-
-const basicLogin = (req, res) => {
+const login = (req, res) => {
     if (!req.body.email || !req.body.password) return res.status(500).json({ 'status': 'Username and password are required.' });
     const user = {
         email: req.body.email
@@ -15,8 +15,9 @@ const basicLogin = (req, res) => {
         User.findOne(user, 'email fullName password role', function(err,usr) {
             
             if (!usr || usr.length <= 0) {
-                res.status(500).render('error', {errorCode: 500, errorMsg: "User not found"});
+                res.status(500).render('error', {errorCode: 500, errorMsg: "User not found", jwt: getJwtDetails(req.cookies.jwt)});
             }
+
             // Correct password !
             if (usr.password == req.body.password) {
 
@@ -40,28 +41,25 @@ const basicLogin = (req, res) => {
                 if ( usr.role == Config.ROLES.admin ) {
                     res.status(200).json({"redirect": "/admin"});
                 }
-
                 else {
                     res.status(200).json({"redirect": "/personal"});
                 }
-                
             }
-
             // Wrong password
             else {
-                res.status(401).render('error', {errorCode: 401, errorMsg: "Authentication failed"});
+                res.status(401).render('error', {errorCode: 401, errorMsg: "Authentication failed", jwt: getJwtDetails(req.cookies.jwt)});
             }
         })
     }
     catch (err) {
         // An error occurred
-        res.status(500).render('error', {errorCode: 500, errorMsg: "Internal server error"});
+        res.status(500).render('error', {errorCode: 500, errorMsg: "Internal server error", jwt: getJwtDetails(req.cookies.jwt)});
     }
 }
 
-// Allow authentication with OAuth (Google/Facebook)
-const oAuthLogin = (req, res) => {
-    
+const logout = (req, res) => {
+    res.clearCookie("jwt");
+    res.status(200).render('partials/header', {jwt: false})
 }
 
 // Get facebook access token from mongodb

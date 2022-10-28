@@ -4,14 +4,15 @@ const { collection } = require('../models/user');
 const usersController = require('../controllers/usersController');
 const User = require('../models/user');
 const { all } = require('../routes/orders');
+const { getJwtDetails } = require('../middleware/verifyJWT');
 
 
 const getAdminPanel = async (req,res) => {
-    res.render('admin-panel.ejs')
+    res.render('admin-panel.ejs', {jwt: getJwtDetails(req.cookies.jwt)})
 }
 
 const getRolePanel = async (req,res) => {
-    res.render('roles.ejs')
+    res.render('roles.ejs', {jwt: getJwtDetails(req.cookies.jwt)})
 }
 
 const getAllRoles = async (req,res) => {
@@ -28,7 +29,8 @@ const getRolesStatistics = (req,res) => {
 const getChatsPanel = (req,res) => {
 
     res.render('chats.ejs', { 
-        isAdmin : true
+        isAdmin : true,
+        jwt: getJwtDetails(req.cookies.jwt)
     });
 }
 

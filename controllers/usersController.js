@@ -1,5 +1,6 @@
 const User = require('../models/user');
-const Config = require('../config/roles')
+const Config = require('../config/roles');
+const { getJwtDetails } = require('../middleware/verifyJWT');
 
 // Get all users
 const getAllUsers = async (req,res) => {
@@ -40,7 +41,7 @@ const addNewUser = async (req,res) => {
         res.status(200).json({"status": "User has added !"})
     }
     catch (err) {
-        res.status(500).render('error', {errorCode: 500, errorMsg: "Email already in use"});
+        res.status(500).render('error', {errorCode: 500, errorMsg: "Email already in use", jwt: getJwtDetails(req.cookies.jwt)});
     }
 }
 
