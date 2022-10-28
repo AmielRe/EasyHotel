@@ -11,14 +11,13 @@ $("#basic-auth-form").submit(function(e) {
     $.ajax({
         type: 'POST',
         url: '/auth/basic',
-        dataType : 'json',
         data: form.serialize(),
         success: function(response){
-            document.location.href = response.redirect;
+            window.location.href = "/";
         },
         error: function(err){
             $(".modal-title").html("Error")
-            $(".modal-body").append("<p>" + err["responseJSON"].status + "</p>")
+            $(".modal-body").append("<p>" + err.responseText + "</p>")
             $("#statusModal").modal('show');
         }
     });

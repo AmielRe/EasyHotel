@@ -34,6 +34,26 @@
                 <a class="nav-link" href="/login">Login</a>
             </li>
         </ul>
+        <div class="login-item">
+            <% if(jwt){ %>
+                <div class="profile">
+                    <!--img---->
+                    <div class="profile-img">
+                        <img src="/images/chats/user.png" />
+                    </div>
+                    <!--name-and-username-->
+                    <div class="name-user">
+                        <strong><%= jwt.fullName %></strong>
+                        <span><%= jwt.email %></span>
+                    </div> 
+                    <button id="logoutButton" class="btn btn-primary ms-3 mt-0">Logout</button>
+                </div>
+            <% } else{ %>  
+                <form id="loginForm" action="/login" method="get">
+                    <button type="submit" class="btn btn-primary mt-0">Login</button>
+                </form>
+            <% } %>
+        </div>
 
     </div>
 
