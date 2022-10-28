@@ -3,7 +3,7 @@
         <%- include('partials/head', {title:"Login"}); %>
         <link href="css/login.css" rel="stylesheet">
     </head>
-    <header>
+    <header id="headerNav">
         <%- include('partials/header'); %>
       </header>
     <body>
@@ -33,15 +33,15 @@
                                 role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active"
-                                        id="sign-in-tab" data-bs-toggle="tab"
-                                        data-bs-target="#sign-in" type="button"
+                                        id="sign-in-tab" data-toggle="tab"
+                                        data-target="#sign-in" type="button"
                                         role="tab" aria-controls="sign-in"
                                         aria-selected="true">Sign In</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="sign-up-tab"
-                                        data-bs-toggle="tab"
-                                        data-bs-target="#sign-up" type="button"
+                                        data-toggle="tab"
+                                        data-target="#sign-up" type="button"
                                         role="tab" aria-controls="sign-up"
                                         aria-selected="false">Sign Up</button>
                                 </li>
@@ -88,26 +88,6 @@
                                         </div>
                                     </form>
                                     <hr class="my-4">
-                                    <div class="d-grid mb-2">
-                                        <button class="btn btn-google
-                                            btn-login
-                                            text-uppercase fw-bold"
-                                            type="submit">
-                                            <i class="fab fa-google me-2"></i>
-                                            Sign
-                                            in with Google
-                                        </button>
-                                    </div>
-                                    <div class="d-grid">
-                                        <button class="btn btn-facebook
-                                            btn-login
-                                            text-uppercase fw-bold"
-                                            type="submit">
-                                            <i class="fab fa-facebook-f
-                                                me-2"></i>
-                                            Sign in with Facebook
-                                        </button>
-                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="sign-up"
                                     role="tabpanel"
