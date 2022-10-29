@@ -17,7 +17,7 @@ $("#basic-auth-form").submit(function(e) {
         },
         error: function(err){
             $(".modal-title").html("Error")
-            $(".modal-body").append("<p>" + err.responseText + "</p>")
+            $(".modal-body").append("<p>" + err["responseJSON"].error + "</p>")
             $("#statusModal").modal('show');
         }
     });
@@ -39,7 +39,7 @@ $("#add-user-form").submit(function(e) {
         },
         error: function(err){
             $(".modal-title").html("Error")
-            $(".modal-body").append("<p>" + err["responseJSON"].status + "</p>")
+            $(".modal-body").append("<p>" + err["responseJSON"].error + "</p>")
             $("#statusModal").modal('show');
         }
     });

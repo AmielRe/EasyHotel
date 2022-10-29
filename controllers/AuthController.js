@@ -7,14 +7,14 @@ const Facebook = require('../models/facebook');
 const { getJwtDetails } = require('../middleware/verifyJWT');
 
 const login = (req, res) => {
-    if (!req.body.email || !req.body.password) return res.status(500).render('error', {errorCode: 500, errorMsg: "Username and password are required.", jwt: getJwtDetails(req.cookies.jwt)});
+    if (!req.body.email || !req.body.password) return res.status(400).json({'error': "Username and password are required."});
     const user = {
         email: req.body.email
     }
     try {
         User.findOne(user, 'email fullName password role', function(err,usr) {
             if (!usr || usr.length <= 0) {
-                res.status(500).render('error', {errorCode: 500, errorMsg: "User not found", jwt: getJwtDetails(req.cookies.jwt)});
+                return res.status(500).json({'error': "User not found."});
             }
 
             // Correct password !
@@ -46,13 +46,13 @@ const login = (req, res) => {
             }
             // Wrong password
             else {
-                res.status(401).render('error', {errorCode: 401, errorMsg: "Authentication failed", jwt: getJwtDetails(req.cookies.jwt)});
+                res.status(401).json({'error': "Authentication failed."});
             }
         })
     }
     catch (err) {
         // An error occurred
-        res.status(500).render('error', {errorCode: 500, errorMsg: "Internal server error", jwt: getJwtDetails(req.cookies.jwt)});
+        res.status(500).json({'error': "Internal server error."});
     }
 }
 
