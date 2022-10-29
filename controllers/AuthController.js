@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const User = require('../models/user');
 const Config = require('../config/roles');
+const Response = require('../config/response')
 const Facebook = require('../models/facebook');
 
 
@@ -59,8 +60,13 @@ const oAuthLogin = (req, res) => {
 
 // Get facebook access token from mongodb
 const getFacebookAccessToken = async (req, res) => {
-    const token = await Facebook.findOne().exec();
-    res.status(200).json({ "token" : token.token});
+    try {
+        const token = await Facebook.findOne().exec();
+        res.status(200).json({ "token" : token.token});
+    }
+    catch ( err ) {
+        res.status(500).json(Response.status[500]);
+    }
 }
 
 

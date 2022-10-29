@@ -24,6 +24,23 @@ $(() => {
         } else if($('#star5').is(":checked")) {
             stars = 5;
         }
+
+        // Update DB with new rating
+        $.ajax({
+            type: 'POST',
+            url: '/rating',
+            dataType : 'json',
+            data: {
+                score: stars,
+                comment: messageText
+            } ,
+            success: function(response){
+                //
+            },
+            error: function(err){
+                //
+            }
+        });
     
         FB.init({
             appId      : '1529286150849787',

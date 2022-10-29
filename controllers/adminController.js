@@ -26,8 +26,14 @@ const getRolesStatistics = (req,res) => {
 }
 
 const getChatsPanel = (req,res) => {
-    
+
     res.render('chats.ejs', { 
+        isAdmin : true
+    });
+}
+
+const getRatingPanel = (req,res) => {
+    res.render('ratings.ejs', { 
         isAdmin : true
     });
 }
@@ -37,5 +43,6 @@ module.exports = {
     getRolePanel,
     getAllRoles,
     getRolesStatistics,
-    getChatsPanel
+    getChatsPanel,
+    getRatingPanel
 }
