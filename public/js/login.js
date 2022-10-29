@@ -14,7 +14,7 @@ $("#basic-auth-form").submit(function(e) {
         dataType : 'json',
         data: form.serialize(),
         success: function(response){
-            //
+            document.location.href = response.redirect;
         },
         error: function(err){
             $(".modal-title").html("Error")
