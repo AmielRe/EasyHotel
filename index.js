@@ -61,11 +61,11 @@ const { sendEmail } = require('./middleware/email-sender');
 
 // this will return the main page
 app.get('/', (req, res) => {
-    res.render('landingPage.ejs')
+    res.render('landingPage.ejs', {"jwt": getJwtDetails(req.cookies.jwt)})
 })
 
 app.get('/login', (req, res) => {
-    res.render('login.ejs')
+    res.render('login.ejs', {"jwt": getJwtDetails(req.cookies.jwt)})
 })
 
 io.on('connection', function(socket) {

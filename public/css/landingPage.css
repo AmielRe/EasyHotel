@@ -9,14 +9,6 @@ head {
   --bs-body-bg: #fff
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: #fff;
-  font-family: Raleway, sans-serif;
-  color: #fff
-}
-
 button {
   padding: 20px 40px;
   background: 0 0;
