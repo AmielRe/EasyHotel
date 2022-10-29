@@ -5,13 +5,12 @@ const Config = require('../config/roles')
 const { getJwtDetails } = require('../middleware/verifyJWT');
 
 const login = (req, res) => {
-    if (!req.body.email || !req.body.password) return res.status(500).json({ 'status': 'Username and password are required.' });
+    if (!req.body.email || !req.body.password) return res.status(500).render('error', {errorCode: 500, errorMsg: "Username and password are required.", jwt: getJwtDetails(req.cookies.jwt)});
     const user = {
         email: req.body.email
     }
     try {
         User.findOne(user, 'email fullName password role', function(err,usr) {
-            
             if (!usr || usr.length <= 0) {
                 res.status(500).render('error', {errorCode: 500, errorMsg: "User not found", jwt: getJwtDetails(req.cookies.jwt)});
             }
