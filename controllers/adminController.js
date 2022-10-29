@@ -33,9 +33,7 @@ const getChatsPanel = (req,res) => {
 }
 
 const getRatingPanel = (req,res) => {
-    res.render('ratings.ejs', { 
-        isAdmin : true
-    });
+    res.render('ratings.ejs');
 }
 
 module.exports = {

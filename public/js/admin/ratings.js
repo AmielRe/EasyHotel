@@ -106,7 +106,7 @@ function setGraph() {
     .attr('y', margin / 2.4)
     .attr('transform', 'rotate(-90)')
     .attr('text-anchor', 'middle')
-    .text('Stars')
+    .text('Number of guests')
 
   svg.append('text')
     .attr('class', 'label')
