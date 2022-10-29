@@ -31,7 +31,6 @@ $("#add-user-form").submit(function(e) {
     $.ajax({
         type: 'POST',
         url: '/users',
-        dataType : 'json',
         data: form.serialize(),
         success: function(response){
             $(".modal-title").html("Success")
