@@ -13,7 +13,7 @@ $("#basic-auth-form").submit(function(e) {
         url: '/auth/basic',
         data: form.serialize(),
         success: function(response){
-            window.location.href = "/";
+            document.location.href = response.redirect;
         },
         error: function(err){
             $(".modal-title").html("Error")
