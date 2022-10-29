@@ -90,6 +90,33 @@ function setGraph() {
     .attr('y', (g) => yScale(g.value))
     .attr('height', (g) => height - yScale(g.value))
     .attr('width', xScale.bandwidth())
+    .on('click', function(e) {
+      currentScore = $(this)[0].__data__["score"];
+      console.log("score ==> ", currentScore);
+      $.ajax({
+        type: 'GET',
+        url: `/rating/${currentScore}`,
+        success: function(ratings){
+          $("body").append(`
+        <table class="table align-middle mb-0 bg-white" id="ratings">
+        <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Score</th>
+              <th scope="col">Comment</th>
+          </tr>
+      </thead>
+        <tbody>
+        </tbody>
+      </table>
+    `)
+        
+        },
+        error: function(err){
+            
+        }
+    });
+    })
 
   barGroups 
     .append('text')
