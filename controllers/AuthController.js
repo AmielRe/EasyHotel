@@ -75,7 +75,7 @@ const getFacebookAccessToken = async (req, res) => {
 
 
 module.exports = {
-    basicLogin,
-    oAuthLogin,
+    login,
+    logout,
     getFacebookAccessToken
 }
