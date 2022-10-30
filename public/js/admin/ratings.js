@@ -113,6 +113,7 @@ function setGraph() {
         </tbody>
       </table>
     `);
+          // Add each comment to the table
           $.each(ratings, function(i, rating) {
             $('#ratings > tbody:last-child').append(`
               <tr><td>${i}</td>
@@ -123,7 +124,7 @@ function setGraph() {
         
         },
         error: function(err){
-            
+            console.log(err);
         }
     });
     })
