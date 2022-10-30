@@ -91,12 +91,15 @@ function setGraph() {
     .attr('height', (g) => height - yScale(g.value))
     .attr('width', xScale.bandwidth())
     .on('click', function(e) {
+      $('#ratings').remove();
       currentScore = $(this)[0].__data__["score"];
-      console.log("score ==> ", currentScore);
+
       $.ajax({
         type: 'GET',
         url: `/rating/${currentScore}`,
         success: function(ratings){
+
+          // Add the table 
           $("body").append(`
         <table class="table align-middle mb-0 bg-white" id="ratings">
         <thead>
@@ -109,7 +112,14 @@ function setGraph() {
         <tbody>
         </tbody>
       </table>
-    `)
+    `);
+          $.each(ratings, function(i, rating) {
+            $('#ratings > tbody:last-child').append(`
+              <tr><td>${i}</td>
+              <td>${currentScore}</td>
+              <td>${rating["comment"]}</td></tr>
+            `);
+          });
         
         },
         error: function(err){

@@ -1,5 +1,6 @@
 const Rating = require('../models/rating');
 const Response = require('../config/response');
+const { connect } = require('mongoose');
 
 
 const getRatingsScores = async (req, res) => {
@@ -15,15 +16,17 @@ const getRatingsScores = async (req, res) => {
 
 }
 
-const getRatingsComments = (req, res) => {
+const getRatingsComments = async (req, res) => {
     const score = req.params.score;
 
-    Rating.find({"score" : score}, 'comment', function(comments, err) {
-        if ( err ) {
-            res.status(500).json(Response.status[500]);
-        }
+    try {
+        comments = await Rating.find({"score" : score}, 'comment');
         res.status(200).json(comments);
-    });
+    }
+    catch ( err ) {
+        res.status(500).json(Response.status[500]);
+    }
+    
 
 }
 
