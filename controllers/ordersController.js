@@ -29,15 +29,15 @@ const addNewOrder = async (req,res) => {
     try {
         const newOrderObject = await newOrder.save();
 
-        emailSender.sendEmail(req.body.Email, req.body.FirstName, req.body.checkInDate, req.body.checkOutDate, rooms, totalCost, newOrderObject.id);
+        emailSender.sendEmail(req.body.email, req.body.firstName, req.body.checkInDate, req.body.checkOutDate, rooms, totalCost, newOrderObject.id);
 
         // Order was added !
         res.status(200).render("../views/confirmation", {
             totalCost: totalCost, 
             rooms: rooms, 
-            firstName: req.body.FirstName,
-            lastName: req.body.LastName,
-            email: req.body.Email,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
             bookingCode: newOrderObject.id,
             checkInDate: req.body.checkInDate,
             checkOutDate: req.body.checkOutDate,

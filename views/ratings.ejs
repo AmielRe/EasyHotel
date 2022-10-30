@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head', {title:"Admin Panel"}); %>
+    <link rel="stylesheet" href="/css/admin/ratings.css">
+  </head>
+  <body>
+    <div class="pos-f-t">
+      <div class="collapse" id="navbarToggleExternalContent">
+          <div class="bg-dark p-4">
+            <h5 class="text-white h4">Admin Space</h5>
+            <span style="cursor:pointer;" onclick="document.location.href='/admin'" class="text-muted">Main Dashboard</span></br>
+            <span style="cursor:pointer;" onclick="document.location.href='/admin/roles'" class="text-muted">Roles</span></br>
+            <span style="cursor:pointer;" onclick="document.location.href='/admin/ratings'" class="text-muted">Ratings</span></br>
+            <span style="cursor:pointer;" onclick="document.location.href='/admin/chats'" class="text-muted">Chats</span>
+          </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="n1avbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+    </div>
+    <div id='layout'>
+      <div id='container'>
+        <svg viewBox='0 0 750 500'/>
+      </div>
+    </div>
+  </body>
+  <%- include('partials/scripts'); %>
+  <script src="/js/admin/ratings.js"></script>
+</html>

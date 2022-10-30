@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const User = require('../models/user');
-const Config = require('../config/roles')
+const Config = require('../config/roles');
+const Response = require('../config/response');
+const Facebook = require('../models/facebook');
 const { getJwtDetails } = require('../middleware/verifyJWT');
 
 const login = (req, res) => {
@@ -59,7 +61,19 @@ const logout = (req, res) => {
     res.status(200).render('partials/header', {jwt: false})
 }
 
+// Get facebook access token from mongodb
+const getFacebookAccessToken = async (req, res) => {
+    try {
+        const token = await Facebook.findOne().exec();
+        res.status(200).json({ "token" : token.token});
+    }
+    catch ( err ) {
+        res.status(500).json(Response.status[500]);
+    }
+}
+
 module.exports = {
     login,
-    logout
+    logout,
+    getFacebookAccessToken
 }

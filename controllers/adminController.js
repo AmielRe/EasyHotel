@@ -27,11 +27,15 @@ const getRolesStatistics = (req,res) => {
 }
 
 const getChatsPanel = (req,res) => {
-    
+
     res.render('chats.ejs', { 
         isAdmin : true,
         jwt: getJwtDetails(req.cookies.jwt)
     });
+}
+
+const getRatingPanel = (req,res) => {
+    res.render('ratings.ejs');
 }
 
 module.exports = {
@@ -39,5 +43,6 @@ module.exports = {
     getRolePanel,
     getAllRoles,
     getRolesStatistics,
-    getChatsPanel
+    getChatsPanel,
+    getRatingPanel
 }
