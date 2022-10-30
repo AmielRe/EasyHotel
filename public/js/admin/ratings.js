@@ -101,7 +101,7 @@ function setGraph() {
 
           // Add the table 
           $("body").append(`
-        <table class="table align-middle mb-0 bg-white" id="ratings">
+        <table class="table table-dark align-middle mb-0 bg-white" id="ratings">
         <thead>
           <tr>
               <th scope="col">#</th>
