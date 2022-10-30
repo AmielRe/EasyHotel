@@ -33,32 +33,31 @@
                 aria-label="Slide 4"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="images/landingPage/banner.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-item active video-container">
+                <video class="video" autoplay muted loop>
+                    <source src="/images/landingPage/previewVideo.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="carousel-item">
+                <img src="images/landingPage/banner1.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block position-absolute bottom-75 start-50">
                     <h5>EasyHotel</h5>
-                    <p>Discover The Surprisingly Different Experience At EasyHotel.</p>
+                    <p>Discover The Surprisingly Different Experience At EasyHotel</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/landingPage/banner4.jpg" class="d-block w-100" alt="...">
+                <img src="images/landingPage/banner2.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block position-absolute bottom-75 start-50">
                     <h6>EasyHotel</h6>
-                    <p>Some representative placeholder content for the second slide.</p>
+                    <p>The most memorable rest time starts here</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/landingPage/banner7.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block position-absolute bottom-75 start-50">
-                    <h6>EasyHotel</h6>
-                    <p>Some representative placeholder content for the third slide.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/landingPage/banner9.jpg" class="d-block w-100" alt="...">
+                <img src="images/landingPage/banner3.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block position-absolute bottom-75 start-50">
                     <h5>EasyHotel</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
+                    <p>Redefine your expectations. A hotel experience, unlike the rest</p>
                 </div>
             </div>
         </div>
@@ -127,8 +126,8 @@
         <div class="container flex">
             <div class="left">
                 <div class="img">
-                    <img src="images/landingPage/a1.jpg" alt="" class="image1">
-                    <img src="images/landingPage/a.jpg" alt="" class="image2">
+                    <img src="images/landingPage/about2.jpg" alt="" class="image1">
+                    <img src="images/landingPage/about1.jpg" alt="" class="image2">
                 </div>
             </div>
             <div class="right">
@@ -216,13 +215,13 @@
                     <img src="images/landingPage/g6.jpg" alt="">
                 </div>
                 <div class="item">
-                    <img src="images/landingPage/g14.jpg" alt="">
-                </div>
-                <div class="item">
-                    <img src="images/landingPage/g24.jpg" alt="">
+                    <img src="images/landingPage/g7.jpg" alt="">
                 </div>
                 <div class="item">
                     <img src="images/landingPage/g8.jpg" alt="">
+                </div>
+                <div class="item">
+                    <img src="images/landingPage/g9.jpg" alt="">
                 </div>
                 <div class="item">
                     <img src="images/landingPage/g10.jpg" alt="">
@@ -234,13 +233,16 @@
                     <img src="images/landingPage/g12.jpg" alt="">
                 </div>
                 <div class="item">
-                    <img src="images/landingPage/g19.jpg" alt="">
+                    <img src="images/landingPage/g13.jpg" alt="">
                 </div>
                 <div class="item">
-                    <img src="images/landingPage/g7.jpg" alt="">
+                    <img src="images/landingPage/g14.jpg" alt="">
                 </div>
                 <div class="item">
-                    <img src="images/landingPage/g23.jpg" alt="">
+                    <img src="images/landingPage/g15.jpg" alt="">
+                </div>
+                <div class="item">
+                    <img src="images/landingPage/g16.jpg" alt="">
                 </div>
 
             </div>
@@ -400,19 +402,19 @@
                 <div class="input grid">
                     <div class="box">
                         <label>Check-in:</label>
-                        <input name="checkInDate" type="date" placeholder="Check-in-Date" required="">
+                        <input id="checkInDate" name="checkInDate" type="date" placeholder="Check-in-Date" required="">
                     </div>
                     <div class="box">
                         <label>Check-out:</label>
-                        <input name="checkOutDate" type="date" placeholder="Check-out-Date" required="">
+                        <input id="checkOutDate" name="checkOutDate" type="date" placeholder="Check-out-Date" required="">
                     </div>
                     <div class="box">
                         <label>Adults:</label> <br>
-                        <input type="number" placeholder="" required="">
+                        <input type="number" min="0" max="20" value="0" placeholder="" required="">
                     </div>
                     <div class="box">
                         <label>Children:</label> <br>
-                        <input type="number" placeholder="" required="">
+                        <input type="number" min="0" max="20" value="0" placeholder="" required="">
                     </div>
                 </div>
                 <div class="search">
@@ -434,6 +436,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/landingPage.js"></script>
     <script>
         $('.owl-carousel').owlCarousel({
             loop: true,
@@ -458,4 +461,5 @@
 <footer>
     <%- include('partials/footer'); %>
 </footer>
+
 </html>

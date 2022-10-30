@@ -13,8 +13,9 @@
       font-size: 25px;
       font-weight: bold;
       letter-spacing: 2px;
-      font-family:'CinzelDecorative-Bold', cursive;   
-  }
+      font-family:'CinzelDecorative-Bold', cursive;
+      text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 0px -4px 10px rgba(255,255,255,0.3);
+    }
   
   .nav li a{
       position:relative;
