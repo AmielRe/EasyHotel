@@ -3,6 +3,24 @@ $(() => {
     $("div[data-col-type='col-exclusive']").load("html/exclusive-div.html")
     $("div[data-col-type='col-family']").load("html/family-div.html")
     $("div[data-col-type='col-standard']").load("html/standard-div.html")
+    
+    $.ajax({
+        type: 'GET',
+        url: '/orders/getTakenRooms',
+        dataType : 'json',
+        data: {"checkInDate": $('#checkInDateInput').val(), "checkOutDate": $('#checkOutDateInput').val()},
+        success: function(response){
+            for (const [roomType, count] of Object.entries(response)) {
+                const matchedRoomTypes = $('div[data-display-name="' + roomType + '"]');
+                for (let index = 0; index < count; ++index) {
+                    matchedRoomTypes[index].classList.add("taken");
+                }
+            }
+        },
+        error: function(err){
+            console.log(err)
+        }
+    });
 
     $('.col').click(function(event) {
         if($(this).hasClass('col-nonactive')

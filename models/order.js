@@ -15,7 +15,15 @@ var schema = mongoose.Schema({
     rooms: [{
         type: Room,
         default: {}
-    }]
+    }],
+    checkinDate: {
+        type: Date,
+        required: true
+    },
+    checkoutDate: {
+        type: Date,
+        required: true
+    }
 }, {
     versionKey: false,
     timestamps: true

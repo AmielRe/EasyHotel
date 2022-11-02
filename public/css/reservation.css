@@ -115,3 +115,8 @@ div.col:not(.col-nonactive) > div:hover {
 .list-group-item {
     border-top-width: 1 !important;
 }
+
+.taken {
+    pointer-events: none;
+    opacity: 0.5;
+}
