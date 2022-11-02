@@ -54,7 +54,6 @@ function addUser() {
       "password": formData.password
     }
 
-
     console.table(userData);
 
     $.ajax({
@@ -69,6 +68,5 @@ function addUser() {
           console.log(err)
       }
     });
-
 }
   
