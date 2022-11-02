@@ -3,6 +3,7 @@ const Room = require('../models/room');
 const Order = require('../models/order');
 const emailSender = require('../middleware/email-sender');
 const { getJwtDetails } = require('../middleware/verifyJWT');
+const { addNewRoom } = require('../controllers/roomsController');
 
 const getAllOrders = (req,res) => {
     res.json(Order.find().exec());
@@ -18,13 +19,32 @@ const checkoutNewOrder = (req,res) => {
     res.render("../views/payment", { totalCost: totalCost, rooms: rooms, checkInDate: req.body.checkInDate, checkOutDate: req.body.checkOutDate, jwt: getJwtDetails(req.cookies.jwt) });
 }
 
+const getAllOrdersByDate = async (req, res) => {
+    const checkInDate = req.query.checkInDate;
+    const checkOutDate= req.query.checkOutDate;
+
+    var checkInDateFormat = new Date(checkInDate);
+    var checkOutDateFormat = new Date(checkOutDate);
+
+    const ordersInDate = await Order.find({"checkinDate": {"$lte": checkInDateFormat,},
+                                            "checkoutDate": {"$gte": checkOutDateFormat}}, 'rooms -_id');
+
+    let roomTypes = {};
+
+    ordersInDate.forEach(object => object.rooms.forEach(elem => elem.roomType in roomTypes ? roomTypes[elem.roomType] = roomTypes[elem.roomType] + 1 : roomTypes[elem.roomType] = 1));
+
+    res.status(200).json(roomTypes);
+}
+
 const addNewOrder = async (req,res) => {
     const [rooms, totalCost] = parseRooms(req);
 
     const newOrder = new Order({
         totalCost: totalCost,
-        rooms: rooms
-    })
+        rooms: rooms,
+        checkinDate: req.body.checkInDate,
+        checkoutDate: req.body.checkOutDate
+    });
 
     try {
         const newOrderObject = await newOrder.save();
@@ -44,11 +64,12 @@ const addNewOrder = async (req,res) => {
             jwt: getJwtDetails(req.cookies.jwt)})
     }
     catch (err) {
+        console.log(err)
         res.status(500).render('error', {errorCode: 500, errorMsg: "Internal server error", jwt: getJwtDetails(req.cookies.jwt)});
     }
 }
 
-const UpdateOrder = (req,res) => {
+const updateOrder = (req,res) => {
     res.json({"status":"OK"});
 }
 
@@ -82,9 +103,10 @@ const parseRooms = (req) => {
 module.exports = {
     getAllOrders,
     addNewOrder,
-    UpdateOrder,
+    updateOrder,
     deleteOrder,
     checkoutNewOrder,
-    showAvailableRooms
+    showAvailableRooms,
+    getAllOrdersByDate
 }
 
