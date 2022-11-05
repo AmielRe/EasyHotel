@@ -13,8 +13,12 @@ const login = (req, res) => {
     }
     try {
         User.findOne(user, 'email fullName password role', function(err,usr) {
+            if ( err ) {
+                res.status(500).json({'error': Response.status[500]});
+            }
+
             if (!usr || usr.length <= 0) {
-                return res.status(500).json({'error': "User not found."});
+                return res.status(500).json({'error': Response.auth.loginError});
             }
 
             // Correct password !
@@ -47,13 +51,13 @@ const login = (req, res) => {
             }
             // Wrong password
             else {
-                res.status(401).json({'error': "Authentication failed."});
+                res.status(401).json({'error': Response.auth.authFailed});
             }
         })
     }
     catch (err) {
         // An error occurred
-        res.status(500).json({'error': "Internal server error."});
+        res.status(500).json({'error': Response.status[500]});
     }
 }
 

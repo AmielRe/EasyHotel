@@ -2,6 +2,7 @@ const Chat = require('../models/chat');
 const  { getJwtDetails, getJWTFromCookie } = require('../middleware/verifyJWT')
 const userUtil = require('../socket-io-utils/user');
 const chat = require('../models/chat');
+const Response = require('../config/response')
 
 const addMessage = (io, data) => {
     // data - destination && content
@@ -42,7 +43,7 @@ const getAllUserMessages = (req, res) => {
         
         function(err, chats) {
         if (err) {
-            res.status(500).json({"status": "Error getting chats."})
+            res.status(500).json({"status":Response.chat.queryError})
         }
 
 
