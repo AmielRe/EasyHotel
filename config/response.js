@@ -8,7 +8,9 @@ const response = {
     },
     "auth": {
         "loginError": "User not found.",
-        "authFailed": "Authentication failed."
+        "authFailed": "Authentication failed.",
+        "invalidToken": "Invalid token",
+        "invalidRole": "Invalid role"
     },
     "chat": {
         "queryError": "Error getting chats."
@@ -17,6 +19,12 @@ const response = {
         "queryError": "Error pulling users.",
         "emailError": "Email already in use.",
         "deleteError": "Error deleting user."
+    },
+    "verification": {
+        "emailError": "Invalid email",
+        "firstNameError": "Invalid first name",
+        "lastNameError": "Invalid last name",
+        "cartError": "Invalid cart data"
     }
 }
 

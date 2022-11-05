@@ -1,4 +1,5 @@
 const https = require('https');
+const Response = require('../config/response')
 const onlyLettersRegex = /^[a-zA-Z]+$/;
 
 const verifySearch = () => {
@@ -23,20 +24,20 @@ const verifyPaymentForm = () => {
         const lastName = req.body.lastName;
 
         if(email == null) {
-            return res.status(400).render('error', {errorCode: 400, errorMsg: "Invalid email"});
+            return res.status(400).render('error', {errorCode: 400, errorMsg: Response.verification.emailError});
         }
 
         // Verify email with web service
         const isValidEmail = await validateEmail(email);
         if(!isValidEmail) {
-            return res.status(400).render('error', {errorCode: 400, errorMsg: "Invalid email"});
+            return res.status(400).render('error', {errorCode: 400, errorMsg: Response.verification.emailError});
         }
 
         if(firstName == null || firstName.length == 0 || !onlyLettersRegex.test(firstName)) {
-            return res.status(400).render('error', {errorCode: 400, errorMsg: "Invalid first name"});
+            return res.status(400).render('error', {errorCode: 400, errorMsg: Response.verification.firstNameError});
         }
         if(lastName == null || lastName.length == 0 || !onlyLettersRegex.test(lastName)) {
-            return res.status(400).render('error', {errorCode: 400, errorMsg: "Invalid last name"});
+            return res.status(400).render('error', {errorCode: 400, errorMsg: Response.verification.lastNameError});
         }
         next();
     }
@@ -45,7 +46,7 @@ const verifyPaymentForm = () => {
 const verifyCart = () => {
     return (req, res, next) => {
         if(req.body.roomPrice == null || req.body.roomType == null) {
-            return res.status(400).render('error', {errorCode: 400, errorMsg: "Invalid cart data"});
+            return res.status(400).render('error', {errorCode: 400, errorMsg: Response.verification.cartError});
         }
         next();
     }
