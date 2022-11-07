@@ -12,7 +12,7 @@ const {
     getCurrentUser,
     userLeave,
     getAllUsers,
-  } = require("./socket-io-utils/user");
+} = require("./socket-io-utils/user");
 
 require('dotenv/config');
 const mongoose = require('mongoose')
@@ -20,10 +20,10 @@ var bodyParser = require('body-parser')
 const cookieParser = require("cookie-parser");
 
 app.use(express.json());
-app.use( bodyParser.json() ); 
+app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use(express.urlencoded({ extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/orders', express.static(path.join(__dirname, 'public')));
 app.use('/admin', express.static(path.join(__dirname, 'public/js')));
@@ -63,15 +63,15 @@ const { sendEmail } = require('./middleware/email-sender');
 
 // this will return the main page
 app.get('/', (req, res) => {
-    res.render('landingPage.ejs', {"jwt": getJwtDetails(req.cookies.jwt)})
+    res.render('landingPage.ejs', { "jwt": getJwtDetails(req.cookies.jwt) })
 })
 
 app.get('/login', (req, res) => {
-    res.render('login.ejs', {"jwt": getJwtDetails(req.cookies.jwt)})
+    res.render('login.ejs', { "jwt": getJwtDetails(req.cookies.jwt) })
 })
 
-io.on('connection', function(socket) {
-    socket.on('join', function(data) {
+io.on('connection', function (socket) {
+    socket.on('join', function (data) {
         userDetails = getJwtDetails(data["token"]);
         userJoin(socket.id, userDetails.email, userDetails.fullName);
 
@@ -81,12 +81,12 @@ io.on('connection', function(socket) {
 
     socket.on('disconnect', function () {
         userLeave(socket.id)
-     });
+    });
 
-    socket.on('newMessage', function(data) {
+    socket.on('newMessage', function (data) {
         chatController.addMessage(io, data)
     });
- });
+});
 
 mongoose.connect(`mongodb${process.env.prod}://${process.env.dbUser}:${process.env.dbPass}@${process.env.dbHost}`)
 http.listen(process.env.PORT);
