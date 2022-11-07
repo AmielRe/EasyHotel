@@ -43,6 +43,7 @@ const servicesRoute = require('./routes/services')
 const personalRoute = require('./routes/personal')
 const chatRoute = require('./routes/chats');
 const ratingRoute = require('./routes/rating');
+const accountRoute = require('./routes/account');
 const { futimesSync } = require('fs');
 
 // Use Routers
@@ -55,6 +56,7 @@ app.use('/services', servicesRoute)
 app.use('/personal', personalRoute)
 app.use('/chat', chatRoute)
 app.use('/rating', ratingRoute)
+app.use('/account', accountRoute)
 
 
 // Controllers
@@ -90,3 +92,5 @@ io.on('connection', function (socket) {
 
 mongoose.connect(`mongodb${process.env.prod}://${process.env.dbUser}:${process.env.dbPass}@${process.env.dbHost}`)
 http.listen(process.env.PORT);
+
+

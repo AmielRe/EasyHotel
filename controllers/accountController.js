@@ -1,5 +1,9 @@
 const { getJwtDetails } = require('../middleware/verifyJWT');
 
-const personalSpace = (req,res) => {
-    res.render("guest-panel.ejs", {jwt: getJwtDetails(req.cookies.jwt)})
+const initAccount = (req,res) => {
+    res.render("account.ejs", {jwt: getJwtDetails(req.cookies.jwt)})
+}
+
+module.exports= {
+    initAccount
 }
