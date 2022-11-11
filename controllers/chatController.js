@@ -43,7 +43,7 @@ const getAllUserMessages = (req, res) => {
         
         function(err, chats) {
         if (err) {
-            res.status(500).json({"status":Response.chat.queryError})
+            res.status(500).json({"error":Response.chat.queryError})
         }
 
 

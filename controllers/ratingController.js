@@ -11,7 +11,7 @@ const getRatingsScores = async (req, res) => {
     }
 
     catch ( err ) {
-        res.status(500).json(Response.status[500]);
+        res.status(500).json({"error" : Response.status[500] });
     }
 
 }
@@ -24,7 +24,7 @@ const getRatingsComments = async (req, res) => {
         res.status(200).json(comments);
     }
     catch ( err ) {
-        res.status(500).json(Response.status[500]);
+        res.status(500).json({"error" : Response.status[500] });
     }
     
 
@@ -45,7 +45,7 @@ const addNewRating = async (req, res) => {
 
     catch ( err ) {
         console.log(err);
-        res.status(500).json(Response.status[500]);
+        res.status(500).json({"error" : Response.status[500] });
     }
 }
 

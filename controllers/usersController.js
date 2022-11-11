@@ -10,7 +10,7 @@ const getAllUsers = async (req,res) => {
         res.status(200).json(users);
     }
     catch (err) {
-        res.status(500).json({"status": Response.user.queryError});
+        res.status(500).json({"error": Response.user.queryError});
     }
 }
 
@@ -21,7 +21,7 @@ const getAllAdmins = async (req,res) => {
     }
     
     catch (err) {
-        res.status(500).json({"status": Response.user.queryError});
+        res.status(500).json({"error": Response.user.queryError});
     }
 }
 
@@ -57,7 +57,7 @@ const updateUser = (req,res) => {
     try {
         User.updateOne({'_id': req.params.id}, {$set:newData}, function(err, response) {
             if (err) {
-                res.status(500).json({"status":Response.user.queryError})
+                res.status(500).json({"error":Response.user.queryError})
             }
             else {
                 res.status(200).json({"status":"User has been updated"})
@@ -65,7 +65,7 @@ const updateUser = (req,res) => {
         });
     }
     catch (err) {
-        res.status(500).json({"status": Response.user.queryError})
+        res.status(500).json({"error": Response.user.queryError})
     }
 
 }
@@ -78,7 +78,7 @@ const deleteUser = async (req,res) => {
         res.status(200).json({"status": "User deleted !"});
     }
     catch (err) {
-        res.status(500).json({"status": Response.user.deleteError})
+        res.status(500).json({"error": Response.user.deleteError})
     }
 }
 

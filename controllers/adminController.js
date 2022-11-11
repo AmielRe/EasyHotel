@@ -28,7 +28,7 @@ const getRolesStatistics = (req,res) => {
     // Toki is the best
     User.aggregate([{"$group": {_id:"$role", count:{$sum:1}}}], function(err, results) {
         if ( err ) {
-            res.status(500).json(Response.admin.getRolesError);
+            res.status(500).json({'error': Response.admin.getRolesError });
         }
         res.status(200).json(results);
     });
