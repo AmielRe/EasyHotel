@@ -9,11 +9,17 @@ const { getJwtDetails } = require('../middleware/verifyJWT');
 
 
 const getAdminPanel = async (req,res) => {
-    res.render('admin-panel.ejs', {jwt: getJwtDetails(req.cookies.jwt)})
+    res.render('admin-panel.ejs', {
+        isAdmin : true,
+        jwt: getJwtDetails(req.cookies.jwt)
+    })
 }
 
 const getRolePanel = async (req,res) => {
-    res.render('roles.ejs', {jwt: getJwtDetails(req.cookies.jwt)})
+    res.render('roles.ejs', {
+        isAdmin : true,
+        jwt: getJwtDetails(req.cookies.jwt)
+    })
 }
 
 const getAllRoles = async (req,res) => {
@@ -39,7 +45,10 @@ const getChatsPanel = (req,res) => {
 }
 
 const getRatingPanel = (req,res) => {
-    res.render('ratings.ejs');
+    res.render('ratings.ejs', { 
+        isAdmin : true,
+        jwt: getJwtDetails(req.cookies.jwt)
+    });
 }
 
 module.exports = {
