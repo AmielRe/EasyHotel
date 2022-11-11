@@ -28,11 +28,14 @@ const getAllAdmins = async (req,res) => {
 // Register new user to the system
 const addNewUser = async (req,res) => {
 
+    // Gets the jwt token, if he is an admin -> true else false
+    isAdmin = getJwtDetails(req.cookies.jwt)["role"] == Config.ROLES.admin ? true : false;
+    console.log(isAdmin);
     const user = new User({
         fullName: req.body.fullName,
         email: req.body.email,
         password: req.body.password,
-        role: Config.ROLES.guest
+        role: (isAdmin) ? req.body.role : Config.ROLES.guest
     });
     
     try {

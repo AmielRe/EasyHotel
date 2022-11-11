@@ -105,33 +105,34 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
+            <form id="add-new-user">
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Full Name</label>
-                <input type="text" class="form-control" id="recipient-name">
+                <input type="text" class="form-control" id="fullName" name="fullName">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Email</label>
-                <input type="text" class="form-control" id="recipient-name">
+                <input type="text" class="form-control" id="email" name="email">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Password</label>
-                <input type="text" class="form-control" id="recipient-name">
+                <input type="text" class="form-control" id="password" name="password">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Role</label>
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <select name="role" class="form-select form-select-sm" aria-label=".form-select-sm example">
                   <option value="1">Admin</option>
                   <option value="2">Manager</option>
                   <option value="3">Worker</option>
                   <option value="4">Guest</option>
                 </select>
               </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary add-new-user">Add</button>
+              </div>
             </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary add-new-user">Add</button>
-          </div>
+          
         </div>
       </div>
     </div>

@@ -311,3 +311,23 @@ $('.add-new').click(function() {
     //alert(`clicked new on ${tab}`)
     $('#add-new-user-modal').modal('show');
 });
+
+$("#add-new-user").submit(function(e) {
+    e.preventDefault();
+    var form = $(this);
+
+    $.ajax({
+        type: 'POST',
+        url: '/users',
+        data: form.serialize(),
+        success: function(response){
+            $('#add-new-user-modal').modal('hide');
+        },
+        error: function(err){
+            $('body').append(errModal);
+            $(".modal-title").html("Error")
+            $(".modal-body").append("<p>" + err["responseJSON"].error + "</p>")
+            $("#statusModal").modal('show');
+        }
+    });
+});
