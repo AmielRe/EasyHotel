@@ -64,7 +64,7 @@
     <%- include('partials/footer'); %>
   </footer>
   <%- include('partials/scripts'); %>
-  <% if (isAdmin) { %>
+  <% if ( jwt.role == 1 ) { %>
 	  <%- include('partials/head', {title: 'Admin Panel'}) %>
       <script src="../../chat/chats-admins.js"></script>
     <% } else { %>

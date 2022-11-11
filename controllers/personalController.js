@@ -11,8 +11,7 @@ const personalSpace = (req,res) => {
 const getChatsPanel = (req,res) => {
 
     // We will need to render admin list and the chat list for this user by the cookie
-    res.render('chats.ejs', { 
-        isAdmin : false,
+    res.render('chats.ejs', {
         jwt: getJwtDetails(req.cookies.jwt)
     });
 };
