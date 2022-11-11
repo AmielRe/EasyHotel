@@ -60,3 +60,16 @@ body {
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }
+
+.nav-link {
+  color:black !important;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn-rounded {
+  width: 300px;
+  margin-top: 30px;
+  margin-left: 40%;
+  border-radius: 50px;
+  font-size: 18px;
+}

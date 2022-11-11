@@ -305,3 +305,9 @@ function deleteRow(obj) {
         }
     });
 }
+
+
+$('.add-new').click(function() {
+    //alert(`clicked new on ${tab}`)
+    $('#add-new-user-modal').modal('show');
+});
