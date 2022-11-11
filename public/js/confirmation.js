@@ -1,4 +1,5 @@
-errModal    = `<div id="statusModal" class="modal" tabindex="-1" role="dialog">
+$(() => {
+    errModal    = `<div id="statusModal" class="modal" tabindex="-1" role="dialog">
 <div class="modal-dialog modal-dialog-centered" role="document">
   <div class="modal-content">
     <div class="modal-header">
@@ -16,9 +17,8 @@ errModal    = `<div id="statusModal" class="modal" tabindex="-1" role="dialog">
 </div>
 </div>`
 
-$(() => {
     setTimeout(function() {
-        $('#rateModal').modal();
+        $('#rateModal').modal('show');
     }, 2000);
 
     $("#sendRatingButton").click(function(){
@@ -53,7 +53,7 @@ $(() => {
                 comment: messageText
             } ,
             success: function(response){
-                //
+                $('#rateModal').modal('hide');
             },
             error: function(err){
                 $('body').append(errModal);
@@ -87,10 +87,11 @@ $(() => {
                 });
             },
             error: function(err){
-                $('body').append(errModal);
-                $(".modal-title").html("Error")
-                $(".modal-body").append("<p>" + err["responseJSON"].error + "</p>")
-                $("#statusModal").modal('show');
+                console.log(err)
+                //$('body').append(errModal);
+                //$(".modal-title").html("Error")
+                //$(".modal-body").append("<p>" + err["responseJSON"].error + "</p>")
+                //$("#statusModal").modal('show');
             }
         });
     });
