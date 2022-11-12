@@ -1,14 +1,24 @@
 const uuid = require('uuid');
+const User = require('../models/user')
 const Room = require('../models/room');
 const Order = require('../models/order');
+const Response = require('../config/response')
 const emailSender = require('../middleware/email-sender');
 const { getJwtDetails } = require('../middleware/verifyJWT');
 const { addNewRoom } = require('../controllers/roomsController');
 const mongoose = require('mongoose');
 
 
-const getAllOrders = (req,res) => {
-    res.json(Order.find().exec());
+const getAllOrders = async (req,res) => {
+    try {
+        const orders = await Order.find();
+        res.status(200).json(orders)
+    }
+
+    catch ( err ) {
+        console.log(err);
+        res.status(500).json( {"error" : Response.status[500]})
+    }
 }
 
 const showAvailableRooms = (req, res) => {
@@ -46,7 +56,8 @@ const addNewOrder = async (req,res) => {
         rooms: rooms,
         checkinDate: req.body.checkInDate,
         checkoutDate: req.body.checkOutDate,
-        userId: mongoose.Types.ObjectId(req.cookies.userId)
+        userId: mongoose.Types.ObjectId(req.cookies.userId),
+        userEmail: req.body.email
     });
     
     try {

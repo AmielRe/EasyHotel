@@ -1,0 +1,14 @@
+[
+    {
+        "roomType": "Suite",
+        "cost": 100
+    },
+    {
+        "roomType": "Suite",
+        "cost": 100
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    }
+]

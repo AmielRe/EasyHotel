@@ -154,8 +154,8 @@ function getRooms(fill_table=false) {
                     $('#main_table > tbody:last-child').append(
                         '<tr>' +
                         '<th scope="row">' + room_list[i]['_id'] + '</th>' +
-                        '<td>' + room_list[i]["name"] + '</td>' +
-                        '<td>' + room_list[i]["price"] + '</td>' +
+                        '<td>' + room_list[i]["roomType"] + '</td>' +
+                        '<td>' + room_list[i]["cost"] + '</td>' +
                         '<td>' + room_list[i]["reserved"] + '</td>' +
                         '<th style="cursor: pointer;"><a id='+ room_list[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 13%;"></i></a></th>' +
                         '<th style="cursor: pointer;"><a id='+ room_list[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 13%; color: rgb(212, 71, 71);"></i></a></th></tr>'
@@ -190,15 +190,16 @@ function getOrders(fill_table=false) {
         type: 'GET',
         url: '/orders',
         success: function(order_lst){
+            console.log(order_lst)
             $('#numberOfOrders').html(order_lst.length)
             if( fill_table ) {
                 for (var i=0; i<order_lst.length; i++) {
                     $('#main_table > tbody:last-child').append(
                         '<tr>' +
                         '<th scope="row">' + order_lst[i]['_id'] + '</th>' +
-                        '<td>' + order_lst[i]["customer"] + '</td>' +
-                        '<td>' + order_lst[i]["price"] + '</td>' +
-                        '<td>' + order_lst[i]["dates"] + '</td>' +
+                        '<td>' + order_lst[i]["userEmail"] + '</td>' +
+                        '<td>' + order_lst[i]["totalCost"] + '</td>' +
+                        '<td>' + order_lst[i]["checkinDate"] + " - " + order_lst[i]["checkoutDate"] + '</td>' +
                         '<th style="cursor: pointer;"><a id='+ order_lst[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 13%;"></i></a></th>' +
                         '<th style="cursor: pointer;"><a id='+ order_lst[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 13%; color: rgb(212, 71, 71);"></i></a></th></tr>'
                     );
@@ -309,7 +310,13 @@ function deleteRow(obj) {
 
 $('.add-new').click(function() {
     //alert(`clicked new on ${tab}`)
-    $('#add-new-user-modal').modal('show');
+    if ( tab == "users" ) {
+        $('#add-new-user-modal').modal('show');
+    }
+    else if ( tab == "rooms" ) {
+        $('#add-new-room-modal').modal('show');
+    }
+    
 });
 
 $("#add-new-user").submit(function(e) {
@@ -330,4 +337,52 @@ $("#add-new-user").submit(function(e) {
             $("#statusModal").modal('show');
         }
     });
+});
+
+
+$("#add-new-room").submit(function(e) {
+    e.preventDefault();
+    var form = $(this);
+    if ( $('#roomFile').prop('files')[0] ) {
+        // User has added a file
+
+        var fd = new FormData();
+        fd.append('rooms', $('#roomFile').prop('files')[0]);
+        console.log(fd)
+
+        $.ajax({
+            type: 'POST',
+            url: '/rooms/file',
+            data: fd,
+            contentType: false,
+            processData: false,
+            success: function(response){
+                $('#add-new-room-modal').modal('hide');
+            },
+            error: function(err){
+                $('body').append(errModal);
+                $(".modal-title").html("Error")
+                $(".modal-body").append("<p>" + err["responseJSON"].error + "</p>")
+                $("#statusModal").modal('show');
+            }
+        });
+
+    }
+    
+    else {
+        $.ajax({
+            type: 'POST',
+            url: '/rooms',
+            data: form.serialize(),
+            success: function(response){
+                $('#add-new-room-modal').modal('hide');
+            },
+            error: function(err){
+                $('body').append(errModal);
+                $(".modal-title").html("Error")
+                $(".modal-body").append("<p>" + err["responseJSON"].error + "</p>")
+                $("#statusModal").modal('show');
+            }
+        });
+    }
 });
