@@ -58,12 +58,37 @@ const addNewRoomFile = (req,res) => {
 
 // Will update an existing room
 const updateRoom = (req,res) => {
-    res.json({"id":uuid.v4()});
+    var newData = {
+        "roomType": req.body["0"],
+        "cost": req.body["1"],
+        "reserved": req.body["2"]
+    }
+
+    try {
+        Room.updateOne({'_id': req.params.id}, {$set:newData}, function(err, response) {
+            if (err) {
+                res.status(500).json({"error":Response.status[500]})
+            }
+            else {
+                res.status(200).json({"status":"Room has been updated"})
+            }
+        });
+    }
+    catch (err) {
+        res.status(500).json({"error": Response.status[500]});
+    }
 }
 
 // Will delete a room from the DB by admin
-const deleteRoom = (req,res) => {
-    res.json({"id":req.params.id});
+const deleteRoom = async (req,res) => {
+    try {
+        await Room.deleteOne({"_id": req.params.id});
+
+        res.status(200).json({"status": "Room deleted !"});
+    }
+    catch (err) {
+        res.status(500).json({"error": Response.status[500]});
+    }
 }
 
 module.exports = {

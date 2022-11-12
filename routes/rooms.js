@@ -8,7 +8,6 @@ const router = express.Router();
 router.route('/')
     .get(roomsController.getAllRooms)
     .post(roomsController.addNewRoom)
-    .put(roomsController.updateRoom)
 
 router.route('/file')
     .post(upload.single('rooms'), roomsController.addNewRoomFile)
@@ -16,5 +15,6 @@ router.route('/file')
 
 router.route('/:id')
     .delete(roomsController.deleteRoom)
+    .put(roomsController.updateRoom)
 
 module.exports = router;
