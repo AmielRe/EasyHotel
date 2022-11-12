@@ -1,10 +1,4 @@
-$(document).ready(function (){
-    // Get all rooms from DB
-    setRooms();
-});
-
-$(() => {
-    errModal    = `<div id="statusModal" class="modal" tabindex="-1" role="dialog">
+errModal    = `<div id="statusModal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
@@ -22,10 +16,17 @@ $(() => {
     </div>
     </div>`
 
-    $("div[data-col-type='col-suite']").load("html/suite-div.html")
-    $("div[data-col-type='col-exclusive']").load("html/exclusive-div.html")
-    $("div[data-col-type='col-family']").load("html/family-div.html")
-    $("div[data-col-type='col-standard']").load("html/standard-div.html")
+$(document).ready(function (){
+    // Get all rooms from DB
+    setRooms();
+});
+
+$(() => {
+
+    //$("div[data-col-type='col-suite']").load("html/suite-div.html")
+    //$("div[data-col-type='col-exclusive']").load("html/exclusive-div.html")
+    //$("div[data-col-type='col-family']").load("html/family-div.html")
+    //$("div[data-col-type='col-standard']").load("html/standard-div.html")
     
     // $.ajax({
     //     type: 'GET',
@@ -48,31 +49,37 @@ $(() => {
     //     }
     // });
 
-    $('.col').click(function(event) {
-        if($(this).hasClass('col-nonactive')
-           || !$(event.target).is('div')) {
-            return;
-        }
+    $(document).ready ( function () {
+        $(document).on ("click", ".col", function (event) {
+            if($(this).hasClass('col-nonactive') || !$(event.target).is('div')) {
+                return;
+            }
 
-        // If already chosen, remove it
-        if($(this).children().hasClass('selected')) {
+            // If already chosen, remove it
+            if($(this).children().hasClass('selected')) {
+                $(this).children().toggleClass('selected');
+                decreaseTotalSum(parseInt(this.getAttribute('data-price')))
+                console.log($('.cart-list').find('[data-col-type]:visible:first'))
+                $('.cart-list').find('[data-col-type]:visible:first').parent().remove();
+                return
+            }
+
+            let template = $('#cart-item-template').html()
+
+            // If new selected - add it to cart
             $(this).children().toggleClass('selected');
-            decreaseTotalSum(parseInt(this.getAttribute('data-price')))
-            console.log($('.cart-list').find('[data-col-type]:visible:first'))
-            $('.cart-list').find('[data-col-type]:visible:first').parent().remove();
-            return
-        }
+            increaseTotalSum(parseInt(this.getAttribute('data-price')))
+            template = template.replaceAll('{price}', this.getAttribute('data-price'))
+            template = template.replaceAll('{colType}', this.getAttribute('data-col-type'))
+            template = template.replaceAll('{type}', this.getAttribute('data-display-name'))
 
-        let template = $('#cart-item-template').html()
+            $('.cart-list').append(template);
 
-        // If new selected - add it to cart
-        $(this).children().toggleClass('selected');
-        increaseTotalSum(parseInt(this.getAttribute('data-price')))
-        template = template.replaceAll('{price}', this.getAttribute('data-price'))
-        template = template.replaceAll('{colType}', this.getAttribute('data-col-type'))
-        template = template.replaceAll('{type}', this.getAttribute('data-display-name'))
+        });
+    });
 
-        $('.cart-list').append(template)
+    $('.col').click(function(event) {
+        
     })
 
     let exampleModal = document.getElementById('previewModal')
