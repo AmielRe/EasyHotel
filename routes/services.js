@@ -9,10 +9,9 @@ const router = express.Router();
 router.route('/')
     .get(servicesController.getAllServices)
     .post(authentication.verifyJWT(ROLES.admin) ,servicesController.addNewService)
-    .put(authentication.verifyJWT(ROLES.admin) ,servicesController.UpdateService)
-
 
 router.route('/:id')
     .delete(authentication.verifyJWT(ROLES.admin) ,servicesController.deleteService)
+    .put(authentication.verifyJWT(ROLES.admin) ,servicesController.UpdateService)
 
 module.exports = router;

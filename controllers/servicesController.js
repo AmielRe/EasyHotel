@@ -1,24 +1,65 @@
-const uuid = require('uuid')
+const uuid = require('uuid');
+const Service = require('../models/services');
+const Response = require('../config/response');
 
-const getAllServices = (req,res) => {
-    res.status(200).json([{
-        "service": "SPA",
-        "price": "999",
-        "available": true,
-        "_id": "567765"
-    }])
+const getAllServices = async (req,res) => {
+    try {
+        const service = await Service.find();
+
+        res.status(200).json(service);
+    }
+    catch ( err ) {
+        res.status(500).json({ "error": Response.status[500]});
+    }
 }
 
-const addNewService = (req,res) => {
-    res.json({"id":uuid.v4()});
+const addNewService = async (req,res) => {
+    try {
+        console.log(req.body)
+        const service = new Service({
+            name: req.body.name,
+            cost: req.body.cost
+        });
+        const newService = await service.save();
+        res.status(200).json({"status" : Response.status[200]});
+    }
+    
+    catch ( err ) {
+        res.status(500).json({"status" : Response.status[500]});
+    }
 }
 
 const UpdateService = (req,res) => {
-    res.json({"status":"OK"});
+    var newData = {
+        "name": req.body["0"],
+        "cost": req.body["1"],
+        "reserved": req.body["2"]
+    }
+
+    try {
+        Service.updateOne({'_id': req.params.id}, {$set:newData}, function(err, response) {
+            if (err) {
+                res.status(500).json({"error":Response.status[500]})
+            }
+            else {
+                res.status(200).json({"status":"Service has been updated"})
+            }
+        });
+    }
+    catch (err) {
+        res.status(500).json({"error": Response.status[500]});
+    }
 }
 
-const deleteService = (req,res) => {
-    res.json({"id":req.params.id});
+const deleteService = async (req,res) => {
+    try {
+        await Service.deleteOne({"_id": req.params.id});
+
+        res.status(200).json({"status": "Service deleted !"});
+    }
+    catch (err) {
+        res.status(500).json({"error": Response.status[500]});
+    }
 }
 
 module.exports = {

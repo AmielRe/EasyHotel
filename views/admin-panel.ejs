@@ -94,7 +94,9 @@
       </tbody>
     </table>
 
+    
     <button type="button" class="btn btn-primary btn-rounded add-new">Add New</button>
+    <!-- New Users modal-->
     <div class="modal fade" id="add-new-user-modal" tabindex="-1" role="dialog" aria-labelledby="add-new-user-modal" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -105,7 +107,6 @@
             </button>
           </div>
 
-          <!-- New Users modal-->
           <div class="modal-body modal-body-status">
             <form id="add-new-user">
               <div class="form-group">
@@ -137,6 +138,8 @@
         </div>
       </div>
     </div>
+
+    <!-- New Room modal-->
     <div class="modal fade" id="add-new-room-modal" tabindex="-1" role="dialog" aria-labelledby="add-new-user-modal" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -146,7 +149,6 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <!-- New Room modal-->
           <div class="modal-body modal-body-status">
             <form id="add-new-room">
               <div class="form-group">
@@ -168,6 +170,35 @@
               </div>  
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary add-new-room">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- New Service modal-->
+    <div class="modal fade" id="add-new-service-modal" tabindex="-1" role="dialog" aria-labelledby="add-new-user-modal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title modal-title-status" id="add-new-service-modal">Add New Service</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body modal-body-status">
+            <form id="add-new-service">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Cost</label>
+                <input type="text" class="form-control" id="cost" name="cost">
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary add-new-service">Add</button>
               </div>
             </form>
           </div>

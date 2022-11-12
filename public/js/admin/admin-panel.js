@@ -239,9 +239,9 @@ function getServices(fill_table=false) {
                     $('#main_table > tbody:last-child').append(
                         '<tr>' +
                         '<th scope="row">' + services_lst[i]['_id'] + '</th>' +
-                        '<td>' + services_lst[i]["service"] + '</td>' +
-                        '<td>' + services_lst[i]["price"] + '</td>' +
-                        '<td>' + services_lst[i]["available"] + '</td>' +
+                        '<td>' + services_lst[i]["name"] + '</td>' +
+                        '<td>' + services_lst[i]["cost"] + '</td>' +
+                        '<td>' + services_lst[i]["reserved"] + '</td>' +
                         '<th style="cursor: pointer;"><a id='+ services_lst[i]['_id'] +' href="#" onclick="updateRow(this)"><i class="bi bi-save" style="margin-left: 13%;"></i></a></th>' +
                         '<th style="cursor: pointer;"><a id='+ services_lst[i]['_id'] +' href="#" onclick="deleteRow(this)"><i class="delete bi bi-trash3-fill" style="margin-left: 13%; color: rgb(212, 71, 71);"></i></a></th></tr>'
                     );
@@ -316,6 +316,9 @@ $('.add-new').click(function() {
     else if ( tab == "rooms" ) {
         $('#add-new-room-modal').modal('show');
     }
+    else if ( tab == "services" ) {
+        $('#add-new-service-modal').modal('show');
+    }
     
 });
 
@@ -385,4 +388,26 @@ $("#add-new-room").submit(function(e) {
             }
         });
     }
+});
+
+
+$("#add-new-service").submit(function(e) {
+    e.preventDefault();
+    var form = $(this);
+
+    console.log(form.serialize())
+    $.ajax({
+        type: 'POST',
+        url: '/services',
+        data: form.serialize(),
+        success: function(response){
+            $('#add-new-service-modal').modal('hide');
+        },
+        error: function(err){
+            $('body').append(errModal);
+            $(".modal-title-status").html("Error")
+            $(".modal-body-status").append("<p>" + err["responseJSON"].error + "</p>")
+            $("#statusModal").modal('show');
+        }
+    });
 });

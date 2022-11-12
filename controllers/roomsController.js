@@ -24,7 +24,7 @@ const addNewRoom = async (req,res) => {
             cost: req.body.cost
         });
 
-        newRoom = room.save();
+        const newRoom = await room.save();
         res.status(200).json({"status" : Response.status[200]});
     }
     
