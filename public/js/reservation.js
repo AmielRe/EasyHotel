@@ -1,3 +1,8 @@
+$(document).ready(function (){
+    // Get all rooms from DB
+    setRooms();
+});
+
 $(() => {
     errModal    = `<div id="statusModal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -22,26 +27,26 @@ $(() => {
     $("div[data-col-type='col-family']").load("html/family-div.html")
     $("div[data-col-type='col-standard']").load("html/standard-div.html")
     
-    $.ajax({
-        type: 'GET',
-        url: '/orders/getTakenRooms',
-        dataType : 'json',
-        data: {"checkInDate": $('#checkInDateInput').val(), "checkOutDate": $('#checkOutDateInput').val()},
-        success: function(response){
-            for (const [roomType, count] of Object.entries(response)) {
-                const matchedRoomTypes = $('div[data-display-name="' + roomType + '"]');
-                for (let index = 0; index < count; ++index) {
-                    matchedRoomTypes[index].classList.add("taken");
-                }
-            }
-        },
-        error: function(err){
-            $('body').append(errModal);
-            $(".modal-title-status").html("Error")
-            $(".modal-body-status").append("<p>" + err["responseJSON"].error + "</p>")
-            $("#statusModal").modal('show');
-        }
-    });
+    // $.ajax({
+    //     type: 'GET',
+    //     url: '/orders/getTakenRooms',
+    //     dataType : 'json',
+    //     data: {"checkInDate": $('#checkInDateInput').val(), "checkOutDate": $('#checkOutDateInput').val()},
+    //     success: function(response){
+    //         for (const [roomType, count] of Object.entries(response)) {
+    //             const matchedRoomTypes = $('div[data-display-name="' + roomType + '"]');
+    //             for (let index = 0; index < count; ++index) {
+    //                 matchedRoomTypes[index].classList.add("taken");
+    //             }
+    //         }
+    //     },
+    //     error: function(err){
+    //         $('body').append(errModal);
+    //         $(".modal-title-status").html("Error")
+    //         $(".modal-body-status").append("<p>" + err["responseJSON"].error + "</p>")
+    //         $("#statusModal").modal('show');
+    //     }
+    // });
 
     $('.col').click(function(event) {
         if($(this).hasClass('col-nonactive')
@@ -122,4 +127,52 @@ function increaseTotalSum(priceToIncrease) {
 function decreaseTotalSum(priceToDecrease) {
     $('.cart-total-sum').html(parseInt($('.cart-total-sum').html()) - priceToDecrease);
     $('.cart-items-counter').html(parseInt($('.cart-items-counter').html()) - 1);
+}
+
+
+// Load all rooms from DB
+function setRooms() {
+    $.ajax({
+        type: 'GET',
+        url: '/rooms',
+        success: function(rooms){
+            console.log(rooms);
+            $.each(rooms, function(index, room) {
+                if ( room["roomType"] == "Suite") {
+                    $('.suite-area').append(`
+                    <div class="col" data-price="${room['cost']}" id="${room['_id']}" data-col-type="col-suite" data-display-name="Suite">
+                  
+                    </div>`);
+                    $("div[data-col-type='col-suite']").load("html/suite-div.html")
+                }
+                else if ( room["roomType"] == "Exclusive" ) {
+                    $('.exclusive-area').append(`
+                    <div class="col" data-price="${room['cost']}" id="${room['_id']}" data-col-type="col-exclusive" data-display-name="Exclusive">
+                  
+                    </div>`)
+                    $("div[data-col-type='col-exclusive']").load("html/exclusive-div.html")
+                }
+                else if ( room["roomType"] == "Family" ) {
+                    $('.family-area').append(`
+                    <div class="col" data-price="${room['cost']}" id="${room['_id']}" data-col-type="col-family" data-display-name="Family">
+                  
+                    </div>`)
+                    $("div[data-col-type='col-family']").load("html/family-div.html")
+                }
+                else if ( room["roomType"] == "Standard" ) {
+                    $('.standard-area').append(`
+                    <div class="col" data-price="${room['cost']}" id="${room['_id']}" data-col-type="col-standard" data-display-name="Standard">
+                  
+                    </div>`)
+                    $("div[data-col-type='col-standard']").load("html/standard-div.html")
+                }
+            });
+        },
+        error: function(err){
+            $('body').append(errModal);
+            $(".modal-title-status").html("Error")
+            $(".modal-body-status").append("<p>" + err["responseJSON"].error + "</p>")
+            $("#statusModal").modal('show');
+        }
+    });
 }

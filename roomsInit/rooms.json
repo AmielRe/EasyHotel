@@ -8,7 +8,123 @@
         "cost": 100
     },
     {
+        "roomType": "Suite",
+        "cost": 100
+    },
+    {
+        "roomType": "Suite",
+        "cost": 100
+    },
+    {
+        "roomType": "Suite",
+        "cost": 100
+    },
+    {
+        "roomType": "Suite",
+        "cost": 100
+    },
+    {
         "roomType": "Exclusive",
         "cost": 50
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    },
+    {
+        "roomType": "Exclusive",
+        "cost": 50
+    },
+    {
+        "roomType": "Standard",
+        "cost": 50
+    },
+    {
+        "roomType": "Standard",
+        "cost": 50
+    },
+    {
+        "roomType": "Standard",
+        "cost": 50
+    },
+    {
+        "roomType": "Standard",
+        "cost": 50
+    },
+    {
+        "roomType": "Standard",
+        "cost": 50
+    },
+    {
+        "roomType": "Standard",
+        "cost": 50
+    },
+    {
+        "roomType": "Standard",
+        "cost": 50
+    },
+    {
+        "roomType": "Standard",
+        "cost": 50
+    },
+    {
+        "roomType": "Standard",
+        "cost": 50
+    },
+    {
+        "roomType": "Standard",
+        "cost": 50
+    },
+    {
+        "roomType": "Family",
+        "cost": 25
+    },
+    {
+        "roomType": "Family",
+        "cost": 25
     }
 ]
