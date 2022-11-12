@@ -38,18 +38,18 @@ const addNewRoomFile = (req,res) => {
     const fileName = req.file.filename;
     fs.readFile(`uploads/${fileName}`, 'utf8', function (err, data) {
         if (err) {
-            res.status(500).json({"error": Response.status[500]})
+            res.status(500).json({"error": Response.file.parse})
         };
-        
-        const roomList = JSON.parse(data);
+
         try {
+            const roomList = JSON.parse(data);
             Room.insertMany(roomList);
 
             res.status(200).json({"status": Response.status[200]})
         }
 
         catch( err ) {
-            res.status(500).json({"error": Response.status[500]});
+            res.status(500).json({"error": Response.file.saving});
         }
         
       });

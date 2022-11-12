@@ -25,6 +25,10 @@ const response = {
         "firstNameError": "Invalid first name",
         "lastNameError": "Invalid last name",
         "cartError": "Invalid cart data"
+    },
+    "file": {
+        "parse": "Error parsing json file",
+        "saving": "Error saving file"
     }
 }
 
