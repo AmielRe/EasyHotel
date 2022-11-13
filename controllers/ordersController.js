@@ -44,15 +44,11 @@ const getAllOrdersByDate = async (req, res) => {
 
     let roomTypes = [];
     ordersInDate.forEach(object => {
-        console.log(object);
         object.rooms.forEach(room => {
             roomTypes.push(room._id);
         });
     });
-
-    // Old
-    //ordersInDate.forEach(object => object.rooms.forEach(elem => elem.roomType in roomTypes ? roomTypes[elem.roomType] = roomTypes[elem.roomType] + 1 : roomTypes[elem.roomType] = 1));
-
+    
     res.status(200).json(roomTypes);
 }
 
