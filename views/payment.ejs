@@ -28,6 +28,7 @@
                                     <div class="text-muted">$<%=rooms[i].cost%></div>
                                     <input type="hidden" name="roomType" value="<%=rooms[i].roomType%>"/>
                                     <input type="hidden" name="roomPrice" value="<%=rooms[i].cost%>"/>
+                                    <input type="hidden" name="roomIds" value="<%=rooms[i]._id%>"/>
                                 </li>
                             <%}%>
                         </ul>
@@ -40,6 +41,7 @@
                             <%for (var i = 0; i < rooms.length; i++) {%>                
                                 <input type="hidden" name="roomType[]" value="<%=rooms[i].roomType%>"/>
                                 <input type="hidden" name="roomPrice[]" value="<%=rooms[i].cost%>"/>
+                                <input type="hidden" name="roomIds[]" value="<%=rooms[i]._id%>"/>
                             <%}%>
                             <div class="row g-3">
                                 <div class="col-sm-6 form-group required">

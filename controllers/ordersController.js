@@ -8,6 +8,7 @@ const { getJwtDetails } = require('../middleware/verifyJWT');
 const { addNewRoom } = require('../controllers/roomsController');
 const mongoose = require('mongoose');
 
+const { on } = require('../models/user');
 
 const getAllOrders = async (req,res) => {
     try {
@@ -41,9 +42,16 @@ const getAllOrdersByDate = async (req, res) => {
     const ordersInDate = await Order.find({"checkinDate": {"$lte": checkInDateFormat,},
                                             "checkoutDate": {"$gte": checkOutDateFormat}}, 'rooms -_id');
 
-    let roomTypes = {};
+    let roomTypes = [];
+    ordersInDate.forEach(object => {
+        console.log(object);
+        object.rooms.forEach(room => {
+            roomTypes.push(room._id);
+        });
+    });
 
-    ordersInDate.forEach(object => object.rooms.forEach(elem => elem.roomType in roomTypes ? roomTypes[elem.roomType] = roomTypes[elem.roomType] + 1 : roomTypes[elem.roomType] = 1));
+    // Old
+    //ordersInDate.forEach(object => object.rooms.forEach(elem => elem.roomType in roomTypes ? roomTypes[elem.roomType] = roomTypes[elem.roomType] + 1 : roomTypes[elem.roomType] = 1));
 
     res.status(200).json(roomTypes);
 }
@@ -95,15 +103,19 @@ const deleteOrder = (req,res) => {
 const parseRooms = (req) => {
     const roomTypes = req.body.roomType;
     const roomPrices = req.body.roomPrice;
+    const roomIds = req.body.roomIds;
+    console.log(roomIds);
 
     let rooms = []
     let totalCost = 0;
 
     for (let i = 0; i < roomTypes.length; i++) {
-        const room = new Room({
+        const room = Room({
+            _id: roomIds[i],
             roomType: roomTypes[i],
             cost: parseInt(roomPrices[i])
         });
+        console.log(room);
         
         totalCost += room.cost;
 
