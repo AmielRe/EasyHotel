@@ -1,13 +1,15 @@
 const express = require('express');
 const ratingController = require('../controllers/ratingController');
+const authentication = require('../middleware/verifyJWT');
+const { ROLES } = require('../config/roles');
 
 const router = express.Router();
 
 router.route('/')
-    .get(ratingController.getRatingsScores)
+    .get(authentication.verifyJWT(ROLES.admin), ratingController.getRatingsScores)
     .post(ratingController.addNewRating)
 
 router.route('/:score')
-    .get(ratingController.getRatingsComments)
+    .get(authentication.verifyJWT(ROLES.admin), ratingController.getRatingsComments)
 
 module.exports = router;
