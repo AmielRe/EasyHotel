@@ -44,6 +44,7 @@ const personalRoute = require('./routes/personal')
 const chatRoute = require('./routes/chats');
 const ratingRoute = require('./routes/rating');
 const accountRoute = require('./routes/account');
+const spaRoute = require('./routes/spa');
 const { futimesSync } = require('fs');
 
 // Use Routers
@@ -57,6 +58,7 @@ app.use('/personal', personalRoute)
 app.use('/chat', chatRoute)
 app.use('/rating', ratingRoute)
 app.use('/account', accountRoute)
+app.use('/spa', spaRoute)
 
 
 // Controllers
