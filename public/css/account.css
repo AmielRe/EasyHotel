@@ -1,0 +1,86 @@
+body {
+  margin-top: 100px !important;
+  margin-left: 20px !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+button {
+  padding: 20px 40px;
+  background: none;
+  outline: none;
+  border: 2px solid white;
+  border-radius: 50px;
+  color: white;
+  margin-top: 20px;
+}
+
+
+
+/*------special Offers-------*/
+
+.btn1 {
+  background: #C1B086;
+  color: white;
+  margin: 0 0 20px 50px;
+  border-radius: 50px;
+
+}
+
+.flex1 {
+  margin-top: 10%;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Julius Sans One', sans-serif;
+  color: black;
+}
+
+.offer .grid {
+  grid-template-columns: repeat(3, 1fr);
+  display: grid;
+
+  grid-gap: 30px;
+}
+
+.offer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+
+
+}
+
+.offer .box {
+  box-shadow: 0 13px 43px 0 rgb(37 46 89/10%);
+}
+
+.offer .box:hover {
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+.offer .text {
+  padding: 20px;
+  color: black;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.offer h2 {
+  font-size: 40px;
+}
+
+.offer h3 {
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.offer p span {
+  font-size: 18px;
+  color: grey;
+}
+
+.offer p {
+  font-size: 22px;
+}
+
+/*--------special Offers---------*/
