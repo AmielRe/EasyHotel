@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const Response = require('../config/response')
 require('dotenv').config();
 
 const verifyJWT = (role) => {
@@ -8,8 +9,8 @@ const verifyJWT = (role) => {
             token,
             process.env.ACCESS_TOKEN_SECRET,
             (err, decoded) => {
-                if (err) return res.status(403).render('error', {errorCode: 403, errorMsg: "Invalid token"});
-                if (role != decoded.UserInfo.role) return res.status(403).render('error', {errorCode: 403, errorMsg: "Invalid role"});
+                if (err) return res.status(403).render('error', {errorCode: 403, errorMsg: Response.auth.invalidToken});
+                if (role != decoded.UserInfo.role) return res.status(403).render('error', {errorCode: 403, errorMsg: Response.auth.invalidRole});
                 next()
             }
         );

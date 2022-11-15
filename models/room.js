@@ -10,6 +10,10 @@ var schema = mongoose.Schema({
     cost: {
         type: Number,
         required: true
+    },
+    reserved: {
+        type: Boolean,
+        default: false
     }
 }, {
     versionKey: false,

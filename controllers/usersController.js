@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Config = require('../config/roles');
+const Response = require('../config/response')
 const { getJwtDetails } = require('../middleware/verifyJWT');
 
 // Get all users
@@ -9,7 +10,7 @@ const getAllUsers = async (req,res) => {
         res.status(200).json(users);
     }
     catch (err) {
-        res.status(500).json({"status": "err"});
+        res.status(500).json({"error": Response.user.queryError});
     }
 }
 
@@ -20,18 +21,21 @@ const getAllAdmins = async (req,res) => {
     }
     
     catch (err) {
-        res.status(500).json({"status": "err"});
+        res.status(500).json({"error": Response.user.queryError});
     }
 }
 
 // Register new user to the system
 const addNewUser = async (req,res) => {
 
+    // Gets the jwt token, if he is an admin -> true else false
+    isAdmin = getJwtDetails(req.cookies.jwt)["role"] == Config.ROLES.admin ? true : false;
+    
     const user = new User({
         fullName: req.body.fullName,
         email: req.body.email,
         password: req.body.password,
-        role: Config.ROLES.guest
+        role: (isAdmin) ? req.body.role : Config.ROLES.guest
     });
     
     try {
@@ -41,7 +45,7 @@ const addNewUser = async (req,res) => {
         res.status(200).json({"status": "User has added !"})
     }
     catch (err) {
-        res.status(500).json({'error': "Email already in use."});
+        res.status(500).json({'error': Response.user.emailError});
     }
 }
 
@@ -56,7 +60,7 @@ const updateUser = (req,res) => {
     try {
         User.updateOne({'_id': req.params.id}, {$set:newData}, function(err, response) {
             if (err) {
-                res.status(500).json({"status":err})
+                res.status(500).json({"error":Response.user.queryError})
             }
             else {
                 res.status(200).json({"status":"User has been updated"})
@@ -64,7 +68,7 @@ const updateUser = (req,res) => {
         });
     }
     catch (err) {
-        res.status(500).json({"status": "Something has happend"})
+        res.status(500).json({"error": Response.user.queryError})
     }
 
 }
@@ -77,7 +81,7 @@ const deleteUser = async (req,res) => {
         res.status(200).json({"status": "User deleted !"});
     }
     catch (err) {
-        res.status(500).json({"status": "Error"})
+        res.status(500).json({"error": Response.user.deleteError})
     }
 }
 

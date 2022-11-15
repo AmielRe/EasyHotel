@@ -13,7 +13,8 @@
             <span style="cursor:pointer;" onclick="document.location.href='/admin'" class="text-muted">Main Dashboard</span></br>
             <span style="cursor:pointer;" onclick="document.location.href='/admin/roles'" class="text-muted">Roles</span></br>
             <span style="cursor:pointer;" onclick="document.location.href='/admin/ratings'" class="text-muted">Ratings</span></br>
-            <span style="cursor:pointer;" onclick="document.location.href='/admin/chats'" class="text-muted">Chats</span>
+            <span style="cursor:pointer;" onclick="document.location.href='/admin/chats'" class="text-muted">Chats</span></br>
+            <span style="cursor:pointer;" onclick="document.location.href='/'" class="text-muted">Home</span>
           </div>
       </div>
       <nav class="navbar navbar-dark bg-dark">
@@ -92,6 +93,119 @@
       <tbody>
       </tbody>
     </table>
+
+    
+    <button type="button" class="btn btn-primary btn-rounded add-new">Add New</button>
+    <!-- New Users modal-->
+    <div class="modal fade" id="add-new-user-modal" tabindex="-1" role="dialog" aria-labelledby="add-new-user-modal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title modal-title-status" id="add-new-user-modal">Add New User</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body modal-body-status">
+            <form id="add-new-user">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullName" name="fullName">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Email</label>
+                <input type="text" class="form-control" id="email" name="email">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Password</label>
+                <input type="text" class="form-control" id="password" name="password">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Role</label>
+                <select name="role" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                  <option value="1">Admin</option>
+                  <option value="2">Manager</option>
+                  <option value="3">Worker</option>
+                  <option value="4">Guest</option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary add-new-user">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- New Room modal-->
+    <div class="modal fade" id="add-new-room-modal" tabindex="-1" role="dialog" aria-labelledby="add-new-user-modal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title modal-title-status" id="add-new-room-modal">Add New Room</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body modal-body-status">
+            <form id="add-new-room">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Room Type</label>
+                <select name="roomType" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                  <option value="Suite">Suite</option>
+                  <option value="Exclusive">Exclusive</option>
+                  <option value="Family">Family</option>
+                  <option value="Standard">Standard</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Cost</label>
+                <input type="text" class="form-control" id="cost" name="cost">
+              </div>
+              <div class="mb-3">
+                <label for="roomFile" class="form-label">Rooms File - JSON format</label>
+                <input class="form-control" type="file" id="roomFile">
+              </div>  
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary add-new-room">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- New Service modal-->
+    <div class="modal fade" id="add-new-service-modal" tabindex="-1" role="dialog" aria-labelledby="add-new-user-modal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title modal-title-status" id="add-new-service-modal">Add New Service</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body modal-body-status">
+            <form id="add-new-service">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Cost</label>
+                <input type="text" class="form-control" id="cost" name="cost">
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary add-new-service">Add</button>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
         
   </body>
   <footer>

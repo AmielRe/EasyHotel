@@ -29,6 +29,10 @@ var schema = mongoose.Schema({
     checkoutDate: {
         type: Date,
         required: true
+    },
+    userEmail: {
+        type: String,
+        required: true
     }
 }, {
     versionKey: false,

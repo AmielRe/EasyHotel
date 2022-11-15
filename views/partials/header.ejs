@@ -38,9 +38,15 @@
             <% if(jwt){ %>
                 <div class="profile">
                     <!--img---->
-                    <div class="profile-img">
-                        <img src="/images/chats/user.png" />
-                    </div>
+                    <% if ( jwt.role == 1 ) { %>
+                        <div class="profile-img">
+                            <img onclick="document.location.href='/admin'" src="/images/chats/user.png" />
+                        </div>
+                    <% } else { %>  
+                        <div class="profile-img">
+                            <img onclick="document.location.href='/personal'" src="/images/chats/user.png" />
+                        </div>
+                    <% } %>
                     <!--name-and-username-->
                     <div class="name-user">
                         <strong><%= jwt.fullName %></strong>

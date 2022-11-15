@@ -2,6 +2,7 @@ const Chat = require('../models/chat');
 const  { getJwtDetails, getJWTFromCookie } = require('../middleware/verifyJWT')
 const userUtil = require('../socket-io-utils/user');
 const chat = require('../models/chat');
+const Response = require('../config/response')
 
 const addMessage = (io, data) => {
     // data - destination && content
@@ -17,7 +18,7 @@ const addMessage = (io, data) => {
         msg.save();
     }
     catch (err) {
-        console.log(err)
+        
     }
 
     dstUser = userUtil.getUserByEmail(data.destination);
@@ -32,8 +33,8 @@ const getAllUserMessages = (req, res) => {
     source = req.params.email;
     destination = getJWTFromCookie(req.cookies.jwt).email;
 
-    console.log("source ==> ", source);
-    console.log("dst ==> ", destination);
+    
+    
     
     chat.find(
         { "$or" : [
@@ -42,7 +43,7 @@ const getAllUserMessages = (req, res) => {
         
         function(err, chats) {
         if (err) {
-            res.status(500).json({"status": "Error getting chats."})
+            res.status(500).json({"error": Response.chat.queryError})
         }
 
 

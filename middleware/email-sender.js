@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 const sendEmail = (userEmail, firstName, checkinDate, checkoutDate, rooms, totalCost, bookingCode) => {
     ejs.renderFile(path.resolve('templates/confirmation-mail.ejs'), { firstName, checkinDate, checkoutDate, totalCost, rooms, userEmail, bookingCode}, (err, data) => {
         if (err) {
-        console.log(err);
+        
       } else {
         const email = {
           from: process.env.EMAIL_USER,
@@ -25,9 +25,9 @@ const sendEmail = (userEmail, firstName, checkinDate, checkoutDate, rooms, total
 
         transporter.sendMail(email, (error, info) => {
           if (error) {
-            return console.log(error);
+            return 
           }
-          console.log('Message sent: %s', info.messageId);
+          
         });
       }
     });
