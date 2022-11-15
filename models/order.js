@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Room = require('./room').schema;
 const autoIncrementModelID = require('./counter');
 
+
 var schema = mongoose.Schema({
     id: {
         type: Number,
@@ -12,6 +13,7 @@ var schema = mongoose.Schema({
         type: Number,
         required: true
     },
+    
     rooms: [{
         type: Room,
         default: {}
