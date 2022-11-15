@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Room = require('./room').schema;
 const autoIncrementModelID = require('./counter');
 
+
 var schema = mongoose.Schema({
     id: {
         type: Number,
@@ -11,6 +12,11 @@ var schema = mongoose.Schema({
     totalCost: {
         type: Number,
         required: true
+    },
+    userId:{
+        type: mongoose.Types.ObjectId,
+        required: true,
+        ref: 'User'
     },
     rooms: [{
         type: Room,

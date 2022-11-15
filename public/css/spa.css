@@ -1,0 +1,276 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat-Regular', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 90%;
+    margin: auto;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 20px 40px;
+    background: #c1b086;
+    outline: 0;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    color: #fff;
+    margin-top: 20px
+}
+
+img {
+    width: 100%;
+    height: 100%;
+  }
+
+/*------------spa & wellness------------*/
+.top {
+    margin-top: 80px;
+}
+
+.mtop {
+    margin-top: 40px;
+}
+
+.heading {
+    text-align: center;
+}
+
+.heading h5 {
+    font-weight: 400;
+    letter-spacing: 5px;
+    color: #CC8C18;
+    padding-top: 100px;
+}
+
+.heading h2 {
+    color: #24416B;
+    font-size: 45px;
+    font-family: 'JuliusSansOne-Regular', sans-serif;
+    font-weight: bold;
+    margin: 10px 0 20px 0;
+}
+
+.left,
+.right {
+    width: 50%;
+}
+
+h3 {
+    font-size: 35px;
+    font-family: 'JuliusSansOne-Regular', sans-serif;
+    color: #24416B;
+    margin-bottom: 20px;
+}
+
+.spaWellness .left {
+    padding: 20px;
+}
+
+p {
+    line-height: 30px;
+    color: #a4a4a4;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.spaWellness {
+    position: relative;
+    padding-bottom: 70px;
+}
+
+.spaWellness .right {
+    position: relative;
+}
+
+.spaWellness .right::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ba9653;
+    width: 95%;
+    height: 61vh;
+    z-index: -1;
+    margin: 50px;
+}
+
+.spaWellness::after {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: 0;
+    background-image: url("../images/spa/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 100%;
+}
+
+.spaWellness::before {
+    content: '';
+    position: absolute;
+    bottom: -5%;
+    left: 0;
+    background-image: url("../images/spa/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 100%;
+}
+
+/*------------spa & wellness------------*/
+
+/*------------spa------------*/
+.spa img {
+    width: 100%;
+    height: 100%;
+}
+
+.spa .right {
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 0 20px 3px rgb(0 0 0 / 5%);
+}
+
+.spa .content h4 {
+    font-size: 20px;
+    color: #627795;
+    font-family: 'JuliusSansOne-Regular', sans-serif;
+}
+
+.spa .rate i {
+    font-size: 13px;
+    color: #ba9653;
+    margin: 10px 10px 20px 0;
+}
+
+.spa .content h5 {
+    color: #627795;
+    margin-bottom: 10px;
+}
+
+.spa .box {
+    transition: 0.5s;
+}
+
+.spa .box:hover {
+    transform: translateY(-10px);
+}
+
+/*------------spa------------*/
+
+/*------------yoga------------*/
+.yoga img {
+    margin: 0px 0 50px 30px;
+    width: 90%;
+    height: 90%;
+  }
+  
+  .yoga ul li {
+    display: inline-block;
+    font-weight: 500;
+    color: #5c646e;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .yoga .left {
+    position: relative;
+  }
+  
+  .yoga .left::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 80%;
+    height: 80%;
+    margin: 10px;
+    background: #ba9653;
+    z-index: -1;
+  }
+  
+  /*------------yoga------------*/
+
+  /*------------gym------------*/
+
+
+
+.left,
+.right {
+    width: 50%;
+}
+
+h3 {
+    font-size: 35px;
+    font-family: 'JuliusSansOne-Regular', sans-serif;
+    color: #24416B;
+    margin-bottom: 20px;
+}
+
+.gym .left {
+    padding: 20px;
+}
+
+p {
+    line-height: 30px;
+    color: #a4a4a4;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.gym {
+    position: relative;
+    padding-bottom: 70px;
+}
+
+.gym .right {
+    position: relative;
+}
+
+.gym .right::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10px;
+    background: #ba9653;
+    width: 103%;
+    height: 90%;
+    z-index: -1;
+    margin: 50px;
+}
+
+.gym img {
+    margin: 0px 0 50px 50px;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/*------------gym------------*/
