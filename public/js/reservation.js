@@ -1,4 +1,5 @@
 $(() => {
+
     $("div[data-col-type='col-suite']").load("html/suite-div.html")
     $("div[data-col-type='col-exclusive']").load("html/exclusive-div.html")
     $("div[data-col-type='col-family']").load("html/family-div.html")
@@ -47,7 +48,10 @@ $(() => {
         let modalBodyText = exampleModal.querySelector('.modal-body-text')
 
         modalTitle.textContent = displayName
-        modalBodyText.textContent = informationText
+        //modalBodyText.textContent = informationText
+
+        $('.modal-body-text').html(informationText);
+
 
         let inc = 0;
         $('.carousel-item img').each(function(){

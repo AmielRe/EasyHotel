@@ -94,7 +94,33 @@
         <h4 id="list-item-2">Billing Info</h4>
         <p>...</p>
         <h4 id="list-item-3">My Orders</h4>
-        <p>...</p>
+        <% if(orders) { %> 
+            <table class="table table-bordered">
+                <thead class="bgcolor" style="color:white;">
+                <tr >
+                    <th scope="col">Order #</th>
+                    <th scope="col">totalCost</th>
+                    <th scope="col">total rooms</th>
+                    <!-- <th>checkinDate</th> -->
+                    <!-- <th>checkoutDate</th> -->
+                    <th scope="col">createdAt</th>
+                </tr>
+            </thead>
+                  <% for(var i= 0; i< orders.length; i++){ %>
+                        <tr>
+                            <td><%= orders[i]._id %></td>
+                            <td><%= orders[i].totalCost %></td>
+                            <td><%= orders[i].rooms.length %></td>
+                            <!-- <td><%= (new Date(orders[i].checkinDate)) %></td> -->
+                            <!-- <td><%= (new Date(orders[i].checkoutDate)) %></td> -->
+                            <td><%= orders[i].createdAt %></td>
+                        </tr>    
+                <%  }  %>
+
+                    </table>
+        <%} else { %>
+            <p>No orders yet.</p>
+        <% } %>
         <h4 id="list-item-4"></h4>
         <p>
             <!-- special Offers-->
