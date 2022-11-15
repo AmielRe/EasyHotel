@@ -4,8 +4,9 @@ const Order = require('../models/order');
 const emailSender = require('../middleware/email-sender');
 const { getJwtDetails } = require('../middleware/verifyJWT');
 const { addNewRoom } = require('../controllers/roomsController');
-
 const mongoose = require('mongoose');
+
+
 const getAllOrders = (req,res) => {
     res.json(Order.find().exec());
 }
@@ -47,7 +48,7 @@ const addNewOrder = async (req,res) => {
         checkoutDate: req.body.checkOutDate,
         userId: mongoose.Types.ObjectId(req.cookies.userId)
     });
-
+    
     try {
         const newOrderObject = await newOrder.save();
 
