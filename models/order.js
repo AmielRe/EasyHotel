@@ -13,7 +13,11 @@ var schema = mongoose.Schema({
         type: Number,
         required: true
     },
-    
+    userId:{
+        type: mongoose.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    },
     rooms: [{
         type: Room,
         default: {}

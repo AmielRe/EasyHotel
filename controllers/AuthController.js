@@ -35,13 +35,14 @@ const login = (req, res) => {
                 
                 // Set the jwt as a cookie (Need to change this).
                 res.cookie('jwt', accessToken, { httpOnly: false, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000 });
-
+                res.cookie('userId', usr._id);
+                res.cookie('email', usr.email);
                 // Return /admin for admins and /personal for guests
                 if ( usr.role == Config.ROLES.admin ) {
                     res.status(200).json({"redirect": "/admin"});
                 }
                 else {
-                    res.status(200).json({"redirect": "/personal"});
+                    res.status(200).json({"redirect": "/"});
                 }
             }
             // Wrong password

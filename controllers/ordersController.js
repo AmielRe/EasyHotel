@@ -5,6 +5,7 @@ const emailSender = require('../middleware/email-sender');
 const { getJwtDetails } = require('../middleware/verifyJWT');
 const { addNewRoom } = require('../controllers/roomsController');
 
+const mongoose = require('mongoose');
 const getAllOrders = (req,res) => {
     res.json(Order.find().exec());
 }
@@ -43,14 +44,15 @@ const addNewOrder = async (req,res) => {
         totalCost: totalCost,
         rooms: rooms,
         checkinDate: req.body.checkInDate,
-        checkoutDate: req.body.checkOutDate
+        checkoutDate: req.body.checkOutDate,
+        userId: mongoose.Types.ObjectId(req.cookies.userId)
     });
 
     try {
         const newOrderObject = await newOrder.save();
 
         emailSender.sendEmail(req.body.email, req.body.firstName, req.body.checkInDate, req.body.checkOutDate, rooms, totalCost, newOrderObject.id);
-    console.log('req.body.email = > ', req.body.email);
+    //console.log('req.body.email = > ', req.body.email);
            // Order was added !
         res.status(200).render("../views/confirmation", {
             totalCost: totalCost, 
