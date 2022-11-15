@@ -46,7 +46,7 @@ $(document).ready(function(){
     type: 'GET',
     url: `/rating`,
     success: function(ratings){
-      console.log(ratings)
+      
       $.each(ratings, function( key, value ) {
         votesArr[value["score"] - 1]["value"] += 1
       });

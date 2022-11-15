@@ -46,7 +46,7 @@ $(() => {
             if($(this).children().hasClass('selected')) {
                 $(this).children().toggleClass('selected');
                 decreaseTotalSum(parseInt(this.getAttribute('data-price')))
-                console.log($('.cart-list').find('[data-col-type]:visible:first'))
+                
                 $('.cart-list').find('[data-col-type]:visible:first').parent().remove();
                 return
             }
@@ -93,7 +93,7 @@ $(() => {
 
         let inc = 0;
         $('.carousel-item img').each(function(){
-            console.log(imagesArray[inc])
+            
             $(this).attr('src',imagesArray[inc]);
             inc++;
         });
@@ -131,12 +131,12 @@ function setRooms(takenRoomsIds) {
         type: 'GET',
         url: '/rooms',
         success: function(rooms){
-            console.log(rooms);
+            
             $.each(rooms, function(index, room) {
                 if ( room["roomType"] == "Suite") {
                     // Checks if this room is taken
                     if (takenRoomsIds.indexOf(room['_id']) > -1) {
-                        console.log("true")
+                        
                         $('.suite-area').append(`
                         <div class="col taken" data-price="${room['cost']}" id="${room['_id']}" data-col-type="col-suite" data-display-name="Suite">
                       

@@ -46,7 +46,7 @@ const login = (req, res) => {
                     res.status(200).json({"redirect": "/admin"});
                 }
                 else {
-                    res.status(200).json({"redirect": "/"});
+                    res.status(200).json({"redirect": "/personal"});
                 }
             }
             // Wrong password
@@ -63,6 +63,8 @@ const login = (req, res) => {
 
 const logout = (req, res) => {
     res.clearCookie("jwt");
+    res.clearCookie("userId");
+    res.clearCookie("email");
     res.status(200).render('partials/header', {jwt: false})
 }
 

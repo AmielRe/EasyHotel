@@ -80,14 +80,14 @@ $(() => {
                     { "message": "New " + stars + " stars rating from " + fullName + "!" + "\r\n\"" + messageText + "\"", access_token: access_token.token },
                     function (response) {
                         if (response.error) {
-                            console.log('error occurred: ' + response.error.message)
+                            
                             return;
                         }
-                        console.log('successfully posted to page!');
+                        
                 });
             },
             error: function(err){
-                console.log(err)
+                
                 //$('body').append(errModal);
                 //$(".modal-title-status").html("Error")
                 //$(".modal-body-status").append("<p>" + err["responseJSON"].error + "</p>")

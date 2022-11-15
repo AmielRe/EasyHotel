@@ -62,7 +62,7 @@ function addUser() {
       dataType : 'json',
       data: userData,
       success: function(response){
-          console.log(response)
+          
       },
       error: function(err){
         errModal    = `<div id="statusModal" class="modal" tabindex="-1" role="dialog">

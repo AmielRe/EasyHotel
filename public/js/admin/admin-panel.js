@@ -190,7 +190,7 @@ function getOrders(fill_table=false) {
         type: 'GET',
         url: '/orders',
         success: function(order_lst){
-            console.log(order_lst)
+            
             $('#numberOfOrders').html(order_lst.length)
             if( fill_table ) {
                 for (var i=0; i<order_lst.length; i++) {
@@ -276,7 +276,7 @@ function updateRow(obj) {
         dataType : 'json',
         data: jsonData,
         success: function(res){
-            console.log(res)
+            
         },
         error: function(err){
             $('body').append(errModal);
@@ -296,7 +296,7 @@ function deleteRow(obj) {
         type: 'DELETE',
         url: `/${tab}/${obj.id}`,
         success: function(res){
-            console.log(res)
+            
         },
         error: function(err){
             $('body').append(errModal);
@@ -351,7 +351,7 @@ $("#add-new-room").submit(function(e) {
 
         var fd = new FormData();
         fd.append('rooms', $('#roomFile').prop('files')[0]);
-        console.log(fd)
+        
 
         $.ajax({
             type: 'POST',
@@ -395,7 +395,7 @@ $("#add-new-service").submit(function(e) {
     e.preventDefault();
     var form = $(this);
 
-    console.log(form.serialize())
+    
     $.ajax({
         type: 'POST',
         url: '/services',

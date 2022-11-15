@@ -39,7 +39,6 @@ button {
     border: 2px solid #fff;
     border-radius: 50px;
     color: #fff;
-    margin-top: 20px
 }
 
 img {
@@ -99,6 +98,7 @@ p {
 }
 
 .spaWellness {
+    margin-top: 10%;
     position: relative;
     padding-bottom: 70px;
 }
@@ -124,7 +124,6 @@ p {
     position: absolute;
     top: -5%;
     left: 0;
-    background-image: url("../images/spa/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 50px;
@@ -136,7 +135,6 @@ p {
     position: absolute;
     bottom: -5%;
     left: 0;
-    background-image: url("../images/spa/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 50px;

@@ -143,7 +143,7 @@ function getAllGuests() {
         error: function(err){$('body').append(errModal);
         $(".modal-title-status").html("Error")
         $(".modal-body-status").append("<p>" + err["responseJSON"].error + "</p>")
-        $("#statusModal").modal('show');console.log(err)
+        $("#statusModal").modal('show');
         }
     });
 }

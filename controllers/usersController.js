@@ -30,7 +30,7 @@ const addNewUser = async (req,res) => {
 
     // Gets the jwt token, if he is an admin -> true else false
     isAdmin = getJwtDetails(req.cookies.jwt)["role"] == Config.ROLES.admin ? true : false;
-    console.log(isAdmin);
+    
     const user = new User({
         fullName: req.body.fullName,
         email: req.body.email,

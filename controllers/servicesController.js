@@ -15,7 +15,7 @@ const getAllServices = async (req,res) => {
 
 const addNewService = async (req,res) => {
     try {
-        console.log(req.body)
+        
         const service = new Service({
             name: req.body.name,
             cost: req.body.cost

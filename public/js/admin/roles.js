@@ -54,7 +54,7 @@ $(document).ready(function (){
             stats.forEach(element => {
                 totalData[element["_id"]] = element["count"]
             });
-            console.log(totalData)
+            
             makeStatics(totalData)
             
         },

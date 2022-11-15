@@ -17,7 +17,7 @@ const getAllOrders = async (req,res) => {
     }
 
     catch ( err ) {
-        console.log(err);
+        
         res.status(500).json( {"error" : Response.status[500]})
     }
 }
@@ -68,7 +68,7 @@ const addNewOrder = async (req,res) => {
         const newOrderObject = await newOrder.save();
 
         emailSender.sendEmail(req.body.email, req.body.firstName, req.body.checkInDate, req.body.checkOutDate, rooms, totalCost, newOrderObject.id);
-    //console.log('req.body.email = > ', req.body.email);
+    //
            // Order was added !
         res.status(200).render("../views/confirmation", {
             totalCost: totalCost, 
@@ -82,7 +82,7 @@ const addNewOrder = async (req,res) => {
             jwt: getJwtDetails(req.cookies.jwt)})
     }
     catch (err) {
-        console.log(err)
+        
         res.status(500).render('error', {errorCode: 500, errorMsg: "Internal server error", jwt: getJwtDetails(req.cookies.jwt)});
     }
 }
@@ -100,7 +100,7 @@ const parseRooms = (req) => {
     const roomTypes = req.body.roomType;
     const roomPrices = req.body.roomPrice;
     const roomIds = req.body.roomIds;
-    console.log(roomIds);
+    
 
     let rooms = []
     let totalCost = 0;
@@ -111,7 +111,7 @@ const parseRooms = (req) => {
             roomType: roomTypes[i],
             cost: parseInt(roomPrices[i])
         });
-        console.log(room);
+        
         
         totalCost += room.cost;
 
