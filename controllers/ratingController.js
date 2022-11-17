@@ -1,19 +1,14 @@
 const Rating = require('../models/rating');
 const Response = require('../config/response');
-const { connect } = require('mongoose');
-
 
 const getRatingsScores = async (req, res) => {
-
     try {
         const ratings = await Rating.find();
         res.status(200).json(ratings);
     }
-
-    catch ( err ) {
+    catch (err) {
         res.status(500).json({"error" : Response.status[500] });
     }
-
 }
 
 const getRatingsComments = async (req, res) => {
@@ -23,11 +18,9 @@ const getRatingsComments = async (req, res) => {
         comments = await Rating.find({"score" : score}, 'comment');
         res.status(200).json(comments);
     }
-    catch ( err ) {
+    catch (err) {
         res.status(500).json({"error" : Response.status[500] });
     }
-    
-
 }
 
 
@@ -40,15 +33,11 @@ const addNewRating = async (req, res) => {
     try {
         await rating.save();
         res.status(200).json(Response.status[200]);
-
     }
-
-    catch ( err ) {
-        
+    catch (err) {
         res.status(500).json({"error" : Response.status[500] });
     }
 }
-
 
 module.exports = {
     getRatingsScores,

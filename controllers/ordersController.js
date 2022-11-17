@@ -5,19 +5,14 @@ const Order = require('../models/order');
 const Response = require('../config/response')
 const emailSender = require('../middleware/email-sender');
 const { getJwtDetails } = require('../middleware/verifyJWT');
-const { addNewRoom } = require('../controllers/roomsController');
 const mongoose = require('mongoose');
-
-const { on } = require('../models/user');
 
 const getAllOrders = async (req,res) => {
     try {
         const orders = await Order.find();
         res.status(200).json(orders)
     }
-
-    catch ( err ) {
-        
+    catch (err) {
         res.status(500).json( {"error" : Response.status[500]})
     }
 }
@@ -28,7 +23,6 @@ const showAvailableRooms = (req, res) => {
 
 const checkoutNewOrder = (req,res) => {
     const [rooms, totalCost] = parseRooms(req);
-
     res.render("../views/payment", { totalCost: totalCost, rooms: rooms, checkInDate: req.body.checkInDate, checkOutDate: req.body.checkOutDate, jwt: getJwtDetails(req.cookies.jwt) });
 }
 
@@ -68,8 +62,8 @@ const addNewOrder = async (req,res) => {
         const newOrderObject = await newOrder.save();
 
         emailSender.sendEmail(req.body.email, req.body.firstName, req.body.checkInDate, req.body.checkOutDate, rooms, totalCost, newOrderObject.id);
-    //
-           // Order was added !
+
+        // Order was added !
         res.status(200).render("../views/confirmation", {
             totalCost: totalCost, 
             rooms: rooms, 
@@ -82,7 +76,6 @@ const addNewOrder = async (req,res) => {
             jwt: getJwtDetails(req.cookies.jwt)})
     }
     catch (err) {
-        
         res.status(500).render('error', {errorCode: 500, errorMsg: "Internal server error", jwt: getJwtDetails(req.cookies.jwt)});
     }
 }
@@ -112,9 +105,7 @@ const parseRooms = (req) => {
             cost: parseInt(roomPrices[i])
         });
         
-        
         totalCost += room.cost;
-
         rooms.push(room);
     }
 

@@ -17,15 +17,12 @@ const addMessage = (io, data) => {
     try {
         msg.save();
     }
-    catch (err) {
-        
-    }
+    catch (err) {}
 
     dstUser = userUtil.getUserByEmail(data.destination);
     if ( dstUser ) {
         io.to(dstUser.id).emit('newMsg', chat);
     }
-    
 }
 
 
@@ -33,9 +30,6 @@ const getAllUserMessages = (req, res) => {
     source = req.params.email;
     destination = getJWTFromCookie(req.cookies.jwt).email;
 
-    
-    
-    
     chat.find(
         { "$or" : [
         { "$and": [ {source: source }, {destination: destination }] },
@@ -45,7 +39,6 @@ const getAllUserMessages = (req, res) => {
         if (err) {
             res.status(500).json({"error": Response.chat.queryError})
         }
-
 
         res.status(200).json(chats);
     });

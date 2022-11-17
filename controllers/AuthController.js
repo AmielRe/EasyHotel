@@ -4,7 +4,6 @@ const User = require('../models/user');
 const Config = require('../config/roles');
 const Response = require('../config/response');
 const Facebook = require('../models/facebook');
-const { getJwtDetails } = require('../middleware/verifyJWT');
 
 const login = (req, res) => {
     if (!req.body.email || !req.body.password) return res.status(400).json({'error': "Username and password are required."});

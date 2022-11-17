@@ -11,6 +11,8 @@ const verifyJWT = (role) => {
             (err, decoded) => {
                 if (err) return res.status(403).render('error', {errorCode: 403, errorMsg: Response.auth.invalidToken});
                 if (role != decoded.UserInfo.role) return res.status(403).render('error', {errorCode: 403, errorMsg: Response.auth.invalidRole});
+                
+                // JWT is verified
                 next()
             }
         );
@@ -22,7 +24,7 @@ const getJwtDetails = (token) => {
         token,
         process.env.ACCESS_TOKEN_SECRET,
         (err, decoded) => {
-            if (err) return false; //invalid token
+            if (err) return false; // Invalid token
             if (decoded) return decoded.UserInfo;
         }
     );
@@ -35,7 +37,7 @@ const getJWTFromCookie = (token) => {
         token,
         process.env.ACCESS_TOKEN_SECRET,
         (err, decoded) => {
-            if (err) return false; //invalid token
+            if (err) return false; // Invalid token
             if (decoded) return decoded.UserInfo;
         }
     );

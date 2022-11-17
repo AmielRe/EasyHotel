@@ -19,7 +19,6 @@ const getAllAdmins = async (req,res) => {
         const admins = await User.find({role: Config.ROLES.admin}, 'email fullName');
         res.status(200).json(admins);
     }
-    
     catch (err) {
         res.status(500).json({"error": Response.user.queryError});
     }
@@ -39,10 +38,10 @@ const addNewUser = async (req,res) => {
     });
     
     try {
-        const newUser = await user.save();
+        await user.save();
 
         // User has added !
-        res.status(200).json({"status": "User has added !"})
+        res.status(200).json({"status": "User has added!"})
     }
     catch (err) {
         res.status(500).json({'error': Response.user.emailError});
@@ -78,7 +77,7 @@ const deleteUser = async (req,res) => {
     try {
         await User.deleteOne({"_id": req.params.id});
 
-        res.status(200).json({"status": "User deleted !"});
+        res.status(200).json({"status": "User deleted!"});
     }
     catch (err) {
         res.status(500).json({"error": Response.user.deleteError})
