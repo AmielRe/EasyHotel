@@ -8,10 +8,7 @@ $(() => {
         success: function(info){       
             $.ajax({
                 type: 'GET',
-                url: '/users/getUser',
-                data: { 
-                    _id: info._id
-                },
+                url: `/users/getUser/${info._id}`,
                 success: function(user){            
                     $('#email').val(user.email)
                     $('#fullName').val(user.fullName)
@@ -32,20 +29,19 @@ $(() => {
 });
 
 $("#btnSaveChanges").click(function() {
+    // Get parsed data from JWT
     $.ajax({
         type: 'GET',
         url: '/auth/parseJWT',
-        data: { 
-            jwt: Cookies.get('jwt')
-        },
         success: function(info){
+            
+            // Get user info
             $.ajax({
                 type: 'GET',
-                url: '/users/getUser',
-                data: { 
-                    _id: info._id
-                },
+                url: `/users/getUser/${info._id}`,
                 success: function(user){            
+
+                    // Update the current user
                     $.ajax({
                         type: 'PUT',
                         url: `/users/${user._id}`,

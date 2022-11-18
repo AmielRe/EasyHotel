@@ -9,7 +9,7 @@ router.route('/')
     .get(authentication.verifyJWT([ROLES.admin]), usersController.getAllUsers)
     .post(usersController.addNewUser)
 
-router.route('/getUser')
+router.route('/getUser/:id')
     .get(authentication.verifyJWT([ROLES.guest, ROLES.admin]), usersController.getUser)
 
 router.route('/admins')
