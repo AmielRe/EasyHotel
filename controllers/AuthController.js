@@ -4,14 +4,15 @@ const User = require('../models/user');
 const Config = require('../config/roles');
 const Response = require('../config/response');
 const Facebook = require('../models/facebook');
+const  { getJwtDetails } = require('../middleware/verifyJWT')
 
 const login = (req, res) => {
-    if (!req.body.email || !req.body.password) return res.status(400).json({'error': "Username and password are required."});
+    if (!req.body.email || !req.body.password) return res.status(400).json({'error': "Email and password are required."});
     const user = {
         email: req.body.email
     }
     try {
-        User.findOne(user, 'email fullName password role', function(err,usr) {
+        User.findOne(user, 'email fullName password role _id', function(err,usr) {
             if ( err ) {
                 res.status(500).json({'error': Response.status[500]});
             }
@@ -29,7 +30,8 @@ const login = (req, res) => {
                         "UserInfo": {
                             "email": usr.email,
                             "fullName": usr.fullName,
-                            "role": usr.role
+                            "role": usr.role,
+                            "_id": usr._id
                         }
                     },
                     process.env.ACCESS_TOKEN_SECRET,
@@ -73,7 +75,17 @@ const getFacebookAccessToken = async (req, res) => {
         const token = await Facebook.findOne().exec();
         res.status(200).json({ "token" : token.token});
     }
-    catch ( err ) {
+    catch (err) {
+        res.status(500).json({'error': Response.status[500] });
+    }
+}
+
+const parseJWT = (req, res) => {
+    try {
+        const info = getJwtDetails(req.query.jwt);
+        res.status(200).json(info);
+    }
+    catch (err) {
         res.status(500).json({'error': Response.status[500] });
     }
 }
@@ -81,5 +93,6 @@ const getFacebookAccessToken = async (req, res) => {
 module.exports = {
     login,
     logout,
-    getFacebookAccessToken
+    getFacebookAccessToken,
+    parseJWT
 }
