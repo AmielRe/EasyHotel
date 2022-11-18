@@ -17,10 +17,16 @@ $(() => {
                     $('#fullName').val(user.fullName)
                 },
                 error: function(err){
+                    $(".modal-title-status").html("Error")
+                    $(".modal-body-status").html("<p>" + err["responseJSON"].error + "</p>")
+                    $("#statusModal").modal('show');
                 }
             });
         },
         error: function(err){
+            $(".modal-title-status").html("Error")
+            $(".modal-body-status").html("<p>" + err["responseJSON"].error + "</p>")
+            $("#statusModal").modal('show');
         }
     });
 });
@@ -50,17 +56,28 @@ $("#btnSaveChanges").click(function() {
                             "2": user.role
                         },
                         success: function(res){
-                            
+                            $(".modal-title-status").html("Success!")
+                            $(".modal-body-status").html("<p>" + "User was updated successfully" + "</p>")
+                            $("#statusModal").modal('show');
                         },
                         error: function(err){
+                            $(".modal-title-status").html("Error")
+                            $(".modal-body-status").html("<p>" + err["responseJSON"].error + "</p>")
+                            $("#statusModal").modal('show');
                         }
                     });
                 },
                 error: function(err){
+                    $(".modal-title-status").html("Error")
+                    $(".modal-body-status").html("<p>" + err["responseJSON"].error + "</p>")
+                    $("#statusModal").modal('show');
                 }
             });
         },
         error: function(err){
+            $(".modal-title-status").html("Error")
+            $(".modal-body-status").html("<p>" + err["responseJSON"].error + "</p>")
+            $("#statusModal").modal('show');
         }
     });
 });
