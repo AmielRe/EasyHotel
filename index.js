@@ -43,9 +43,7 @@ const servicesRoute = require('./routes/services')
 const personalRoute = require('./routes/personal')
 const chatRoute = require('./routes/chats');
 const ratingRoute = require('./routes/rating');
-const accountRoute = require('./routes/account');
 const spaRoute = require('./routes/spa');
-const { futimesSync } = require('fs');
 
 // Use Routers
 app.use('/orders', ordersRoute)
@@ -57,13 +55,11 @@ app.use('/services', servicesRoute)
 app.use('/personal', personalRoute)
 app.use('/chat', chatRoute)
 app.use('/rating', ratingRoute)
-app.use('/account', accountRoute)
 app.use('/spa', spaRoute)
 
 
 // Controllers
 const chatController = require('./controllers/chatController');
-const { sendEmail } = require('./middleware/email-sender');
 
 // this will return the main page
 app.get('/', (req, res) => {
@@ -92,7 +88,5 @@ io.on('connection', function (socket) {
     });
 });
 
-mongoose.connect(`mongodb${process.env.prod}://${process.env.dbHost}`)
+mongoose.connect(`mongodb${process.env.prod}://${process.env.dbUser}:${process.env.dbPass}@${process.env.dbHost}`)
 http.listen(process.env.PORT);
-
-
