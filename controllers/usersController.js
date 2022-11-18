@@ -14,6 +14,18 @@ const getAllUsers = async (req,res) => {
     }
 }
 
+const getUser = async (req, res) => {
+    try {
+        const user = await User.findOne({
+            "_id": req.query._id
+        });
+        res.status(200).json(user);
+    }
+    catch (err) {
+        res.status(500).json({"error": Response.user.queryError});
+    }
+}
+
 const getAllAdmins = async (req,res) => {
     try {
         const admins = await User.find({role: Config.ROLES.admin}, 'email fullName');
@@ -89,5 +101,6 @@ module.exports = {
     addNewUser,
     updateUser,
     deleteUser,
-    getAllAdmins
+    getAllAdmins,
+    getUser
 }
