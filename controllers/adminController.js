@@ -1,10 +1,6 @@
-const { pipeline } = require('nodemailer/lib/xoauth2');
 const Config = require('../config/roles');
-const { collection } = require('../models/user');
-const usersController = require('../controllers/usersController');
 const User = require('../models/user');
 const Response = require('../config/response')
-const { all } = require('../routes/orders');
 const { getJwtDetails } = require('../middleware/verifyJWT');
 
 
@@ -25,7 +21,6 @@ const getAllRoles = async (req,res) => {
 }
 
 const getRolesStatistics = (req,res) => {
-    // Toki is the best
     User.aggregate([{"$group": {_id:"$role", count:{$sum:1}}}], function(err, results) {
         if ( err ) {
             res.status(500).json({'error': Response.admin.getRolesError });

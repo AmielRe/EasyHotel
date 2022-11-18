@@ -7,6 +7,9 @@ const router = express.Router();
 router.route('/basic')
     .post(AuthController.login)
 
+router.route('/parseJWT')
+    .get(AuthController.parseJWT)
+
 router.route('/access_token')
     .get(AuthController.getFacebookAccessToken)
 

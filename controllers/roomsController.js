@@ -1,8 +1,5 @@
-const uuid = require('uuid')
 const Room = require('../models/room');
 const Response = require('../config/response');
-const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
 var fs = require('fs');
 
 const getAllRooms = async (req,res) => {
@@ -24,7 +21,7 @@ const addNewRoom = async (req,res) => {
             cost: req.body.cost
         });
 
-        const newRoom = await room.save();
+        await room.save();
         res.status(200).json({"status" : Response.status[200]});
     }
     
@@ -47,13 +44,10 @@ const addNewRoomFile = (req,res) => {
 
             res.status(200).json({"status": Response.status[200]})
         }
-
-        catch( err ) {
+        catch(err) {
             res.status(500).json({"error": Response.file.saving});
         }
-        
       });
-
 };
 
 // Will update an existing room
@@ -84,7 +78,7 @@ const deleteRoom = async (req,res) => {
     try {
         await Room.deleteOne({"_id": req.params.id});
 
-        res.status(200).json({"status": "Room deleted !"});
+        res.status(200).json({"status": "Room deleted!"});
     }
     catch (err) {
         res.status(500).json({"error": Response.status[500]});

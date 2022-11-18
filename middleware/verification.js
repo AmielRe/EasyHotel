@@ -36,9 +36,12 @@ const verifyPaymentForm = () => {
         if(firstName == null || firstName.length == 0 || !onlyLettersRegex.test(firstName)) {
             return res.status(400).render('error', {errorCode: 400, errorMsg: Response.verification.firstNameError});
         }
+
         if(lastName == null || lastName.length == 0 || !onlyLettersRegex.test(lastName)) {
             return res.status(400).render('error', {errorCode: 400, errorMsg: Response.verification.lastNameError});
         }
+
+        // Everything was verified
         next();
     }
 }
@@ -48,6 +51,8 @@ const verifyCart = () => {
         if(req.body.roomPrice == null || req.body.roomType == null) {
             return res.status(400).render('error', {errorCode: 400, errorMsg: Response.verification.cartError});
         }
+
+        // Everything was verified
         next();
     }
 }

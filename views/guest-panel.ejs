@@ -2,9 +2,26 @@
 <html lang="en">
     <head>
         <%- include('partials/head', {title:'Guest Panel'}); %>
-        <link rel="stylesheet" type="text/css" href="css/personal.css" />
+        <link rel="stylesheet" type="text/css" href="/css/personal.css" />
     </head>
     <body>
+        <div id="statusModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title modal-title-status"></h5>
+                  <button type="button" class="close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body modal-body-status">           
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary close-popup" data-bs-dismiss="modal" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+        </div>
         <div class="pos-f-t">
             <div class="collapse" id="navbarToggleExternalContent">
                 <div class="bg-dark p-4">
@@ -22,7 +39,7 @@
             </nav>
         </div>
         <div class="row">
-          <div class="col-4">
+          <div class="col-3 ms-3 mt-3">
               <div id="list-example" class="list-group">
                   <a class="list-group-item list-group-item-action" href="#list-item-1">Profile</a>
                   <a class="list-group-item list-group-item-action" href="#list-item-2">Billing Info</a>
@@ -30,7 +47,7 @@
                   <a class="list-group-item list-group-item-action" href="#list-item-4">My Offers</a>
               </div>
           </div>
-          <div class="col-8">
+          <div class="col-8 ms-3 mt-3">
               <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true"
                   class="scrollspy-example" tabindex="0">
                   <h4 id="list-item-1">Profile</h4>
@@ -55,30 +72,18 @@
                                       <input type="email" class="form-control" id="email">
 
                                   </div>
-                                  <div class="form-group">
-
-                                      <label for=pass>Password</label>
-                                      <input type="password" class="form-control" id="pass">
-
-                                  </div>
-                                  <div class="form-group ">
-
-                                      <label for=birthday>Birthday</label>
-                                      <input type="date" class="form-control" id="birthday">
-
-                                  </div>
 
                                   <div class="row mt-5">
 
                                       <div class="col">
 
-                                          <button class="btn1">Save Changes</button>
+                                          <button type="button" class="btn1" id="btnSaveChanges">Save Changes</button>
 
                                       </div>
 
                                       <div class="col">
 
-                                          <button type="button" class="btn btn-default btn-block">Cancel</button>
+                                          <button type="button" class="btn1 btn-block">Cancel</button>
 
                                       </div>
 
@@ -97,8 +102,6 @@
           </div>
 
       </div>
-
-      </p>
       <h4 id="list-item-2">Billing Info</h4>
       <p>...</p>
       <h4 id="list-item-3">My Orders</h4>
@@ -178,5 +181,7 @@
    <footer>
     <%- include('partials/footer'); %>
    </footer>
-    <%- include('partials/scripts'); %>
+   <%- include('partials/scripts'); %>
+   <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+   <script src="/js/guest-panel.js"></script>
 </html>
