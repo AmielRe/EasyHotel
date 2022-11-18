@@ -166,7 +166,7 @@
                                         on card</label>
                                     <input type="text" class="form-control"
                                         id="cc-name" placeholder="" required=""
-                                        pattern="^[a-zA-Z]+$">
+                                        pattern="^[a-zA-Z\s]*$">
                                     <small class="text-muted">Full name as
                                         displayed on card</small>
                                     <div class="invalid-feedback">
@@ -257,5 +257,6 @@
         <%- include('partials/footer'); %>
     </footer>
     <%- include('partials/scripts'); %>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     <script src="js/payment.js"></script>
 </html>

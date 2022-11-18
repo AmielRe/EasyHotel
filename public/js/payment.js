@@ -23,6 +23,22 @@
       })
   })()
 
+$(() => {
+  // Load data if jwt exists
+  if(Cookies.get('jwt')) {
+    const jwt = parseJwt();
+    $('#email').val(jwt.UserInfo.email);
+    $('#firstName').val(jwt.UserInfo.fullName.split(' ')[0]);
+    $('#lastName').val(jwt.UserInfo.fullName.split(' ')[1]);
+
+    $('#email').prop( "readonly", true);
+    $('#firstName').prop( "readonly", true);
+    $('#lastName').prop( "readonly", true);
+    $('#password').prop( "readonly", true);
+    $('#passwordConfirm').prop( "readonly", true);
+  }
+});
+
 function checkPasswordMatch(input) {
   if (input.value != $('#password').val()) {
       input.setCustomValidity('Password Must be Matching.');
@@ -44,6 +60,11 @@ function getFormData(form){
 }
 
 function addUser() {
+    // User already exists, skip adding him
+    if(Cookies.get('jwt')){
+      return
+    }
+
     orderForm = $('#order-form');
 
     formData = getFormData(orderForm);
@@ -89,4 +110,17 @@ function addUser() {
       }
     });
 }
-  
+
+function getCookie() {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${"jwt"}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function parseJwt() {
+  try {
+    return JSON.parse(atob(getCookie().split('.')[1]));
+  } catch (e) {
+    return null;
+  }
+}
