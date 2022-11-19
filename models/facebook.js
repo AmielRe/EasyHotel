@@ -10,4 +10,4 @@ var schema = mongoose.Schema({
 }
 );
 
-module.exports = mongoose.model("Facebook", schema, "Facebook");
+module.exports = mongoose.model("facebook", schema, "facebook");
