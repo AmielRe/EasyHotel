@@ -98,7 +98,6 @@ p {
 }
 
 .spaWellness {
-    margin-top: 10%;
     position: relative;
     padding-bottom: 70px;
 }
@@ -119,27 +118,6 @@ p {
     margin: 50px;
 }
 
-.spaWellness::after {
-    content: '';
-    position: absolute;
-    top: -5%;
-    left: 0;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 50px;
-    width: 100%;
-}
-
-.spaWellness::before {
-    content: '';
-    position: absolute;
-    bottom: -5%;
-    left: 0;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 50px;
-    width: 100%;
-}
 
 /*------------spa & wellness------------*/
 

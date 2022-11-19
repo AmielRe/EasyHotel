@@ -1,6 +1,6 @@
 const https = require('https');
 const Response = require('../config/response')
-const onlyLettersRegex = /^[a-zA-Z]+$/;
+const onlyLettersRegex = /^[a-zA-Z\s]*$/;
 
 const verifySearch = () => {
     return (req, res, next) => {

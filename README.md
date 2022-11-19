@@ -12,6 +12,10 @@ npm start
 
 EasyHotel will listen on: http://localhost:<PORT_ON_.ENV>
 
+## Links
+- Our Facebook page: `https://www.facebook.com/profile.php?id=100087333483435`
+- Our Email address: `easyhotelinc@gmail.com`
+
 ## Pictures
 
 Main page

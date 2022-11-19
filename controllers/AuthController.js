@@ -82,7 +82,7 @@ const getFacebookAccessToken = async (req, res) => {
 
 const parseJWT = (req, res) => {
     try {
-        const info = getJwtDetails(req.query.jwt);
+        const info = getJwtDetails(req.cookies.jwt);
         res.status(200).json(info);
     }
     catch (err) {

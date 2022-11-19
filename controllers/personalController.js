@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { getJwtDetails } = require('../middleware/verifyJWT');
 
 const personalSpace = (req,res) => {
-    Order.find({ userId: mongoose.Types.ObjectId(req.cookies.userId) })
+    Order.find({ userEmail: getJwtDetails(req.cookies.jwt)["email"] })
     .then(orders => {
         res.status(200).render("../views/guest-panel.ejs", {orders, jwt: getJwtDetails(req.cookies.jwt)});
     }).catch(err => {
